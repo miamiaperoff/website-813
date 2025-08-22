@@ -58,27 +58,29 @@ const Contact = () => {
             </div>
             
             {/* Instagram Grid */}
-            <div className="grid grid-cols-3 gap-4 mb-8 max-w-lg mx-auto">
-              <div className="aspect-square overflow-hidden rounded-lg">
-                <img 
-                  src="/lovable-uploads/6fb5e738-39ab-438e-80aa-8c990abb3866.png" 
-                  alt="Working at 813 Cafe with iced coffee"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="aspect-square overflow-hidden rounded-lg">
-                <img 
-                  src="/lovable-uploads/f14be507-5ba4-4f71-87e4-c2943549abcf.png" 
-                  alt="813 Cafe interior with coworking space"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="aspect-square overflow-hidden rounded-lg">
-                <img 
-                  src="/lovable-uploads/e9b661e6-257a-4eac-afb1-3eb063488565.png" 
-                  alt="Delicious food at 813 Cafe including bacalao"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
+            <div className="overflow-x-auto mb-8">
+              <div className="flex space-x-4 pb-4" style={{ width: 'max-content' }}>
+                <div className="w-64 h-64 overflow-hidden rounded-lg flex-shrink-0">
+                  <img 
+                    src="/lovable-uploads/6fb5e738-39ab-438e-80aa-8c990abb3866.png" 
+                    alt="Working at 813 Cafe with iced coffee"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="w-64 h-64 overflow-hidden rounded-lg flex-shrink-0">
+                  <img 
+                    src="/lovable-uploads/f14be507-5ba4-4f71-87e4-c2943549abcf.png" 
+                    alt="813 Cafe interior with coworking space"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="w-64 h-64 overflow-hidden rounded-lg flex-shrink-0">
+                  <img 
+                    src="/lovable-uploads/e9b661e6-257a-4eac-afb1-3eb063488565.png" 
+                    alt="Delicious food at 813 Cafe including bacalao"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
               </div>
             </div>
             
@@ -106,14 +108,6 @@ const Contact = () => {
                 <FaTiktok className="w-5 h-5" />
               </Button>
             </div>
-            
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600 text-white font-medium px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105"
-              onClick={() => window.open('https://www.instagram.com/813.cafe', '_blank')}
-            >
-              View on Instagram
-            </Button>
           </div>
         </div>
       </div>
