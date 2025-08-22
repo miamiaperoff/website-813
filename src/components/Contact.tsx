@@ -58,36 +58,27 @@ const Contact = () => {
             </div>
             
             {/* Instagram Grid */}
-            <div className="grid grid-cols-3 gap-2 mb-8 max-w-md mx-auto">
-              <div className="aspect-square overflow-hidden rounded-lg">
+            <div className="flex gap-4 overflow-x-auto pb-4 mb-8 max-w-4xl mx-auto scrollbar-hide">
+              <div className="flex-shrink-0 w-80 h-80 overflow-hidden rounded-lg">
                 <img 
                   src="/lovable-uploads/6fb5e738-39ab-438e-80aa-8c990abb3866.png" 
                   alt="Working at 813 Cafe with iced coffee"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="aspect-square overflow-hidden rounded-lg">
+              <div className="flex-shrink-0 w-80 h-80 overflow-hidden rounded-lg">
                 <img 
                   src="/lovable-uploads/f14be507-5ba4-4f71-87e4-c2943549abcf.png" 
                   alt="813 Cafe interior with coworking space"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="aspect-square overflow-hidden rounded-lg">
+              <div className="flex-shrink-0 w-80 h-80 overflow-hidden rounded-lg">
                 <img 
                   src="/lovable-uploads/e9b661e6-257a-4eac-afb1-3eb063488565.png" 
                   alt="Delicious food at 813 Cafe including bacalao"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
-              </div>
-              <div className="aspect-square bg-gradient-to-br from-warm-accent/20 to-primary/20 rounded-lg flex items-center justify-center">
-                <span className="text-2xl">🎉</span>
-              </div>
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-warm-accent/20 rounded-lg flex items-center justify-center">
-                <span className="text-2xl">🍰</span>
-              </div>
-              <div className="aspect-square bg-gradient-to-br from-warm-accent/20 to-primary/20 rounded-lg flex items-center justify-center">
-                <span className="text-2xl">👥</span>
               </div>
             </div>
             
