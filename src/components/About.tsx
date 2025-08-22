@@ -9,8 +9,7 @@ const About = () => {
             Our Story
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Founded with passion for exceptional coffee and genuine hospitality, 
-            Simple Charm Cafe has been crafting memorable experiences one cup at a time.
+            After 20 years working remotely across more than 100 spaces worldwide, we've experienced our fair share of delight and frustration. That's why we created 813, a place where remote work feels just right for Ozamiznons. Whether you're focused on getting things done or taking a well-deserved break, come to 813 for great food, drinks, and a community that lifts you up. We can't wait to welcome you!
           </p>
         </div>
         
