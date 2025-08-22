@@ -11,22 +11,14 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      />
+      {/* Background */}
+      <div className="absolute inset-0 z-0 bg-primary" />
       
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="mb-6 animate-fade-in">
           <img 
-            src="/lovable-uploads/33fb7cc1-5128-4c8c-a81f-9658f1523f1a.png" 
+            src="/lovable-uploads/b5915cf5-79c3-44c9-8158-de5a8d709a90.png" 
             alt="Eight Thirteen Cafe Logo" 
             className="h-48 md:h-64 w-auto mx-auto"
           />
