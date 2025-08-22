@@ -23,9 +23,10 @@ const Hero = () => {
             className="h-48 md:h-64 w-auto mx-auto"
           />
         </div>
-        <p className="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          Cafe • Coworking • Event Space - Where community comes together
-        </p>
+        <div className="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <p className="mb-2">Café • Coworking • Event Space</p>
+          <p className="font-medium">Work Feels Good Here</p>
+        </div>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
           <Button 
