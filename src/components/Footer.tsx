@@ -7,7 +7,7 @@ const Footer = () => {
             Eight Thirteen Cafe
           </div>
           <p className="text-sm text-primary-foreground/60">
-            © 2025 813 Cafe. All rights reserved.
+            2025 © 813 Cafe. All rights reserved.
           </p>
         </div>
       </div>
