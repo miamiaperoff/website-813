@@ -20,7 +20,7 @@ const Hero = () => {
           <img 
             src="/lovable-uploads/b5915cf5-79c3-44c9-8158-de5a8d709a90.png" 
             alt="Eight Thirteen Cafe Logo" 
-            className="h-48 md:h-64 w-auto mx-auto"
+            className="h-64 md:h-80 lg:h-96 w-auto mx-auto"
           />
         </div>
         <div className="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in" style={{ animationDelay: '0.2s' }}>
