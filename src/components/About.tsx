@@ -16,40 +16,37 @@ const About = () => {
         <div className="grid md:grid-cols-3 gap-8">
           <Card className="p-8 text-center bg-card border-none shadow-warm hover:shadow-accent transition-all duration-300 hover:-translate-y-2">
             <div className="w-16 h-16 bg-warm-accent rounded-full flex items-center justify-center mx-auto mb-6">
-              <span className="text-2xl">☕</span>
+              <span className="text-2xl">🍽️</span>
             </div>
             <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-              Artisan Coffee
+              Fresh & Delicious Food
             </h3>
             <p className="text-muted-foreground">
-              Locally roasted beans sourced from sustainable farms, 
-              carefully crafted by our skilled baristas.
+              Established in 1996 by our co-founder's mom, Carmela's Home Favorites is now a staple in our town. Stop by for the Chocolate Cake if you're feeling sweet, or Dinuguan & Puto if you're being called to savory.
             </p>
           </Card>
           
           <Card className="p-8 text-center bg-card border-none shadow-warm hover:shadow-accent transition-all duration-300 hover:-translate-y-2">
             <div className="w-16 h-16 bg-warm-accent rounded-full flex items-center justify-center mx-auto mb-6">
-              <span className="text-2xl">🥐</span>
+              <span className="text-2xl">📶</span>
             </div>
             <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-              Fresh Pastries
+              24/7 Access to Fast WIFI
             </h3>
             <p className="text-muted-foreground">
-              Daily baked goods made from scratch using traditional recipes 
-              and the finest ingredients.
+              Reliable high-speed internet powered by Starlink technology, ensuring you stay connected whether you're working on important projects or streaming your favorite content.
             </p>
           </Card>
           
           <Card className="p-8 text-center bg-card border-none shadow-warm hover:shadow-accent transition-all duration-300 hover:-translate-y-2">
             <div className="w-16 h-16 bg-warm-accent rounded-full flex items-center justify-center mx-auto mb-6">
-              <span className="text-2xl">🏠</span>
+              <span className="text-2xl">🤝</span>
             </div>
             <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-              Cozy Atmosphere
+              Community Events
             </h3>
             <p className="text-muted-foreground">
-              A warm, welcoming space where friends gather, 
-              stories are shared, and memories are made.
+              Join us for regular community gatherings like Tech Tuesdays and other events that bring together local professionals, entrepreneurs, and creative minds.
             </p>
           </Card>
         </div>
