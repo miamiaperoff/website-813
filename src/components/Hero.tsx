@@ -24,9 +24,13 @@ const Hero = () => {
       
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-          Eight Thirteen Cafe
-        </h1>
+        <div className="mb-6 animate-fade-in">
+          <img 
+            src="/lovable-uploads/33fb7cc1-5128-4c8c-a81f-9658f1523f1a.png" 
+            alt="Eight Thirteen Cafe Logo" 
+            className="h-48 md:h-64 w-auto mx-auto"
+          />
+        </div>
         <p className="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           Cafe • Coworking • Event Space - Where community comes together
         </p>
