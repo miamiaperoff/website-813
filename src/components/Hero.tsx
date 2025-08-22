@@ -31,16 +31,16 @@ const Hero = () => {
           <Button 
             onClick={scrollToMenu}
             size="lg"
-            className="bg-warm-accent hover:bg-warm-accent/90 text-white font-medium px-8 py-3 rounded-full shadow-accent transition-all duration-300 hover:scale-105"
+            className="bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3 rounded-full shadow-accent transition-all duration-300 hover:scale-105"
           >
-            Explore Our Menu
+            Menu
           </Button>
           <Button 
             variant="outline"
             size="lg"
-            className="border-2 border-white text-white hover:bg-white hover:text-primary font-medium px-8 py-3 rounded-full transition-all duration-300"
+            className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium px-8 py-3 rounded-full transition-all duration-300"
           >
-            Visit Us Today
+            Location & Hours
           </Button>
         </div>
       </div>
