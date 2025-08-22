@@ -11,8 +11,7 @@ const Contact = () => {
             Visit Us
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Come experience the warmth and charm that makes our cafe special. 
-            We can't wait to welcome you.
+            We're located right by City Hall, at the corner of Hon. Atty. Wilfredo Chiong Street and City Hall Drive.
           </p>
         </div>
         
