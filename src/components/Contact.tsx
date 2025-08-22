@@ -89,21 +89,21 @@ const Contact = () => {
                 className="rounded-full w-16 h-16 border-2 border-primary hover:bg-primary hover:text-primary-foreground p-2"
                 onClick={() => window.open('https://web.facebook.com/profile.php?id=61579389969937', '_blank')}
               >
-                <FaFacebook className="w-12 h-12" />
+                <FaFacebook className="w-16 h-16" />
               </Button>
               <Button 
                 variant="outline"
                 className="rounded-full w-16 h-16 border-2 border-primary hover:bg-primary hover:text-primary-foreground p-2"
                 onClick={() => window.open('https://www.instagram.com/813.cafe', '_blank')}
               >
-                <FaInstagram className="w-12 h-12" />
+                <FaInstagram className="w-16 h-16" />
               </Button>
               <Button 
                 variant="outline"
                 className="rounded-full w-16 h-16 border-2 border-primary hover:bg-primary hover:text-primary-foreground p-2"
                 onClick={() => window.open('https://www.tiktok.com/@813_cafe', '_blank')}
               >
-                <FaTiktok className="w-12 h-12" />
+                <FaTiktok className="w-16 h-16" />
               </Button>
             </div>
           </div>
