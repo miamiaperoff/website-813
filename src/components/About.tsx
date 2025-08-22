@@ -9,7 +9,7 @@ const About = () => {
             Our Story
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            After 20 years working remotely worldwide, we created 813—a cozy spot in Ozamiz where remote work, great food, drinks, and community come together perfectly. Come join us!
+            After 20 years working remotely worldwide, we created 813—your new favorite spot in Ozamiz where great food, drinks, and community come together to make remote work feel good. Come join us!
           </p>
         </div>
         
