@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
 
 const Contact = () => {
   return (
@@ -58,7 +59,7 @@ const Contact = () => {
             </div>
             
             {/* Instagram Grid */}
-            <div className="grid grid-cols-3 gap-2 mb-8 max-w-md mx-auto">
+            <div className="grid grid-cols-3 gap-4 mb-8 max-w-lg mx-auto">
               <div className="aspect-square overflow-hidden rounded-lg">
                 <img 
                   src="/lovable-uploads/6fb5e738-39ab-438e-80aa-8c990abb3866.png" 
@@ -80,15 +81,6 @@ const Contact = () => {
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <div className="aspect-square bg-gradient-to-br from-warm-accent/20 to-primary/20 rounded-lg flex items-center justify-center">
-                <span className="text-2xl">🎉</span>
-              </div>
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-warm-accent/20 rounded-lg flex items-center justify-center">
-                <span className="text-2xl">🍰</span>
-              </div>
-              <div className="aspect-square bg-gradient-to-br from-warm-accent/20 to-primary/20 rounded-lg flex items-center justify-center">
-                <span className="text-2xl">👥</span>
-              </div>
             </div>
             
             {/* Social Media Links */}
@@ -96,23 +88,23 @@ const Contact = () => {
               <Button 
                 variant="outline"
                 className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
-                onClick={() => window.open('https://www.facebook.com/813.cafe', '_blank')}
+                onClick={() => window.open('https://web.facebook.com/profile.php?id=61579389969937', '_blank')}
               >
-                📘
+                <FaFacebook className="w-5 h-5" />
               </Button>
               <Button 
                 variant="outline"
                 className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
                 onClick={() => window.open('https://www.instagram.com/813.cafe', '_blank')}
               >
-                📷
+                <FaInstagram className="w-5 h-5" />
               </Button>
               <Button 
                 variant="outline"
                 className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
-                onClick={() => window.open('https://www.tiktok.com/@813.cafe', '_blank')}
+                onClick={() => window.open('https://www.tiktok.com/@813_cafe', '_blank')}
               >
-                🎵
+                <FaTiktok className="w-5 h-5" />
               </Button>
             </div>
             
