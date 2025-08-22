@@ -123,15 +123,7 @@ const Menu = () => {
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">BREWED COFFEE</h4>
-                  <span className="font-semibold text-primary">110</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="font-medium text-foreground">COLD BREW</h4>
-                    <p className="text-sm text-muted-foreground">+20.00 to add milk / maple syrup</p>
-                  </div>
-                  <span className="font-semibold text-primary">130</span>
+                  <span className="font-semibold text-primary">80</span>
                 </div>
               </div>
             </Card>
@@ -159,12 +151,12 @@ const Menu = () => {
                       Authentic Japanese Matcha with Fresh Milk and Maple Syrup
                     </p>
                   </div>
-                  <span className="font-semibold text-primary">160</span>
+                  <span className="font-semibold text-primary">130</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">GREEN TEA</h4>
-                  <span className="font-semibold text-primary">90</span>
+                  <span className="font-semibold text-primary">80</span>
                 </div>
               </div>
             </Card>
