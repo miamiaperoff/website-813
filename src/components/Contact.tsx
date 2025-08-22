@@ -25,25 +25,23 @@ const Contact = () => {
               <div>
                 <h4 className="font-medium text-foreground mb-2">Address</h4>
                 <p className="text-muted-foreground">
-                  123 Coffee Street<br />
-                  Brew District, CD 12345
+                  G/F City Park Ave Bldg, City Hall Drive<br />
+                  Ozamiz, Philippines
                 </p>
               </div>
               
               <div>
                 <h4 className="font-medium text-foreground mb-2">Hours</h4>
                 <div className="text-muted-foreground space-y-1">
-                  <p>Monday - Friday: 6:30 AM - 7:00 PM</p>
-                  <p>Saturday: 7:00 AM - 8:00 PM</p>
-                  <p>Sunday: 7:00 AM - 6:00 PM</p>
+                  <p className="font-medium text-primary">24/7 Starting on August 31, 2025</p>
+                  <p>Temporary Hours: 7am - 8pm Daily</p>
                 </div>
               </div>
               
               <div>
                 <h4 className="font-medium text-foreground mb-2">Contact</h4>
                 <div className="text-muted-foreground space-y-1">
-                  <p>Phone: (555) 123-CAFE</p>
-                  <p>Email: hello@eightthirteen.cafe</p>
+                  <p>Email: hey@813cafe.com</p>
                 </div>
               </div>
             </div>
