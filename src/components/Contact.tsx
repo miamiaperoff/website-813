@@ -84,27 +84,18 @@ const Contact = () => {
             
             {/* Social Media Links */}
             <div className="flex justify-center space-x-6">
-              <Button 
-                variant="outline"
-                className="rounded-full w-20 h-20 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+              <FaFacebook 
+                className="w-16 h-16 text-primary hover:text-primary/80 cursor-pointer transition-colors"
                 onClick={() => window.open('https://web.facebook.com/profile.php?id=61579389969937', '_blank')}
-              >
-                <FaFacebook className="w-16 h-16" />
-              </Button>
-              <Button 
-                variant="outline"
-                className="rounded-full w-20 h-20 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+              />
+              <FaInstagram 
+                className="w-16 h-16 text-primary hover:text-primary/80 cursor-pointer transition-colors"
                 onClick={() => window.open('https://www.instagram.com/813.cafe', '_blank')}
-              >
-                <FaInstagram className="w-16 h-16" />
-              </Button>
-              <Button 
-                variant="outline"
-                className="rounded-full w-20 h-20 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+              />
+              <FaTiktok 
+                className="w-16 h-16 text-primary hover:text-primary/80 cursor-pointer transition-colors"
                 onClick={() => window.open('https://www.tiktok.com/@813_cafe', '_blank')}
-              >
-                <FaTiktok className="w-16 h-16" />
-              </Button>
+              />
             </div>
           </div>
         </div>
