@@ -232,7 +232,6 @@ const Menu = () => {
                   <div>
                     <h4 className="font-medium text-foreground">SOUP</h4>
                     <p className="text-sm text-muted-foreground">
-                      Molo Soup with Toasted Bread<br/>
                       Special Arroz Caldo
                     </p>
                   </div>
