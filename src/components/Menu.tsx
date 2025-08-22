@@ -280,7 +280,7 @@ const Menu = () => {
               </p>
               
               <div className="bg-primary/10 p-4 rounded text-center">
-                <p className="text-sm font-medium text-primary mb-2">scan to become a founding member today</p>
+                <p className="text-sm font-medium text-primary mb-2">COMING SOON</p>
                 <p className="text-xs text-muted-foreground">EXCLUSIVE PERKS FOR EARLY MEMBERS</p>
               </div>
             </Card>
