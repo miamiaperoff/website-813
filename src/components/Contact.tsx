@@ -50,40 +50,41 @@ const Contact = () => {
           <div className="text-center">
             <div className="mb-8">
               <h3 className="font-serif text-3xl font-semibold text-primary mb-4">
-                Ready for your perfect cup?
+                Follow Us @813.cafe
               </h3>
               <p className="text-lg text-muted-foreground mb-6">
-                Follow us on social media for daily specials, 
-                new arrivals, and behind-the-scenes moments.
+                Stay updated with our latest happenings, daily specials, and community events.
               </p>
             </div>
             
-            <div className="flex justify-center space-x-4 mb-8">
-              <Button 
-                variant="outline"
-                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
-              >
-                📘
-              </Button>
-              <Button 
-                variant="outline"
-                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
-              >
-                📷
-              </Button>
-              <Button 
-                variant="outline"
-                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
-              >
-                🐦
-              </Button>
+            {/* Instagram Grid Placeholder */}
+            <div className="grid grid-cols-3 gap-2 mb-8 max-w-md mx-auto">
+              <div className="aspect-square bg-gradient-to-br from-primary/20 to-warm-accent/20 rounded-lg flex items-center justify-center">
+                <span className="text-2xl">📸</span>
+              </div>
+              <div className="aspect-square bg-gradient-to-br from-warm-accent/20 to-primary/20 rounded-lg flex items-center justify-center">
+                <span className="text-2xl">☕</span>
+              </div>
+              <div className="aspect-square bg-gradient-to-br from-primary/20 to-warm-accent/20 rounded-lg flex items-center justify-center">
+                <span className="text-2xl">💻</span>
+              </div>
+              <div className="aspect-square bg-gradient-to-br from-warm-accent/20 to-primary/20 rounded-lg flex items-center justify-center">
+                <span className="text-2xl">🎉</span>
+              </div>
+              <div className="aspect-square bg-gradient-to-br from-primary/20 to-warm-accent/20 rounded-lg flex items-center justify-center">
+                <span className="text-2xl">🍰</span>
+              </div>
+              <div className="aspect-square bg-gradient-to-br from-warm-accent/20 to-primary/20 rounded-lg flex items-center justify-center">
+                <span className="text-2xl">👥</span>
+              </div>
             </div>
             
             <Button 
               size="lg"
-              className="bg-warm-accent hover:bg-warm-accent/90 text-white font-medium px-8 py-3 rounded-full shadow-accent transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-r from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600 text-white font-medium px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105"
+              onClick={() => window.open('https://www.instagram.com/813.cafe', '_blank')}
             >
-              Get Directions
+              View on Instagram
             </Button>
           </div>
         </div>
