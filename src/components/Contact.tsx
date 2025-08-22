@@ -86,21 +86,21 @@ const Contact = () => {
             <div className="flex justify-center space-x-6">
               <Button 
                 variant="outline"
-                className="rounded-full w-36 h-36 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+                className="rounded-full w-20 h-20 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
                 onClick={() => window.open('https://web.facebook.com/profile.php?id=61579389969937', '_blank')}
               >
                 <FaFacebook className="w-15 h-15" />
               </Button>
               <Button 
                 variant="outline"
-                className="rounded-full w-36 h-36 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+                className="rounded-full w-20 h-20 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
                 onClick={() => window.open('https://www.instagram.com/813.cafe', '_blank')}
               >
                 <FaInstagram className="w-15 h-15" />
               </Button>
               <Button 
                 variant="outline"
-                className="rounded-full w-36 h-36 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+                className="rounded-full w-20 h-20 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
                 onClick={() => window.open('https://www.tiktok.com/@813_cafe', '_blank')}
               >
                 <FaTiktok className="w-15 h-15" />
