@@ -16,7 +16,7 @@ const About = () => {
         <div className="grid md:grid-cols-3 gap-8">
           <Card className="p-8 text-center bg-card border-none shadow-warm hover:shadow-accent transition-all duration-300 hover:-translate-y-2">
             <div className="w-16 h-16 bg-warm-accent rounded-full flex items-center justify-center mx-auto mb-6">
-              <span className="text-2xl">🍽️</span>
+              <span className="text-2xl">🎂</span>
             </div>
             <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
               Fresh & Delicious Food
@@ -28,7 +28,7 @@ const About = () => {
           
           <Card className="p-8 text-center bg-card border-none shadow-warm hover:shadow-accent transition-all duration-300 hover:-translate-y-2">
             <div className="w-16 h-16 bg-warm-accent rounded-full flex items-center justify-center mx-auto mb-6">
-              <span className="text-2xl">📶</span>
+              <span className="text-2xl">🚀</span>
             </div>
             <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
               24/7 Access to Fast WIFI
@@ -40,7 +40,7 @@ const About = () => {
           
           <Card className="p-8 text-center bg-card border-none shadow-warm hover:shadow-accent transition-all duration-300 hover:-translate-y-2">
             <div className="w-16 h-16 bg-warm-accent rounded-full flex items-center justify-center mx-auto mb-6">
-              <span className="text-2xl">🤝</span>
+              <span className="text-2xl">🎉</span>
             </div>
             <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
               Community Events
