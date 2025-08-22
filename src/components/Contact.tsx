@@ -83,37 +83,29 @@ const Contact = () => {
             </div>
             
             {/* Social Media Links */}
-            <div className="flex justify-center space-x-4 mb-8">
+            <div className="flex justify-center space-x-6">
               <Button 
                 variant="outline"
-                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+                className="rounded-full w-36 h-36 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
                 onClick={() => window.open('https://web.facebook.com/profile.php?id=61579389969937', '_blank')}
               >
-                <FaFacebook className="w-5 h-5" />
+                <FaFacebook className="w-15 h-15" />
               </Button>
               <Button 
                 variant="outline"
-                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+                className="rounded-full w-36 h-36 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
                 onClick={() => window.open('https://www.instagram.com/813.cafe', '_blank')}
               >
-                <FaInstagram className="w-5 h-5" />
+                <FaInstagram className="w-15 h-15" />
               </Button>
               <Button 
                 variant="outline"
-                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+                className="rounded-full w-36 h-36 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
                 onClick={() => window.open('https://www.tiktok.com/@813_cafe', '_blank')}
               >
-                <FaTiktok className="w-5 h-5" />
+                <FaTiktok className="w-15 h-15" />
               </Button>
             </div>
-            
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600 text-white font-medium px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105"
-              onClick={() => window.open('https://www.instagram.com/813.cafe', '_blank')}
-            >
-              View on Instagram
-            </Button>
           </div>
         </div>
       </div>
