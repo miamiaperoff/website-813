@@ -31,7 +31,7 @@ const Hero = () => {
           <Button 
             onClick={scrollToMenu}
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3 rounded-full shadow-accent transition-all duration-300 hover:scale-105"
+            className="bg-warm-accent hover:bg-warm-accent/90 text-primary font-medium px-8 py-3 rounded-full shadow-accent transition-all duration-300 hover:scale-105"
           >
             Menu
           </Button>
