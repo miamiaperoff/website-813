@@ -28,14 +28,14 @@ const Menu = () => {
                         served with Garlic Rice, Side of Bacalao, and Two Eggs.
                       </p>
                     </div>
-                    <span className="font-semibold text-warm-accent">165</span>
+                    <span className="font-semibold text-primary">165</span>
                   </div>
                 </div>
                 
                 <div className="border-b border-border pb-4">
                   <div className="flex justify-between items-start mb-2">
                     <h4 className="font-medium text-foreground">FRESH FRUIT BOWL</h4>
-                    <span className="font-semibold text-warm-accent">150</span>
+                    <span className="font-semibold text-primary">150</span>
                   </div>
                 </div>
                 
@@ -64,7 +64,7 @@ const Menu = () => {
                         Moist, dense, and deeply chocolatey. Well-loved since 1996!
                       </p>
                     </div>
-                    <span className="font-semibold text-warm-accent">70</span>
+                    <span className="font-semibold text-primary">70</span>
                   </div>
                 </div>
                 
@@ -76,7 +76,7 @@ const Menu = () => {
                         Asado or Bola-Bola. Soft, fluffy, filling. Served warm.
                       </p>
                     </div>
-                    <span className="font-semibold text-warm-accent">60</span>
+                    <span className="font-semibold text-primary">60</span>
                   </div>
                 </div>
                 
@@ -88,7 +88,7 @@ const Menu = () => {
                         Savory, flaky, and generously filled with beef, potatoes, carrots, and cheese.
                       </p>
                     </div>
-                    <span className="font-semibold text-warm-accent">50</span>
+                    <span className="font-semibold text-primary">50</span>
                   </div>
                 </div>
               </div>
@@ -113,17 +113,17 @@ const Menu = () => {
                     <h4 className="font-medium text-foreground">CAPPUCCINO / LATTE</h4>
                     <p className="text-sm text-muted-foreground">+P20.00 to add Mocha or Caramel</p>
                   </div>
-                  <span className="font-semibold text-warm-accent">160</span>
+                  <span className="font-semibold text-primary">160</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">AMERICANO</h4>
-                  <span className="font-semibold text-warm-accent">130</span>
+                  <span className="font-semibold text-primary">130</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">BREWED COFFEE</h4>
-                  <span className="font-semibold text-warm-accent">110</span>
+                  <span className="font-semibold text-primary">110</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
@@ -131,7 +131,7 @@ const Menu = () => {
                     <h4 className="font-medium text-foreground">COLD BREW</h4>
                     <p className="text-sm text-muted-foreground">+20.00 to add milk / maple syrup</p>
                   </div>
-                  <span className="font-semibold text-warm-accent">130</span>
+                  <span className="font-semibold text-primary">130</span>
                 </div>
               </div>
             </Card>
@@ -149,7 +149,7 @@ const Menu = () => {
                     <h4 className="font-medium text-foreground">TSOKOLATE</h4>
                     <p className="text-sm text-muted-foreground">100% Cacao Drink with Fresh Milk</p>
                   </div>
-                  <span className="font-semibold text-warm-accent">60</span>
+                  <span className="font-semibold text-primary">60</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
@@ -159,12 +159,12 @@ const Menu = () => {
                       Authentic Japanese Matcha with Fresh Milk and Maple Syrup
                     </p>
                   </div>
-                  <span className="font-semibold text-warm-accent">160</span>
+                  <span className="font-semibold text-primary">160</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">GREEN TEA</h4>
-                  <span className="font-semibold text-warm-accent">90</span>
+                  <span className="font-semibold text-primary">90</span>
                 </div>
               </div>
             </Card>
@@ -184,27 +184,27 @@ const Menu = () => {
                       Guava | Mango | Orange
                     </p>
                   </div>
-                  <span className="font-semibold text-warm-accent">130</span>
+                  <span className="font-semibold text-primary">130</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">COCONUT WATER</h4>
-                  <span className="font-semibold text-warm-accent">45</span>
+                  <span className="font-semibold text-primary">45</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">BOTTLED WATER</h4>
-                  <span className="font-semibold text-warm-accent">35</span>
+                  <span className="font-semibold text-primary">35</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">SPARKLING WATER</h4>
-                  <span className="font-semibold text-warm-accent">45</span>
+                  <span className="font-semibold text-primary">45</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">SOFT DRINKS</h4>
-                  <span className="font-semibold text-warm-accent">45</span>
+                  <span className="font-semibold text-primary">45</span>
                 </div>
               </div>
             </Card>
@@ -224,7 +224,7 @@ const Menu = () => {
                     <h4 className="font-medium text-foreground">PASTA</h4>
                     <p className="text-sm text-muted-foreground">Lasagna, Spaghetti, Pancit Palabok</p>
                   </div>
-                  <span className="font-semibold text-warm-accent">185</span>
+                  <span className="font-semibold text-primary">185</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
@@ -235,7 +235,7 @@ const Menu = () => {
                       Special Arroz Caldo
                     </p>
                   </div>
-                  <span className="font-semibold text-warm-accent">100</span>
+                  <span className="font-semibold text-primary">100</span>
                 </div>
               </div>
             </Card>
@@ -247,7 +247,7 @@ const Menu = () => {
               </h3>
               
               <div className="text-center mb-4">
-                <span className="text-3xl font-bold text-warm-accent">P400/24 HOURS</span>
+                <span className="text-3xl font-bold text-primary">P400/24 HOURS</span>
               </div>
               
               <ul className="text-sm text-muted-foreground space-y-2">
@@ -264,7 +264,7 @@ const Menu = () => {
               
               <div className="text-center mb-4">
                 <span className="text-lg line-through text-muted-foreground">P4,500</span>
-                <span className="text-3xl font-bold text-warm-accent ml-2">P3,500/MONTH</span>
+                <span className="text-3xl font-bold text-primary ml-2">P3,500/MONTH</span>
               </div>
               
               <ul className="text-sm text-muted-foreground space-y-1 mb-4">
