@@ -25,10 +25,10 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-          Simple Charm Cafe
+          Eight Thirteen Cafe
         </h1>
         <p className="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          Where every cup tells a story and every moment feels like home
+          Cafe • Coworking • Event Space - Where community comes together
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>

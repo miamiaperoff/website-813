@@ -43,7 +43,7 @@ const Contact = () => {
                 <h4 className="font-medium text-foreground mb-2">Contact</h4>
                 <div className="text-muted-foreground space-y-1">
                   <p>Phone: (555) 123-CAFE</p>
-                  <p>Email: hello@simplecharm.cafe</p>
+                  <p>Email: hello@eightthirteen.cafe</p>
                 </div>
               </div>
             </div>

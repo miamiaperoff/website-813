@@ -27,8 +27,12 @@ const Navigation = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="font-serif font-bold text-xl text-primary">
-            Simple Charm
+          <div className="flex items-center">
+            <img 
+              src="/lovable-uploads/33fb7cc1-5128-4c8c-a81f-9658f1523f1a.png" 
+              alt="Eight Thirteen Cafe Logo" 
+              className="h-10 w-10"
+            />
           </div>
           
           <div className="hidden md:flex space-x-8">

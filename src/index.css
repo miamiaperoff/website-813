@@ -18,8 +18,8 @@ All colors MUST be HSL.
     --popover: 45 25% 98%;
     --popover-foreground: 25 30% 15%;
 
-    /* Rich coffee brown as primary */
-    --primary: 25 60% 25%;
+    /* Rich teal green as primary */
+    --primary: 176 86% 20%;
     --primary-foreground: 45 25% 98%;
 
     /* Warm cream as secondary */
@@ -30,9 +30,9 @@ All colors MUST be HSL.
     --muted: 40 20% 90%;
     --muted-foreground: 25 20% 45%;
 
-    /* Warm accent - burnt orange */
-    --accent: 20 80% 60%;
-    --accent-foreground: 45 25% 98%;
+    /* Golden yellow as accent */
+    --accent: 46 100% 62%;
+    --accent-foreground: 176 86% 20%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 45 25% 98%;
@@ -42,11 +42,11 @@ All colors MUST be HSL.
     --ring: 25 60% 25%;
 
     /* Custom cafe colors */
-    --coffee-dark: 25 70% 20%;
-    --coffee-medium: 25 50% 35%;
-    --coffee-light: 25 30% 65%;
+    --coffee-dark: 176 86% 15%;
+    --coffee-medium: 176 50% 35%;
+    --coffee-light: 176 30% 65%;
     --cream: 45 30% 92%;
-    --warm-accent: 20 80% 60%;
+    --warm-accent: 46 100% 62%;
     
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--coffee-medium)));
