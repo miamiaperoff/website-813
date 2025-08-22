@@ -6,11 +6,8 @@ const Footer = () => {
           <div className="font-serif font-bold text-2xl mb-4">
             Eight Thirteen Cafe
           </div>
-          <p className="text-primary-foreground/80 mb-4">
-            Crafting memorable experiences, one cup at a time.
-          </p>
           <p className="text-sm text-primary-foreground/60">
-            © 2024 Eight Thirteen Cafe. All rights reserved.
+            © 2025 813 Cafe. All rights reserved.
           </p>
         </div>
       </div>
