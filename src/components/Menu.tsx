@@ -242,9 +242,12 @@ const Menu = () => {
 
             {/* Coworking Plans Header */}
             <div className="text-center">
-              <h3 className="font-serif text-3xl font-semibold text-primary mb-6">
+              <h3 className="font-serif text-3xl font-semibold text-primary mb-2">
                 COWORKING PLANS
               </h3>
+              <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                Available September 12, 2025
+              </div>
             </div>
 
             {/* Day Pass */}
