@@ -79,6 +79,31 @@ const Contact = () => {
               </div>
             </div>
             
+            {/* Social Media Links */}
+            <div className="flex justify-center space-x-4 mb-8">
+              <Button 
+                variant="outline"
+                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+                onClick={() => window.open('https://www.facebook.com/813.cafe', '_blank')}
+              >
+                📘
+              </Button>
+              <Button 
+                variant="outline"
+                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+                onClick={() => window.open('https://www.instagram.com/813.cafe', '_blank')}
+              >
+                📷
+              </Button>
+              <Button 
+                variant="outline"
+                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
+                onClick={() => window.open('https://www.tiktok.com/@813.cafe', '_blank')}
+              >
+                🎵
+              </Button>
+            </div>
+            
             <Button 
               size="lg"
               className="bg-gradient-to-r from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600 text-white font-medium px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105"
