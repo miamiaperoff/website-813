@@ -213,6 +213,7 @@ const Menu = () => {
           {/* Right Column */}
           <div className="space-y-8">
             {/* More Eats */}
+            {/* More Eats */}
             <Card className="p-6 bg-card border-none shadow-warm">
               <h3 className="font-serif text-2xl font-semibold text-primary mb-6 text-center">
                 MORE EATS
@@ -239,6 +240,13 @@ const Menu = () => {
                 </div>
               </div>
             </Card>
+
+            {/* Coworking Plans Header */}
+            <div className="text-center">
+              <h3 className="font-serif text-3xl font-semibold text-primary mb-6">
+                COWORKING PLANS
+              </h3>
+            </div>
 
             {/* Day Pass */}
             <Card className="p-6 bg-card border-none shadow-warm">
