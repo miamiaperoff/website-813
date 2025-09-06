@@ -18,31 +18,21 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <Card className="p-8 bg-card border-none shadow-warm">
             <h3 className="font-serif text-2xl font-semibold text-primary mb-6">
-              Location & Hours
+              Order Online
             </h3>
             
             <div className="space-y-6">
               <div>
-                <h4 className="font-medium text-foreground mb-2">Address</h4>
-                <p className="text-muted-foreground">
-                  G/F City Park Ave Bldg, City Hall Drive<br />
-                  Ozamiz, Philippines
+                <p className="text-muted-foreground mb-6">
+                  Skip the wait and order your favorite coffee, pastries, and meals online for pickup or delivery.
                 </p>
-              </div>
-              
-              <div>
-                <h4 className="font-medium text-foreground mb-2">Hours</h4>
-                <div className="text-muted-foreground space-y-1">
-                  <p className="font-medium text-primary">24/7 Starting on August 31, 2025</p>
-                  <p>Temporary Hours: 7am - 8pm Daily</p>
-                </div>
-              </div>
-              
-              <div>
-                <h4 className="font-medium text-foreground mb-2">Contact</h4>
-                <div className="text-muted-foreground space-y-1">
-                  <p>Email: hey@813cafe.com</p>
-                </div>
+                
+                <Button 
+                  onClick={() => window.open('https://813cafe.org/order-online', '_blank')}
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 px-6 rounded-lg transition-colors"
+                >
+                  Order Now
+                </Button>
               </div>
             </div>
           </Card>
