@@ -41,45 +41,49 @@ const Navigation = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className="text-foreground hover:text-primary transition-colors duration-200"
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="text-foreground hover:text-primary transition-colors duration-200"
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('menu')}
-              className="text-foreground hover:text-primary transition-colors duration-200"
-            >
-              Menu
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="text-foreground hover:text-primary transition-colors duration-200"
-            >
-              Contact
-            </button>
+            {!user ? (
+              <>
+                <button 
+                  onClick={() => scrollToSection('home')}
+                  className="text-foreground hover:text-primary transition-colors duration-200"
+                >
+                  Home
+                </button>
+                <button 
+                  onClick={() => scrollToSection('about')}
+                  className="text-foreground hover:text-primary transition-colors duration-200"
+                >
+                  About
+                </button>
+                <button 
+                  onClick={() => scrollToSection('menu')}
+                  className="text-foreground hover:text-primary transition-colors duration-200"
+                >
+                  Menu
+                </button>
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="text-foreground hover:text-primary transition-colors duration-200"
+                >
+                  Contact
+                </button>
+              </>
+            ) : null}
             
             {user ? (
               <div className="flex items-center space-x-4">
+                <button 
+                  onClick={() => scrollToSection('home')}
+                  className="text-foreground hover:text-primary transition-colors duration-200"
+                >
+                  Home
+                </button>
                 <Link 
                   to="/profile"
                   className="text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-2"
                 >
                   <User className="h-4 w-4" />
                   My Profile
-                </Link>
-                <Link 
-                  to="/membership"
-                  className="bg-primary text-primary-foreground hover:bg-coffee-dark px-4 py-2 rounded-md font-medium transition-colors duration-200"
-                >
-                  Member Portal
                 </Link>
                 <Button
                   onClick={signOut}
@@ -88,7 +92,7 @@ const Navigation = () => {
                   className="flex items-center gap-2"
                 >
                   <LogOut className="h-4 w-4" />
-                  Sign Out
+                  Log Out
                 </Button>
               </div>
             ) : (
