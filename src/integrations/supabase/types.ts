@@ -24,11 +24,15 @@ export type Database = {
           first_name: string
           id: string
           instagram: string | null
+          is_active: boolean | null
+          is_admin: boolean | null
           last_name: string
+          last_payment_date: string | null
           linkedin: string | null
           membership_status: string | null
           nickname: string
           occupation: string
+          payment_status: string | null
           phone_number: string
           twitter: string | null
           updated_at: string
@@ -43,11 +47,15 @@ export type Database = {
           first_name: string
           id?: string
           instagram?: string | null
+          is_active?: boolean | null
+          is_admin?: boolean | null
           last_name: string
+          last_payment_date?: string | null
           linkedin?: string | null
           membership_status?: string | null
           nickname: string
           occupation: string
+          payment_status?: string | null
           phone_number: string
           twitter?: string | null
           updated_at?: string
@@ -62,11 +70,15 @@ export type Database = {
           first_name?: string
           id?: string
           instagram?: string | null
+          is_active?: boolean | null
+          is_admin?: boolean | null
           last_name?: string
+          last_payment_date?: string | null
           linkedin?: string | null
           membership_status?: string | null
           nickname?: string
           occupation?: string
+          payment_status?: string | null
           phone_number?: string
           twitter?: string | null
           updated_at?: string
@@ -79,7 +91,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_admin: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
