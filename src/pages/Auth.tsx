@@ -13,6 +13,7 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import Navigation from '@/components/Navigation';
 
 const authSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -112,6 +113,7 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen bg-gradient-warm">
+      <Navigation />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6">
           <Link 

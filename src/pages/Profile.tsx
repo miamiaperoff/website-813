@@ -9,6 +9,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import type { Tables } from '@/integrations/supabase/types';
+import Navigation from '@/components/Navigation';
 
 type Profile = Tables<'profiles'>;
 
@@ -99,6 +100,7 @@ const Profile = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-warm">
+        <Navigation />
         <div className="container mx-auto px-4 py-8">
           <div className="mb-6">
             <Skeleton className="h-6 w-32" />
@@ -125,6 +127,7 @@ const Profile = () => {
   if (error || !profile) {
     return (
       <div className="min-h-screen bg-gradient-warm">
+        <Navigation />
         <div className="container mx-auto px-4 py-8">
           <div className="mb-6">
             <Link 
@@ -154,6 +157,7 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-gradient-warm">
+      <Navigation />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6">
           <Link 
