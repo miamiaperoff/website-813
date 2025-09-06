@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { ArrowLeft, User, Mail, Phone, MapPin, Briefcase, Share2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/hooks/useAuth';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,6 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const formSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
@@ -33,6 +35,15 @@ type FormData = z.infer<typeof formSchema>;
 const MembershipSignup = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+
+  // Redirect to auth if not logged in
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate('/auth');
+    }
+  }, [user, loading, navigate]);
   
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -54,18 +65,44 @@ const MembershipSignup = () => {
   });
 
   const onSubmit = async (data: FormData) => {
+    if (!user) return;
+    
     setIsSubmitting(true);
     
     try {
-      // TODO: This will need Supabase integration to actually save the data
-      console.log('Membership signup data:', data);
+      // Save profile data to Supabase
+      const { error } = await supabase
+        .from('profiles')
+        .insert({
+          user_id: user.id,
+          first_name: data.firstName,
+          last_name: data.lastName,
+          nickname: data.nickname,
+          phone_number: data.phoneNumber,
+          address: data.address,
+          occupation: data.occupation,
+          instagram: data.socialMedia.instagram || null,
+          facebook: data.socialMedia.facebook || null,
+          twitter: data.socialMedia.twitter || null,
+          linkedin: data.socialMedia.linkedin || null,
+        });
+
+      if (error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+        return;
+      }
       
       toast({
         title: "Application Submitted!",
         description: "Thank you for applying for 813 Cafe membership. We'll review your application and get back to you soon.",
       });
       
-      form.reset();
+      // Redirect to home page or member portal
+      navigate('/');
     } catch (error) {
       toast({
         title: "Error",
@@ -76,6 +113,23 @@ const MembershipSignup = () => {
       setIsSubmitting(false);
     }
   };
+
+  // Show loading while checking auth
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-warm flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-coffee-dark">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render if user is not authenticated (redirect will happen in useEffect)
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-warm">

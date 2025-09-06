@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { LogOut, User } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
+import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +40,7 @@ const Navigation = () => {
             />
           </div>
           
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('home')}
               className="text-foreground hover:text-primary transition-colors duration-200"
@@ -61,12 +65,42 @@ const Navigation = () => {
             >
               Contact
             </button>
-            <Link 
-              to="/membership"
-              className="bg-primary text-primary-foreground hover:bg-coffee-dark px-4 py-2 rounded-md font-medium transition-colors duration-200"
-            >
-              Join Us
-            </Link>
+            
+            {user ? (
+              <div className="flex items-center space-x-4">
+                <Link 
+                  to="/membership"
+                  className="bg-primary text-primary-foreground hover:bg-coffee-dark px-4 py-2 rounded-md font-medium transition-colors duration-200"
+                >
+                  Member Portal
+                </Link>
+                <Button
+                  onClick={signOut}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <Link 
+                  to="/auth"
+                  className="text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-2"
+                >
+                  <User className="h-4 w-4" />
+                  Sign In
+                </Link>
+                <Link 
+                  to="/membership"
+                  className="bg-primary text-primary-foreground hover:bg-coffee-dark px-4 py-2 rounded-md font-medium transition-colors duration-200"
+                >
+                  Join Us
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
