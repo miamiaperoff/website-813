@@ -4,7 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { ArrowLeft, User, Mail, Phone, MapPin, Briefcase, Share2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,7 +13,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
 
 const formSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
@@ -34,16 +34,10 @@ type FormData = z.infer<typeof formSchema>;
 
 const MembershipSignup = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasExistingProfile, setHasExistingProfile] = useState(false);
   const { toast } = useToast();
   const { user, loading } = useAuth();
   const navigate = useNavigate();
-
-  // Redirect to auth if not logged in
-  useEffect(() => {
-    if (!loading && !user) {
-      navigate('/auth');
-    }
-  }, [user, loading, navigate]);
   
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -64,46 +58,110 @@ const MembershipSignup = () => {
     },
   });
 
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate('/auth');
+      return;
+    }
+
+    if (user) {
+      checkExistingProfile();
+    }
+  }, [user, loading, navigate]);
+
+  const checkExistingProfile = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('user_id', user?.id)
+        .maybeSingle();
+
+      if (error) {
+        console.error('Error checking profile:', error);
+        return;
+      }
+
+      if (data) {
+        setHasExistingProfile(true);
+        // Pre-fill form with existing data
+        form.reset({
+          firstName: data.first_name,
+          lastName: data.last_name,
+          nickname: data.nickname,
+          phoneNumber: data.phone_number,
+          email: user?.email || '',
+          address: data.address,
+          occupation: data.occupation,
+          socialMedia: {
+            instagram: data.instagram || '',
+            facebook: data.facebook || '',
+            twitter: data.twitter || '',
+            linkedin: data.linkedin || '',
+          },
+        });
+      }
+    } catch (error) {
+      console.error('Error checking existing profile:', error);
+    }
+  };
+
   const onSubmit = async (data: FormData) => {
-    if (!user) return;
-    
+    if (!user) {
+      toast({
+        title: "Authentication Required",
+        description: "Please log in to submit your membership application.",
+        variant: "destructive",
+      });
+      navigate('/auth');
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
-      // Save profile data to Supabase
-      const { error } = await supabase
-        .from('profiles')
-        .insert({
-          user_id: user.id,
-          first_name: data.firstName,
-          last_name: data.lastName,
-          nickname: data.nickname,
-          phone_number: data.phoneNumber,
-          address: data.address,
-          occupation: data.occupation,
-          instagram: data.socialMedia.instagram || null,
-          facebook: data.socialMedia.facebook || null,
-          twitter: data.socialMedia.twitter || null,
-          linkedin: data.socialMedia.linkedin || null,
-        });
+      const profileData = {
+        user_id: user.id,
+        first_name: data.firstName,
+        last_name: data.lastName,
+        nickname: data.nickname,
+        phone_number: data.phoneNumber,
+        address: data.address,
+        occupation: data.occupation,
+        instagram: data.socialMedia.instagram || null,
+        facebook: data.socialMedia.facebook || null,
+        twitter: data.socialMedia.twitter || null,
+        linkedin: data.socialMedia.linkedin || null,
+      };
 
-      if (error) {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
-        return;
+      let result;
+      if (hasExistingProfile) {
+        result = await supabase
+          .from('profiles')
+          .update(profileData)
+          .eq('user_id', user.id);
+      } else {
+        result = await supabase
+          .from('profiles')
+          .insert([profileData]);
+      }
+
+      if (result.error) {
+        throw result.error;
       }
       
       toast({
-        title: "Application Submitted!",
-        description: "Thank you for applying for 813 Cafe membership. We'll review your application and get back to you soon.",
+        title: hasExistingProfile ? "Profile Updated!" : "Application Submitted!",
+        description: hasExistingProfile 
+          ? "Your membership profile has been updated successfully."
+          : "Thank you for applying for 813 Cafe membership. We'll review your application and get back to you soon.",
       });
       
-      // Redirect to home page or member portal
-      navigate('/');
+      if (!hasExistingProfile) {
+        form.reset();
+      }
     } catch (error) {
+      console.error('Error saving profile:', error);
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
@@ -114,7 +172,6 @@ const MembershipSignup = () => {
     }
   };
 
-  // Show loading while checking auth
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-warm flex items-center justify-center">
@@ -124,11 +181,6 @@ const MembershipSignup = () => {
         </div>
       </div>
     );
-  }
-
-  // Don't render if user is not authenticated (redirect will happen in useEffect)
-  if (!user) {
-    return null;
   }
 
   return (
@@ -148,11 +200,13 @@ const MembershipSignup = () => {
           <Card className="shadow-warm">
             <CardHeader className="text-center space-y-4">
               <CardTitle className="text-3xl font-serif text-coffee-dark">
-                Join 813 Cafe
+                {hasExistingProfile ? 'Update Your Profile' : 'Join 813 Cafe'}
               </CardTitle>
               <CardDescription className="text-lg">
-                Become a member of our vibrant community. Enjoy exclusive benefits, 
-                special events, and priority access to our coworking spaces.
+                {hasExistingProfile 
+                  ? 'Update your membership information below.'
+                  : 'Become a member of our vibrant community. Enjoy exclusive benefits, special events, and priority access to our coworking spaces.'
+                }
               </CardDescription>
             </CardHeader>
             
@@ -225,7 +279,13 @@ const MembershipSignup = () => {
                         <FormItem>
                           <FormLabel>Email Address</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="your.email@example.com" {...field} />
+                            <Input 
+                              type="email" 
+                              placeholder="your.email@example.com" 
+                              {...field} 
+                              value={user?.email || field.value}
+                              disabled
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -370,7 +430,10 @@ const MembershipSignup = () => {
                     className="w-full bg-primary hover:bg-coffee-dark transition-colors"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Submitting Application...' : 'Submit Membership Application'}
+                    {isSubmitting 
+                      ? (hasExistingProfile ? 'Updating Profile...' : 'Submitting Application...') 
+                      : (hasExistingProfile ? 'Update Profile' : 'Submit Membership Application')
+                    }
                   </Button>
                 </form>
               </Form>

@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { ArrowLeft, Mail, Lock, Eye, EyeOff } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -24,8 +25,9 @@ const Auth = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [activeTab, setActiveTab] = useState('login');
-  const { toast } = useToast();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const { toast } = useToast();
 
   const form = useForm<AuthFormData>({
     resolver: zodResolver(authSchema),
@@ -35,7 +37,6 @@ const Auth = () => {
     },
   });
 
-  // Check if user is already authenticated
   useEffect(() => {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -49,84 +50,63 @@ const Auth = () => {
   const handleLogin = async (data: AuthFormData) => {
     setIsLoading(true);
     
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: data.email,
-        password: data.password,
-      });
+    const { error } = await supabase.auth.signInWithPassword({
+      email: data.email,
+      password: data.password,
+    });
 
-      if (error) {
-        toast({
-          title: "Login Failed",
-          description: error.message,
-          variant: "destructive",
-        });
-        return;
-      }
-
+    if (error) {
       toast({
-        title: "Welcome back!",
-        description: "You have been successfully logged in.",
-      });
-      
-      navigate('/');
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: "Login Failed",
+        description: error.message,
         variant: "destructive",
       });
-    } finally {
-      setIsLoading(false);
+    } else {
+      toast({
+        title: "Welcome back!",
+        description: "You have successfully logged in.",
+      });
+      navigate('/');
     }
+    
+    setIsLoading(false);
   };
 
   const handleSignup = async (data: AuthFormData) => {
     setIsLoading(true);
     
-    try {
-      const redirectUrl = `${window.location.origin}/`;
-      
-      const { error } = await supabase.auth.signUp({
-        email: data.email,
-        password: data.password,
-        options: {
-          emailRedirectTo: redirectUrl
-        }
-      });
-
-      if (error) {
-        toast({
-          title: "Signup Failed", 
-          description: error.message,
-          variant: "destructive",
-        });
-        return;
+    const redirectUrl = `${window.location.origin}/`;
+    
+    const { error } = await supabase.auth.signUp({
+      email: data.email,
+      password: data.password,
+      options: {
+        emailRedirectTo: redirectUrl
       }
+    });
 
+    if (error) {
       toast({
-        title: "Account Created!",
-        description: "Please check your email to confirm your account, then you can log in.",
-      });
-      
-      setActiveTab('login');
-      form.reset();
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: "Signup Failed",
+        description: error.message,
         variant: "destructive",
       });
-    } finally {
-      setIsLoading(false);
+    } else {
+      toast({
+        title: "Account Created!",
+        description: "Please check your email to confirm your account, then you can complete your membership application.",
+      });
+      form.reset();
     }
+    
+    setIsLoading(false);
   };
 
-  const onSubmit = (data: AuthFormData) => {
+  const onSubmit = async (data: AuthFormData) => {
     if (activeTab === 'login') {
-      handleLogin(data);
+      await handleLogin(data);
     } else {
-      handleSignup(data);
+      await handleSignup(data);
     }
   };
 
@@ -146,11 +126,11 @@ const Auth = () => {
         <div className="max-w-md mx-auto">
           <Card className="shadow-warm">
             <CardHeader className="text-center space-y-4">
-              <CardTitle className="text-3xl font-serif text-coffee-dark">
-                813 Cafe
+              <CardTitle className="text-2xl font-serif text-coffee-dark">
+                Welcome to 813 Cafe
               </CardTitle>
-              <CardDescription className="text-lg">
-                Access your member portal
+              <CardDescription>
+                Sign in to your account or create a new one to join our community
               </CardDescription>
             </CardHeader>
             
@@ -161,85 +141,139 @@ const Auth = () => {
                   <TabsTrigger value="signup">Sign Up</TabsTrigger>
                 </TabsList>
                 
-                <TabsContent value="login" className="space-y-4 mt-6">
-                  <div className="text-center mb-4">
-                    <h3 className="text-lg font-semibold text-coffee-dark">Welcome Back</h3>
-                    <p className="text-muted-foreground">Sign in to your account</p>
-                  </div>
+                <TabsContent value="login" className="mt-6">
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email</FormLabel>
+                            <FormControl>
+                              <div className="relative">
+                                <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                                <Input 
+                                  type="email" 
+                                  placeholder="your.email@example.com" 
+                                  className="pl-10"
+                                  {...field} 
+                                />
+                              </div>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Password</FormLabel>
+                            <FormControl>
+                              <div className="relative">
+                                <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                                <Input 
+                                  type={showPassword ? "text" : "password"}
+                                  placeholder="Enter your password" 
+                                  className="pl-10 pr-10"
+                                  {...field} 
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => setShowPassword(!showPassword)}
+                                  className="absolute right-3 top-3 text-muted-foreground hover:text-foreground"
+                                >
+                                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                                </button>
+                              </div>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <Button 
+                        type="submit" 
+                        className="w-full bg-primary hover:bg-coffee-dark transition-colors"
+                        disabled={isLoading}
+                      >
+                        {isLoading ? 'Signing in...' : 'Sign In'}
+                      </Button>
+                    </form>
+                  </Form>
                 </TabsContent>
                 
-                <TabsContent value="signup" className="space-y-4 mt-6">
-                  <div className="text-center mb-4">
-                    <h3 className="text-lg font-semibold text-coffee-dark">Join Us</h3>
-                    <p className="text-muted-foreground">Create your account</p>
-                  </div>
+                <TabsContent value="signup" className="mt-6">
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email</FormLabel>
+                            <FormControl>
+                              <div className="relative">
+                                <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                                <Input 
+                                  type="email" 
+                                  placeholder="your.email@example.com" 
+                                  className="pl-10"
+                                  {...field} 
+                                />
+                              </div>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Password</FormLabel>
+                            <FormControl>
+                              <div className="relative">
+                                <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                                <Input 
+                                  type={showPassword ? "text" : "password"}
+                                  placeholder="Create a password (min. 6 characters)" 
+                                  className="pl-10 pr-10"
+                                  {...field} 
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => setShowPassword(!showPassword)}
+                                  className="absolute right-3 top-3 text-muted-foreground hover:text-foreground"
+                                >
+                                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                                </button>
+                              </div>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <Button 
+                        type="submit" 
+                        className="w-full bg-primary hover:bg-coffee-dark transition-colors"
+                        disabled={isLoading}
+                      >
+                        {isLoading ? 'Creating account...' : 'Create Account'}
+                      </Button>
+                    </form>
+                  </Form>
+                  
+                  <p className="text-sm text-muted-foreground text-center mt-4">
+                    After creating your account, you can complete your membership application.
+                  </p>
                 </TabsContent>
-
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-6">
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <div className="relative">
-                              <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                              <Input 
-                                type="email" 
-                                placeholder="your.email@example.com" 
-                                className="pl-10"
-                                {...field} 
-                              />
-                            </div>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="password"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Password</FormLabel>
-                          <FormControl>
-                            <div className="relative">
-                              <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                              <Input 
-                                type={showPassword ? "text" : "password"}
-                                placeholder="Your password" 
-                                className="pl-10 pr-10"
-                                {...field} 
-                              />
-                              <button
-                                type="button"
-                                onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-3 text-muted-foreground hover:text-foreground"
-                              >
-                                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                              </button>
-                            </div>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-primary hover:bg-coffee-dark transition-colors"
-                      disabled={isLoading}
-                    >
-                      {isLoading ? 
-                        (activeTab === 'login' ? 'Signing In...' : 'Creating Account...') :
-                        (activeTab === 'login' ? 'Sign In' : 'Create Account')
-                      }
-                    </Button>
-                  </form>
-                </Form>
               </Tabs>
             </CardContent>
           </Card>
