@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,6 +61,12 @@ const Navigation = () => {
             >
               Contact
             </button>
+            <Link 
+              to="/membership"
+              className="bg-primary text-primary-foreground hover:bg-coffee-dark px-4 py-2 rounded-md font-medium transition-colors duration-200"
+            >
+              Join Us
+            </Link>
           </div>
         </div>
       </div>
