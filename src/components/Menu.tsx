@@ -9,7 +9,7 @@ const Menu = () => {
             MENU
           </h2>
           <p className="text-lg text-muted-foreground">
-            2 Hours WIFI with P100+ purchase
+            2 Hours WIFI with ₱100+ purchase
           </p>
         </div>
         
@@ -24,8 +24,9 @@ const Menu = () => {
                     <div>
                       <h4 className="font-medium text-foreground">ALL-DAY SILOG WITH COFFEE</h4>
                       <p className="text-sm text-muted-foreground mt-1">
-                        Choose 1: Tapa, Chorizo, or Corned Beef<br/>
-                        served with Garlic Rice, Side of Bacalao, and Two Eggs.
+                        Served with Garlic Rice, Side of Bacalao, and Two Eggs.<br/>
+                        Choose 1: Tapa, Chorizo, or Spanish Sardines<br/>
+                        Corned Beef, or Pork Steak
                       </p>
                     </div>
                     <span className="font-semibold text-primary">165</span>
@@ -40,8 +41,17 @@ const Menu = () => {
                 </div>
                 
                 <div className="bg-primary/10 p-4 rounded">
-                  <h5 className="font-medium text-primary mb-2">TODAY'S SPECIALS</h5>
-                  <p className="text-sm text-muted-foreground">Available 11:30 AM</p>
+                  <h5 className="font-medium text-primary mb-2">TODAY'S SPECIALS (Available 11:30 AM)</h5>
+                  <div className="space-y-2 mt-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-muted-foreground">Hungarian Sausage Silog</span>
+                      <span className="font-semibold text-primary">165</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-muted-foreground">Bangus Belly Sardines Silog</span>
+                      <span className="font-semibold text-primary">165</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Card>
@@ -71,12 +81,12 @@ const Menu = () => {
                 <div className="border-b border-border pb-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h4 className="font-medium text-foreground">SIOPAO</h4>
+                      <h4 className="font-medium text-foreground">SIOPAO / MEATBREAD</h4>
                       <p className="text-sm text-muted-foreground">
                         Asado or Bola-Bola. Soft, fluffy, filling. Served warm.
                       </p>
                     </div>
-                    <span className="font-semibold text-primary">60</span>
+                    <span className="font-semibold text-primary">50</span>
                   </div>
                 </div>
                 
@@ -88,7 +98,7 @@ const Menu = () => {
                         Savory, flaky, and generously filled with beef, potatoes, carrots, and cheese.
                       </p>
                     </div>
-                    <span className="font-semibold text-primary">50</span>
+                    <span className="font-semibold text-primary">35</span>
                   </div>
                 </div>
               </div>
@@ -104,26 +114,36 @@ const Menu = () => {
               </h3>
               <p className="text-sm text-muted-foreground mb-6 text-center">
                 16 oz, Iced or Hot<br/>
-                choose 1: cake, brownie, or bread
+                Choose 1: brownie, or bread
               </p>
               
               <div className="space-y-4">
                 <div className="flex justify-between items-start">
                   <div>
                     <h4 className="font-medium text-foreground">CAPPUCCINO / LATTE</h4>
-                    <p className="text-sm text-muted-foreground">+P20.00 to add Mocha or Caramel</p>
+                    <p className="text-sm text-muted-foreground">(+₱20.00 to add Mocha or Caramel)</p>
                   </div>
                   <span className="font-semibold text-primary">160</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">AMERICANO</h4>
-                  <span className="font-semibold text-primary">130</span>
+                  <span className="font-semibold text-primary">120</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">BREWED COFFEE</h4>
                   <span className="font-semibold text-primary">80</span>
+                </div>
+                
+                <div className="flex justify-between items-start">
+                  <h4 className="font-medium text-foreground">ICED COFFEE (with Milk & Maple Syrup)</h4>
+                  <span className="font-semibold text-primary">100</span>
+                </div>
+                
+                <div className="flex justify-between items-start">
+                  <h4 className="font-medium text-foreground">SPANISH LATTE</h4>
+                  <span className="font-semibold text-primary">130</span>
                 </div>
               </div>
             </Card>
@@ -176,17 +196,17 @@ const Menu = () => {
                       Guava | Mango | Orange
                     </p>
                   </div>
-                  <span className="font-semibold text-primary">130</span>
+                  <span className="font-semibold text-primary">100</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">COCONUT WATER</h4>
-                  <span className="font-semibold text-primary">45</span>
+                  <span className="font-semibold text-primary">40</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">BOTTLED WATER</h4>
-                  <span className="font-semibold text-primary">35</span>
+                  <span className="font-semibold text-primary">30</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
@@ -196,7 +216,12 @@ const Menu = () => {
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">SOFT DRINKS</h4>
-                  <span className="font-semibold text-primary">45</span>
+                  <span className="font-semibold text-primary">30</span>
+                </div>
+                
+                <div className="flex justify-between items-start">
+                  <h4 className="font-medium text-foreground">CUCUMBER JUICE</h4>
+                  <span className="font-semibold text-primary">40</span>
                 </div>
               </div>
             </Card>
