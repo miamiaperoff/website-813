@@ -40,6 +40,7 @@ interface Profile {
 }
 
 const BackOffice = () => {
+  console.log('BackOffice component rendering');
   const [members, setMembers] = useState<Profile[]>([]);
   const [filteredMembers, setFilteredMembers] = useState<Profile[]>([]);
   const [loading, setLoading] = useState(true);
@@ -53,12 +54,15 @@ const BackOffice = () => {
   const { toast } = useToast();
 
   useEffect(() => {
+    console.log('Auth effect - authLoading:', authLoading, 'user:', user);
     if (!authLoading && !user) {
+      console.log('No user, redirecting to auth');
       navigate('/auth');
       return;
     }
 
     if (user) {
+      console.log('User found, checking admin status');
       checkAdminStatus();
     }
   }, [user, authLoading, navigate]);
@@ -74,6 +78,7 @@ const BackOffice = () => {
   }, [members, searchTerm, statusFilter, paymentFilter]);
 
   const checkAdminStatus = async () => {
+    console.log('Checking admin status for user:', user?.id);
     try {
       const { data, error } = await supabase
         .from('profiles')
@@ -81,7 +86,10 @@ const BackOffice = () => {
         .eq('user_id', user?.id)
         .single();
 
+      console.log('Admin check result:', { data, error });
+
       if (error || !data?.is_admin) {
+        console.log('Access denied - not admin');
         toast({
           title: "Access Denied",
           description: "You don't have admin privileges to access this page.",
