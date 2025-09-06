@@ -70,11 +70,13 @@ const MembershipSignup = () => {
   }, [user, loading, navigate]);
 
   const checkExistingProfile = async () => {
+    if (!user) return;
+    
     try {
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
-        .eq('user_id', user?.id)
+        .eq('user_id', user.id)
         .maybeSingle();
 
       if (error) {
@@ -84,13 +86,12 @@ const MembershipSignup = () => {
 
       if (data) {
         setHasExistingProfile(true);
-        // Pre-fill form with existing data
         form.reset({
           firstName: data.first_name,
           lastName: data.last_name,
           nickname: data.nickname,
           phoneNumber: data.phone_number,
-          email: user?.email || '',
+          email: user.email || '',
           address: data.address,
           occupation: data.occupation,
           socialMedia: {
