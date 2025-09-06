@@ -45,25 +45,25 @@ const Navigation = () => {
               <>
                 <button 
                   onClick={() => scrollToSection('home')}
-                  className="text-foreground hover:text-primary transition-colors duration-200"
+                  className={`${isScrolled ? 'text-foreground' : 'text-white'} hover:text-primary transition-colors duration-200`}
                 >
                   Home
                 </button>
                 <button 
                   onClick={() => scrollToSection('about')}
-                  className="text-foreground hover:text-primary transition-colors duration-200"
+                  className={`${isScrolled ? 'text-foreground' : 'text-white'} hover:text-primary transition-colors duration-200`}
                 >
                   About
                 </button>
                 <button 
                   onClick={() => scrollToSection('menu')}
-                  className="text-foreground hover:text-primary transition-colors duration-200"
+                  className={`${isScrolled ? 'text-foreground' : 'text-white'} hover:text-primary transition-colors duration-200`}
                 >
                   Menu
                 </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className="text-foreground hover:text-primary transition-colors duration-200"
+                  className={`${isScrolled ? 'text-foreground' : 'text-white'} hover:text-primary transition-colors duration-200`}
                 >
                   Contact
                 </button>
@@ -74,13 +74,13 @@ const Navigation = () => {
               <div className="flex items-center space-x-4">
                 <button 
                   onClick={() => scrollToSection('home')}
-                  className="text-foreground hover:text-primary transition-colors duration-200"
+                  className={`${isScrolled ? 'text-foreground' : 'text-white'} hover:text-primary transition-colors duration-200`}
                 >
                   Home
                 </button>
                 <Link 
                   to="/profile"
-                  className="text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-2"
+                  className={`${isScrolled ? 'text-foreground' : 'text-white'} hover:text-primary transition-colors duration-200 flex items-center gap-2`}
                 >
                   <User className="h-4 w-4" />
                   My Profile
@@ -99,7 +99,7 @@ const Navigation = () => {
               <div className="flex items-center space-x-4">
                 <Link 
                   to="/auth"
-                  className="text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-2"
+                  className={`${isScrolled ? 'text-foreground' : 'text-white'} hover:text-primary transition-colors duration-200 flex items-center gap-2`}
                 >
                   <User className="h-4 w-4" />
                   Sign In
