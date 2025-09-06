@@ -69,6 +69,13 @@ const Navigation = () => {
             {user ? (
               <div className="flex items-center space-x-4">
                 <Link 
+                  to="/profile"
+                  className="text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-2"
+                >
+                  <User className="h-4 w-4" />
+                  My Profile
+                </Link>
+                <Link 
                   to="/membership"
                   className="bg-primary text-primary-foreground hover:bg-coffee-dark px-4 py-2 rounded-md font-medium transition-colors duration-200"
                 >

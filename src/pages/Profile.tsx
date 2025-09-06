@@ -23,17 +23,22 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      if (!uuid) {
-        setError('Profile ID is required');
-        setLoading(false);
-        return;
+      // If no UUID provided or it's the literal ":uuid", use current user's ID
+      let targetUserId = uuid;
+      if (!targetUserId || targetUserId === ':uuid') {
+        if (!user?.id) {
+          setError('Please log in to view profiles');
+          setLoading(false);
+          return;
+        }
+        targetUserId = user.id;
       }
 
       try {
         const { data, error } = await supabase
           .from('profiles')
           .select('*')
-          .eq('user_id', uuid)
+          .eq('user_id', targetUserId)
           .maybeSingle();
 
         if (error) {
@@ -57,7 +62,7 @@ const Profile = () => {
     };
 
     fetchProfile();
-  }, [uuid]);
+  }, [uuid, user?.id]);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
