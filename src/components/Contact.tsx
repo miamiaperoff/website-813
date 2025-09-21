@@ -33,8 +33,7 @@ const Contact = () => {
               <div>
                 <h4 className="font-medium text-foreground mb-2">Hours</h4>
                 <div className="text-muted-foreground space-y-1">
-                  <p className="font-medium text-primary">24/7 Starting on August 31, 2025</p>
-                  <p>Temporary Hours: 7am - 8pm Daily</p>
+                  <p className="font-medium text-primary">Open All Day, Every Day</p>
                 </div>
               </div>
               
