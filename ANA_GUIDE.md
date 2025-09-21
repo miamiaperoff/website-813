@@ -6,36 +6,38 @@
 ## 🎯 Quick Start
 
 ### **Main URLs:**
-- **Public Website**: `http://localhost:8081/` (your cafe website)
-- **Member Portal**: `http://localhost:8081/member-portal/login` (for members)
-- **Check-in Tablet**: `http://localhost:8081/checkin` (for the front desk tablet)
-- **Barista Redemption**: `http://localhost:8081/barista` (for redeeming drink vouchers)
-- **Admin Dashboard**: `http://localhost:8081/admin` (for you to manage everything)
+- **Public Website**: `https://813cafe.com/` (your cafe website)
+- **Member Portal**: `https://813cafe.com/member-portal/login` (for members)
+- **Check-in Tablet**: `https://813cafe.com/checkin` (for the front desk tablet)
+- **Self Check-in**: `https://813cafe.com/self-checkin` (for members to check themselves in)
+- **Admin Dashboard**: `https://813cafe.com/admin` (for you to manage everything)
 
 ---
 
 ## 📱 Daily Operations
 
-### **1. Check-in Tablet Setup**
-- Place a tablet at your front desk
-- Open: `http://localhost:8081/checkin`
-- Members enter their member codes to check in/out
-- You can see who's currently in the space
-- Track daily statistics
+### **1. Check-in System**
+- **Staff Check-in**: Use the tablet at `https://813cafe.com/checkin` to check members in/out
+- **Self Check-in**: Members can check themselves in at `https://813cafe.com/self-checkin`
+- Track who's currently in the space (max 13 members)
+- Monitor daily check-in statistics
+- View member activity logs
 
-### **2. Barista Voucher Redemption**
-- **Option A**: Use the dedicated barista system at `http://localhost:8081/barista`
-- **Option B**: Have the member show their voucher on their phone and click "REDEEM" button
-- Verify member information and voucher validity
-- Confirm redemption to process the free drink
+### **2. Daily Drink Voucher System**
+- Members get 1 free drink per day (up to ₱150 value)
+- Members redeem vouchers through their member portal
+- Vouchers are 6-digit codes (3 letters + 3 numbers)
+- **For Baristas**: Members show their voucher on their phone and click "REDEEM" button
 - Vouchers are automatically marked as used and cannot be reused
+- Daily reset happens at 12:00 AM
 
 ### **3. Member Management**
-- Go to: `http://localhost:8081/admin`
-- View all members and their activity
+- Go to: `https://813cafe.com/admin`
+- View all members and their activity logs
 - See who has overdue payments
-- Track member usage and engagement
+- Track member usage and engagement statistics
 - Add new members when needed
+- Monitor activity logs for all system users
 
 ### **4. Space Management**
 - Monitor the 13-member limit
@@ -47,54 +49,73 @@
 
 ## 👥 Member Tiers & Benefits
 
-### **Basic Members (₱1,500/month)**
-- 5 days/month access
-- Free WiFi
-- Daily free drink (up to ₱150)
-- Community events
+### **Flex Plan (₱5,000/month)**
+- Month-to-month billing
+- 24/7 coworking access
+- Reserved desk during Members-Only Hours
+- Fast WiFi & power
+- 1 free drink per day (up to ₱150)
+- Safe and secure access
 
-### **Premium Members (₱2,500/month)**
-- 10 days/month access
-- All Basic benefits
-- Priority booking
-- Extended hours
+### **Save Plan (₱4,500/month)**
+- 3-month commitment
+- All Flex Plan benefits
+- 24/7 coworking access
+- Reserved desk during Members-Only Hours
+- Fast WiFi & power
+- 1 free drink per day (up to ₱150)
+- Safe and secure access
 
-### **VIP Members (₱3,500/month)**
-- Unlimited access
-- All Premium benefits
-- Reserved seating
-- Premium amenities
+### **Growth Plan (₱4,000/month)**
+- 6-month commitment
+- All Save Plan benefits
+- 1 guest day pass per week
+- 24/7 coworking access
+- Reserved desk during Members-Only Hours
+- Fast WiFi & power
+- 1 free drink per day (up to ₱150)
+- Safe and secure access
+
+### **Resident Plan (₱3,500/month)**
+- 12-month commitment
+- All Growth Plan benefits
+- 2 guest passes per week
+- 1 meeting room hour per month
+- 24/7 coworking access
+- Reserved desk during Members-Only Hours
+- Fast WiFi & power
+- 1 free drink per day (up to ₱150)
+- Safe and secure access
 
 ---
 
 ## 💰 Payment Management
 
 ### **Payment Methods:**
-- **Stripe**: Credit/debit cards
-- **GCash**: Mobile payments
-- **PayMaya**: Digital wallet
-- **Cash**: In-person payments
+- **Online Payments**: Credit/debit cards through the system
+- **Cash**: In-person payments at the cafe
+- **Bank Transfer**: Direct bank deposits
 
 ### **Payment Tracking:**
 - Check payment status in admin dashboard
-- Send reminders for overdue payments
-- Track member payment history
-- Generate payment reports
+- View member payment history
+- Monitor overdue payments
+- Track membership tier changes
 
 ---
 
 ## 📊 Key Metrics to Monitor
 
 ### **Daily Stats:**
-- **Occupancy**: How many members are currently in
+- **Occupancy**: How many members are currently in (max 13)
 - **Check-ins**: Total visits for the day
-- **Peak Hours**: When the space is busiest
-- **Member Activity**: Who's using the space most
+- **Voucher Redemptions**: Daily drink vouchers used
+- **Member Activity**: Login and usage patterns
 
 ### **Weekly/Monthly:**
 - **Member Retention**: Who's staying active
 - **Revenue Tracking**: Monthly income from memberships
-- **Space Utilization**: How efficiently the space is used
+- **Activity Logs**: System usage and engagement
 - **Member Satisfaction**: Based on usage patterns
 
 ---
@@ -104,19 +125,20 @@
 ### **The 13-Member Rule:**
 - Maximum 13 members in the space at once
 - First come, first served
-- Members-only hours: 8 AM - 8 PM
-- 15-minute grace period for late arrivals
+- Members-only hours: 8 PM - 11 AM (except Fridays)
+- Reserved desks during member-only hours
 
-### **Quiet Hours:**
-- **Quiet Zone**: 8 AM - 5 PM (no calls)
-- **Call Zone**: 5 PM - 8 PM (calls allowed)
-- **Call Box**: Available for private calls anytime
+### **Operating Hours:**
+- **Open All Day, Every Day** - 24/7 access for members
+- **Members-Only Hours**: 8 PM - 11 AM (except Fridays)
+- **Public Hours**: 11 AM - 8 PM (except Fridays)
 
 ### **Member Benefits:**
-- Daily free drink (up to ₱150 value)
+- Daily free drink (up to ₱150 value) with 6-digit voucher codes
 - Free WiFi access
-- Community events and networking
-- Professional workspace environment
+- 24/7 coworking access
+- Reserved desk during Members-Only Hours
+- Activity tracking and usage statistics
 
 ---
 
@@ -125,19 +147,22 @@
 ### **Common Issues:**
 
 **Member can't check in:**
-- Check if they're an active member
+- Check if they're an active member in admin dashboard
 - Verify their member code is correct
 - Check if space is at capacity (13 members)
+- Try self-check-in option at `/self-checkin`
 
-**Payment issues:**
-- Check payment status in admin dashboard
-- Verify payment method is working
-- Contact member if payment is overdue
+**Voucher issues:**
+- Check if member has already used their daily voucher
+- Verify voucher code is 6 digits (3 letters + 3 numbers)
+- Confirm voucher hasn't been redeemed already
+- Check voucher status in member portal
 
 **Technical problems:**
 - Restart the tablet if check-in system is slow
 - Check internet connection
-- Contact support if needed
+- Try accessing admin dashboard on your phone
+- Clear browser cache if needed
 
 ---
 
@@ -149,18 +174,18 @@
 - **Member Issues**: [Your contact number]
 
 ### **Daily Checklist:**
-- [ ] Check tablet is working at front desk
+- [ ] Check tablet is working at front desk (`https://813cafe.com/checkin`)
 - [ ] Monitor occupancy (max 13 members)
-- [ ] Check for overdue payments
-- [ ] Verify member benefits are being provided
-- [ ] Monitor quiet hours (8 AM - 5 PM)
-- [ ] Track daily statistics
+- [ ] Check for overdue payments in admin dashboard
+- [ ] Verify daily drink vouchers are working properly
+- [ ] Monitor member activity logs
+- [ ] Track daily statistics and voucher redemptions
 
 ### **Weekly Tasks:**
-- [ ] Review member activity and engagement
+- [ ] Review member activity and engagement in admin dashboard
 - [ ] Check payment status for all members
 - [ ] Analyze space utilization patterns
-- [ ] Plan community events
+- [ ] Review activity logs and system usage
 - [ ] Update member information as needed
 
 ---
@@ -169,15 +194,17 @@
 
 ### **Member Experience:**
 - Greet members by name when they check in
+- Help with daily drink voucher redemption
 - Ensure the space is clean and organized
 - Provide excellent customer service
-- Be available to answer questions
+- Be available to answer questions about the system
 
 ### **Business Growth:**
-- Monitor which members are most active
+- Monitor which members are most active using activity logs
+- Track voucher redemption patterns
 - Identify peak usage times
-- Track member retention rates
-- Use analytics to improve the space
+- Monitor member retention rates
+- Use admin dashboard analytics to improve the space
 
 ### **Community Building:**
 - Encourage member interactions
@@ -190,16 +217,18 @@
 ## 📱 Mobile Access
 
 ### **For You (Ana):**
-- Access admin dashboard on your phone
+- Access admin dashboard on your phone at `https://813cafe.com/admin`
 - Monitor occupancy remotely
 - Check member status anywhere
-- View daily statistics on the go
+- View daily statistics and activity logs on the go
+- Track voucher redemptions and member engagement
 
 ### **For Members:**
-- Book workspaces from their phones
-- Check availability in real-time
-- Access community features
-- Manage their accounts
+- Access member portal from their phones at `https://813cafe.com/member-portal`
+- Redeem daily drink vouchers
+- View their activity logs and statistics
+- Self-check-in at `https://813cafe.com/self-checkin`
+- Manage their membership account
 
 ---
 
@@ -208,14 +237,16 @@
 ### **Regular Maintenance:**
 - Update member information monthly
 - Review and update pricing as needed
-- Monitor system performance
+- Monitor system performance and activity logs
+- Clear old activity logs periodically
 - Backup important data
 
-### **New Features Coming:**
-- Meeting room bookings
-- Event space reservations
-- Equipment rental system
-- Advanced analytics
+### **Current Features:**
+- Daily drink voucher system with 6-digit codes
+- Activity logging for all user interactions
+- Member portal with statistics and voucher management
+- Admin dashboard with comprehensive analytics
+- Check-in system (both staff and self-service)
 
 ---
 
@@ -224,12 +255,13 @@
 If you need help with anything:
 1. Check this guide first
 2. Try the admin dashboard for most issues
-3. Contact technical support if needed
-4. Keep this guide handy for reference
+3. Check the activity logs for troubleshooting
+4. Contact technical support if needed
+5. Keep this guide handy for reference
 
-**Remember**: The system is designed to make your job easier and provide a great experience for your members. Don't hesitate to explore and learn new features!
+**Remember**: The system is designed to make your job easier and provide a great experience for your members. The activity logging system helps you track everything that happens in the system.
 
 ---
 
-*Last updated: January 2024*
+*Last updated: January 2025*
 *For questions or updates to this guide, contact your development team.*
