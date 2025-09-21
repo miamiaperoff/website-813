@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut, User } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,43 +41,72 @@ const Navigation = () => {
             />
           </div>
           
-          <div className="hidden md:flex space-x-8">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('menu')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
-            >
-              Menu
-            </button>
-            <Link 
-              to="/coworking"
-              className="text-white hover:text-warm-accent transition-colors duration-200"
-            >
-              Coworking
-            </Link>
-            <Link 
-              to="/member-portal/login"
-              className="text-white hover:text-warm-accent transition-colors duration-200"
-            >
-              Member Portal
-            </Link>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
-            >
-              Contact
-            </button>
+          <div className="hidden md:flex items-center space-x-8">
+            {!user ? (
+              <>
+                <button 
+                  onClick={() => scrollToSection('home')}
+                  className="text-white hover:text-warm-accent transition-colors duration-200"
+                >
+                  Home
+                </button>
+                <button 
+                  onClick={() => scrollToSection('about')}
+                  className="text-white hover:text-warm-accent transition-colors duration-200"
+                >
+                  About
+                </button>
+                <button 
+                  onClick={() => scrollToSection('menu')}
+                  className="text-white hover:text-warm-accent transition-colors duration-200"
+                >
+                  Menu
+                </button>
+                <Link 
+                  to="/coworking"
+                  className="text-white hover:text-warm-accent transition-colors duration-200"
+                >
+                  Coworking
+                </Link>
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="text-white hover:text-warm-accent transition-colors duration-200"
+                >
+                  Contact
+                </button>
+                <Link 
+                  to="/member-portal/login"
+                  className="text-white hover:text-warm-accent transition-colors duration-200"
+                >
+                  Member Portal
+                </Link>
+              </>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <button 
+                  onClick={() => scrollToSection('home')}
+                  className="text-white hover:text-warm-accent transition-colors duration-200"
+                >
+                  Home
+                </button>
+                <Link 
+                  to="/member-portal"
+                  className="text-white hover:text-warm-accent transition-colors duration-200 flex items-center gap-2"
+                >
+                  <User className="h-4 w-4" />
+                  Dashboard
+                </Link>
+                <Button
+                  onClick={signOut}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2 text-white border-white hover:bg-white/10"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Log Out
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -125,13 +157,6 @@ const Navigation = () => {
             >
               Coworking
             </Link>
-            <Link 
-              to="/member-portal/login"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
-            >
-              Member Portal
-            </Link>
             <button 
               onClick={() => {
                 scrollToSection('contact');
@@ -141,6 +166,34 @@ const Navigation = () => {
             >
               Contact
             </button>
+            {!user ? (
+              <Link 
+                to="/member-portal/login"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+              >
+                Member Portal
+              </Link>
+            ) : (
+              <>
+                <Link 
+                  to="/member-portal"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+                >
+                  Dashboard
+                </Link>
+                <button 
+                  onClick={() => {
+                    signOut();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+                >
+                  Log Out
+                </button>
+              </>
+            )}
           </div>
         </div>
       )}

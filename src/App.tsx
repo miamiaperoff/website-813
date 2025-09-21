@@ -8,6 +8,10 @@ import { AuthProvider } from "@/contexts/AuthContext";
 // Public Pages
 import Index from "./pages/Index";
 import Coworking from "./pages/Coworking";
+import Auth from "./pages/Auth";
+import MembershipSignup from "./pages/MembershipSignup";
+import BackOffice from "./pages/BackOffice";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import CheckIn from "./pages/CheckIn";
 import SelfServiceCheckIn from "./pages/SelfServiceCheckIn";
@@ -32,6 +36,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+<<<<<<< HEAD
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -73,6 +78,13 @@ const App = () => (
                 </AdminLayout>
               </ProtectedRoute>
             } />
+            
+            {/* Additional Routes */}
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/membership" element={<MembershipSignup />} />
+            <Route path="/back-office" element={<BackOffice />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:uuid" element={<Profile />} />
             
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />

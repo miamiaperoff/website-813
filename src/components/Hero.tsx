@@ -38,9 +38,10 @@ const Hero = () => {
           <Button 
             variant="outline"
             size="lg"
+            onClick={() => window.open('https://813cafe.org/order-online', '_blank')}
             className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium px-8 py-3 rounded-full transition-all duration-300"
           >
-            Location & Hours
+            Order Ahead
           </Button>
         </div>
       </div>

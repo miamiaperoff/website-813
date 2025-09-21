@@ -1,40 +1,36 @@
-# Welcome to your Lovable project
+# Eight Thirteen Cafe
 
-## Project info
+A modern cafe website featuring coworking spaces and event hosting.
 
-**URL**: https://lovable.dev/projects/857e5d5e-9bdf-441a-9ca2-54d771eab592
+## Project Overview
 
-## How can I edit this code?
+Eight Thirteen is a vibrant community space offering exceptional coffee, productive coworking areas, and memorable events in the heart of the city.
 
-There are several ways of editing your application.
+## Development
 
-**Use Lovable**
+This project is built with modern web technologies for optimal performance and user experience.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/857e5d5e-9bdf-441a-9ca2-54d771eab592) and start prompting.
+### Local Development
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+To run this project locally, you'll need Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 Follow these steps:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Step 1: Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Step 2: Navigate to the project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Step 3: Install the necessary dependencies
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server with auto-reloading and an instant preview
 npm run dev
 ```
+
+### Alternative Development Methods
 
 **Edit a file directly in GitHub**
 
@@ -50,7 +46,7 @@ npm run dev
 - Click on "New codespace" to launch a new Codespace environment.
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
 
@@ -60,14 +56,15 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/857e5d5e-9bdf-441a-9ca2-54d771eab592) and click on Share -> Publish.
+The project can be deployed using various hosting platforms that support static site hosting such as Netlify, Vercel, or similar services.
 
-## Can I connect a custom domain to my Lovable project?
+## Features
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Responsive design optimized for all devices
+- Modern UI with smooth animations
+- Interactive menu showcase
+- Contact information and social media integration
+- Coworking space information
+- Event hosting details
