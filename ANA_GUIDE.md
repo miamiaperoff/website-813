@@ -7,10 +7,15 @@
 
 ### **Main URLs:**
 - **Public Website**: `https://813cafe.com/` (your cafe website)
-- **Member Portal**: `https://813cafe.com/member-portal/login` (for members)
+- **Authentication**: `https://813cafe.com/auth` (for all users)
 - **Check-in Tablet**: `https://813cafe.com/checkin` (for the front desk tablet)
 - **Self Check-in**: `https://813cafe.com/self-checkin` (for members to check themselves in)
 - **Admin Dashboard**: `https://813cafe.com/admin` (for you to manage everything)
+
+### **Your Admin Login:**
+- **Email**: `ana@813cafe.com`
+- **Password**: `admin123`
+- **Access**: Full admin dashboard with member management, analytics, and all features
 
 ---
 

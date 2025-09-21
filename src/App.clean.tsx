@@ -5,8 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Essential Pages Only
-import Index from "./pages/Index.clean";
-import Coworking from "./pages/Coworking.clean";
+import Index from "./pages/Index";
+import Coworking from "./pages/Coworking";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
