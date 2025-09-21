@@ -33,12 +33,7 @@ const Contact = () => {
               <div>
                 <h4 className="font-medium text-foreground mb-2">Hours</h4>
                 <div className="text-muted-foreground space-y-1">
-<<<<<<< HEAD
                   <p className="font-medium text-primary">Open All Day, Every Day</p>
-=======
-                  <p className="font-medium text-primary">Open 24 Hours a Day</p>
-                  <p>7 Days a Week</p>
->>>>>>> 5571579be3342913661567146ba78fe3bd88ef50
                 </div>
               </div>
               
