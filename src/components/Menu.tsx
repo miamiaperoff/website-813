@@ -32,13 +32,7 @@ const Menu = () => {
                     <div>
                       <h4 className="font-medium text-foreground">MATCHA</h4>
                       <p className="text-sm text-muted-foreground mt-1">
-<<<<<<< HEAD
                         Customer favorite matcha w/ fresh milk and sugar syrup (0-4 pumps)
-=======
-                        Served with Garlic Rice, Side of Bacalao, and Two Eggs.<br/>
-                        Choose 1: Tapa, Chorizo, or Spanish Sardines<br/>
-                        Corned Beef, or Pork Steak
->>>>>>> 5571579be3342913661567146ba78fe3bd88ef50
                       </p>
                     </div>
                     <span className="font-semibold text-primary">150</span>
@@ -57,7 +51,6 @@ const Menu = () => {
                   </div>
                 </div>
                 
-<<<<<<< HEAD
                 <div>
                   <div className="flex justify-between items-start mb-2">
                     <div>
@@ -67,19 +60,6 @@ const Menu = () => {
                       </p>
                     </div>
                     <span className="font-semibold text-primary">110</span>
-=======
-                <div className="bg-primary/10 p-4 rounded">
-                  <h5 className="font-medium text-primary mb-2">TODAY'S SPECIALS (Available 11:30 AM)</h5>
-                  <div className="space-y-2 mt-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Hungarian Sausage Silog</span>
-                      <span className="font-semibold text-primary">165</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Bangus Belly Sardines Silog</span>
-                      <span className="font-semibold text-primary">165</span>
-                    </div>
->>>>>>> 5571579be3342913661567146ba78fe3bd88ef50
                   </div>
                 </div>
               </div>
@@ -142,8 +122,6 @@ const Menu = () => {
                     <span className="font-semibold text-primary">70</span>
                   </div>
                 </div>
-<<<<<<< HEAD
-=======
                 
                 <div className="border-b border-border pb-4">
                   <div className="flex justify-between items-start mb-2">
@@ -168,7 +146,6 @@ const Menu = () => {
                     <span className="font-semibold text-primary">35</span>
                   </div>
                 </div>
->>>>>>> 5571579be3342913661567146ba78fe3bd88ef50
               </div>
             </Card>
           </div>
@@ -248,17 +225,13 @@ const Menu = () => {
                 COFFEE+
               </div>
               <p className="text-sm text-muted-foreground mb-6 text-center">
-<<<<<<< HEAD
                 Iced or Hot (0-4 pumps sugar) Comes with a featured dessert
-=======
                 16 oz, Iced or Hot<br/>
                 Choose 1: brownie, or bread
->>>>>>> 5571579be3342913661567146ba78fe3bd88ef50
               </p>
               
               <div className="space-y-4">
                 <div className="flex justify-between items-start">
-<<<<<<< HEAD
                   <h4 className="font-medium text-foreground">LATTE</h4>
                   <span className="font-semibold text-primary">150</span>
                 </div>
@@ -280,34 +253,27 @@ const Menu = () => {
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">CAPPUCCINO</h4>
-=======
                   <div>
                     <h4 className="font-medium text-foreground">CAPPUCCINO / LATTE</h4>
                     <p className="text-sm text-muted-foreground">(+₱20.00 to add Mocha or Caramel)</p>
                   </div>
->>>>>>> 5571579be3342913661567146ba78fe3bd88ef50
                   <span className="font-semibold text-primary">160</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">AMERICANO</h4>
-<<<<<<< HEAD
                   <span className="font-semibold text-primary">110</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">ICED COFFEE</h4>
                   <span className="font-semibold text-primary">110</span>
-=======
                   <span className="font-semibold text-primary">120</span>
->>>>>>> 5571579be3342913661567146ba78fe3bd88ef50
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">BREWED COFFEE</h4>
-<<<<<<< HEAD
                   <span className="font-semibold text-primary">90</span>
-=======
                   <span className="font-semibold text-primary">80</span>
                 </div>
                 
@@ -347,7 +313,6 @@ const Menu = () => {
                     </p>
                   </div>
                   <span className="font-semibold text-primary">130</span>
->>>>>>> 5571579be3342913661567146ba78fe3bd88ef50
                 </div>
                 
                 <div className="flex justify-between items-start">
@@ -357,8 +322,6 @@ const Menu = () => {
               </div>
             </Card>
 
-<<<<<<< HEAD
-=======
             {/* Cold Drinks */}
             <Card className="p-6 bg-card border-none shadow-warm">
               <h3 className="font-serif text-2xl font-semibold text-primary mb-6 text-center">
@@ -403,7 +366,6 @@ const Menu = () => {
                 </div>
               </div>
             </Card>
->>>>>>> 5571579be3342913661567146ba78fe3bd88ef50
           </div>
 
           {/* Right Column */}
