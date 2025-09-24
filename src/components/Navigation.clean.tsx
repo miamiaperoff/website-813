@@ -63,12 +63,6 @@ const Navigation = () => {
             >
               Coworking
             </Link>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
-            >
-              Contact
-            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -119,15 +113,6 @@ const Navigation = () => {
             >
               Coworking
             </Link>
-            <button 
-              onClick={() => {
-                scrollToSection('contact');
-                setIsMobileMenuOpen(false);
-              }}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
-            >
-              Contact
-            </button>
           </div>
         </div>
       )}

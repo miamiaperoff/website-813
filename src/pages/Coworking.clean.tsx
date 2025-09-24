@@ -44,14 +44,6 @@ const Coworking = () => {
             >
               Sign Up Today
             </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium px-8 py-4 rounded-full transition-all duration-300 text-lg"
-              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              View Pricing
-            </Button>
           </div>
         </div>
         
@@ -201,12 +193,6 @@ const Coworking = () => {
             Ready to join our exclusive community of 13 members? Contact Ana Calubiran to start your membership process.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button 
-              size="lg"
-              className="bg-warm-accent hover:bg-warm-accent/90 text-primary font-medium px-8 py-4 rounded-full shadow-accent transition-all duration-300 hover:scale-105 text-lg"
-            >
-              Contact Us
-            </Button>
           </div>
           <div className="text-white/90">
             <p className="text-lg font-medium mb-2">Contact Ana Calubiran</p>

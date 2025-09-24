@@ -44,14 +44,6 @@ const Coworking = () => {
             >
               Sign Up Today
             </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium px-8 py-4 rounded-full transition-all duration-300 text-lg"
-              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              View Pricing
-            </Button>
           </div>
         </div>
         
@@ -602,19 +594,6 @@ const Coworking = () => {
                 Sign Up Today
               </Button>
             </Link>
-            <Button 
-              variant="outline"
-              size="lg"
-              className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium px-8 py-4 rounded-full transition-all duration-300 text-lg"
-              onClick={() => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            >
-              Contact Us
-            </Button>
           </div>
           <div className="text-white/90">
             <p className="text-lg font-medium mb-2">Contact Ana Calubiran</p>
