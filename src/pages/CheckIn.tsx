@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '@/lib/authContext';
+import { dataService } from '@/lib/dataService';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -18,110 +20,88 @@ import {
   User,
   Settings,
   QrCode,
-  Search
+  Search,
+  Lock,
+  Unlock
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Member, MemberSession } from '@/lib/types';
 
-interface CheckInRecord {
-  id: string;
-  memberId: string;
-  memberName: string;
-  memberTier: 'flex' | 'save' | 'growth' | 'resident';
-  checkInTime: string;
-  checkOutTime?: string;
-  duration?: number; // in minutes
-  status: 'checked-in' | 'checked-out';
-  checkedInBy: 'staff' | 'self';
-}
-
-interface Member {
-  id: string;
-  name: string;
-  email: string;
-  memberTier: 'flex' | 'save' | 'growth' | 'resident';
-  qrCode: string;
-  isActive: boolean;
-  status: 'active' | 'inactive' | 'suspended';
-  paymentStatus: 'current' | 'overdue' | 'pending';
-}
-
-const EnhancedCheckInOut: React.FC = () => {
+const CheckIn: React.FC = () => {
+  const { user, isStaff } = useAuth();
+  const navigate = useNavigate();
+  
   const [currentMember, setCurrentMember] = useState<Member | null>(null);
   const [memberCode, setMemberCode] = useState('');
-  const [checkInRecords, setCheckInRecords] = useState<CheckInRecord[]>([]);
-  const [currentlyIn, setCurrentlyIn] = useState<CheckInRecord[]>([]);
   const [message, setMessage] = useState<{ type: 'success' | 'error' | 'info', text: string } | null>(null);
   const [activeTab, setActiveTab] = useState('staff');
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeSessions, setActiveSessions] = useState<MemberSession[]>([]);
+  const [isMembersOnly, setIsMembersOnly] = useState(false);
+  const [capacity, setCapacity] = useState(13);
 
-  // Mock members data - in production, this would come from your database
+  // Mock members data
   const members: Member[] = [
     {
       id: '1',
-      name: 'John Doe',
       email: 'john@example.com',
-      memberTier: 'growth',
-      qrCode: 'MEMBER_001',
-      isActive: true,
-      status: 'active',
-      paymentStatus: 'current'
+      name: 'John Doe',
+      planId: 'growth',
+      status: 'active'
     },
     {
       id: '2',
-      name: 'Sarah Wilson',
       email: 'sarah@example.com',
-      memberTier: 'flex',
-      qrCode: 'MEMBER_002',
-      isActive: true,
-      status: 'active',
-      paymentStatus: 'current'
+      name: 'Sarah Wilson',
+      planId: 'flex',
+      status: 'active'
     },
     {
       id: '3',
-      name: 'Mike Chen',
       email: 'mike@example.com',
-      memberTier: 'resident',
-      qrCode: 'MEMBER_003',
-      isActive: true,
-      status: 'active',
-      paymentStatus: 'current'
-    },
-    {
-      id: '4',
-      name: 'Ana Calubiran',
-      email: 'hey@813cafe.com',
-      memberTier: 'resident',
-      qrCode: 'ADMIN_001',
-      isActive: true,
-      status: 'active',
-      paymentStatus: 'current'
+      name: 'Mike Chen',
+      planId: 'resident',
+      status: 'active'
     }
   ];
 
   useEffect(() => {
-    // Load currently checked-in members
-    const checkedIn = checkInRecords.filter(record => record.status === 'checked-in');
-    setCurrentlyIn(checkedIn);
-  }, [checkInRecords]);
+    if (!isStaff()) {
+      navigate('/auth');
+      return;
+    }
+
+    loadData();
+    
+    // Check Members-Only hours
+    const checkMembersOnly = () => {
+      setIsMembersOnly(dataService.isMembersOnlyHours());
+    };
+    
+    checkMembersOnly();
+    const interval = setInterval(checkMembersOnly, 60000); // Check every minute
+    
+    return () => clearInterval(interval);
+  }, [isStaff, navigate]);
+
+  const loadData = async () => {
+    try {
+      const sessions = dataService.getActiveSessions();
+      setActiveSessions(sessions);
+    } catch (error) {
+      console.error('Error loading data:', error);
+    }
+  };
 
   const handleCodeEntry = (code: string) => {
-    const member = members.find(m => m.qrCode === code);
+    const member = members.find(m => m.email === code || m.id === code);
     if (!member) {
       setMessage({ type: 'error', text: 'Invalid member code. Please try again.' });
       return;
     }
 
-    if (!member.isActive) {
-      setMessage({ type: 'error', text: 'Membership is inactive. Please contact support.' });
-      return;
-    }
-
     if (member.status !== 'active') {
-      setMessage({ type: 'error', text: 'Account is suspended. Please contact support.' });
-      return;
-    }
-
-    if (member.paymentStatus === 'overdue') {
-      setMessage({ type: 'error', text: 'Payment overdue. Please contact support to resolve.' });
+      setMessage({ type: 'error', text: 'Account is inactive. Please contact support.' });
       return;
     }
 
@@ -129,80 +109,47 @@ const EnhancedCheckInOut: React.FC = () => {
     setMemberCode(code);
   };
 
-  const handleCheckIn = () => {
+  const handleStartSession = async () => {
     if (!currentMember) return;
 
-    const existingRecord = checkInRecords.find(
-      record => record.memberId === currentMember.id && record.status === 'checked-in'
-    );
-
-    if (existingRecord) {
-      setMessage({ type: 'error', text: 'You are already checked in!' });
-      return;
+    try {
+      const result = dataService.startSession(currentMember.id);
+      
+      if (result.success && result.session) {
+        setMessage({ 
+          type: 'success', 
+          text: `Session started! Code: ${result.session.code}` 
+        });
+        loadData();
+      } else {
+        setMessage({ type: 'error', text: result.error || 'Failed to start session' });
+      }
+    } catch (error) {
+      setMessage({ type: 'error', text: 'An unexpected error occurred' });
     }
-
-    const newRecord: CheckInRecord = {
-      id: `checkin_${Date.now()}`,
-      memberId: currentMember.id,
-      memberName: currentMember.name,
-      memberTier: currentMember.memberTier,
-      checkInTime: new Date().toISOString(),
-      status: 'checked-in',
-      checkedInBy: activeTab === 'staff' ? 'staff' : 'self'
-    };
-
-    setCheckInRecords(prev => [...prev, newRecord]);
-    setMessage({ 
-      type: 'success', 
-      text: `Welcome back, ${currentMember.name}! You're checked in.` 
-    });
-    
-    // Reset for next entry
-    setTimeout(() => {
-      setCurrentMember(null);
-      setMemberCode('');
-      setMessage(null);
-    }, 3000);
   };
 
-  const handleCheckOut = () => {
+  const handleEndSession = async () => {
     if (!currentMember) return;
 
-    const activeRecord = checkInRecords.find(
-      record => record.memberId === currentMember.id && record.status === 'checked-in'
-    );
-
-    if (!activeRecord) {
-      setMessage({ type: 'error', text: 'You are not currently checked in!' });
+    const activeSession = activeSessions.find(s => s.memberId === currentMember.id && s.isActive);
+    if (!activeSession) {
+      setMessage({ type: 'error', text: 'No active session found!' });
       return;
     }
 
-    const checkOutTime = new Date();
-    const checkInTime = new Date(activeRecord.checkInTime);
-    const duration = Math.floor((checkOutTime.getTime() - checkInTime.getTime()) / (1000 * 60)); // minutes
-
-    const updatedRecord = {
-      ...activeRecord,
-      checkOutTime: checkOutTime.toISOString(),
-      duration,
-      status: 'checked-out' as const
-    };
-
-    setCheckInRecords(prev => 
-      prev.map(record => record.id === activeRecord.id ? updatedRecord : record)
-    );
-
-    setMessage({ 
-      type: 'success', 
-      text: `Thank you, ${currentMember.name}! You were here for ${duration} minutes.` 
-    });
-
-    // Reset for next entry
-    setTimeout(() => {
-      setCurrentMember(null);
-      setMemberCode('');
-      setMessage(null);
-    }, 3000);
+    try {
+      const result = dataService.endSession(activeSession.id);
+      
+      if (result.success) {
+        setMessage({ type: 'success', text: 'Session ended successfully' });
+        loadData();
+      } else {
+        setMessage({ type: 'error', text: 'Failed to end session' });
+      }
+    } catch (error) {
+      setMessage({ type: 'error', text: 'An unexpected error occurred' });
+    }
   };
 
   const getTierColor = (tier: string) => {
@@ -223,17 +170,13 @@ const EnhancedCheckInOut: React.FC = () => {
     });
   };
 
-  const formatDuration = (minutes: number) => {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
-  };
-
   const filteredMembers = members.filter(member =>
     member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    member.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    member.qrCode.toLowerCase().includes(searchTerm.toLowerCase())
+    member.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const isAtCapacity = activeSessions.length >= capacity;
+  const waitlistCount = Math.max(0, activeSessions.length - capacity);
 
   return (
     <div className="min-h-screen bg-gradient-warm p-4">
@@ -246,6 +189,14 @@ const EnhancedCheckInOut: React.FC = () => {
           <p className="text-lg text-muted-foreground">
             Staff-assisted and self-service check-in/out
           </p>
+          <div className="mt-4 flex justify-center space-x-4">
+            <Badge variant={isMembersOnly ? 'default' : 'secondary'}>
+              {isMembersOnly ? 'Members-Only Hours Active' : 'Open Seating'}
+            </Badge>
+            <Badge variant={isAtCapacity ? 'destructive' : 'default'}>
+              {activeSessions.length}/{capacity} Members
+            </Badge>
+          </div>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
@@ -272,7 +223,7 @@ const EnhancedCheckInOut: React.FC = () => {
                       <span>Find Member</span>
                     </CardTitle>
                     <CardDescription>
-                      Search for members by name, email, or member code
+                      Search for members by name or email
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -288,14 +239,14 @@ const EnhancedCheckInOut: React.FC = () => {
                           <div
                             key={member.id}
                             className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 cursor-pointer"
-                            onClick={() => handleCodeEntry(member.qrCode)}
+                            onClick={() => handleCodeEntry(member.email)}
                           >
                             <div>
                               <p className="font-medium">{member.name}</p>
                               <p className="text-sm text-muted-foreground">{member.email}</p>
                             </div>
-                            <Badge className={getTierColor(member.memberTier)}>
-                              {member.memberTier}
+                            <Badge className={getTierColor(member.planId)}>
+                              {member.planId}
                             </Badge>
                           </div>
                         ))}
@@ -312,12 +263,12 @@ const EnhancedCheckInOut: React.FC = () => {
                       <span>Manual Code Entry</span>
                     </CardTitle>
                     <CardDescription>
-                      Enter member code manually
+                      Enter member email or ID manually
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <Input
-                      placeholder="Enter member code (e.g., MEMBER_001)"
+                      placeholder="Enter member email or ID"
                       value={memberCode}
                       onChange={(e) => setMemberCode(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && handleCodeEntry(memberCode)}
@@ -346,35 +297,31 @@ const EnhancedCheckInOut: React.FC = () => {
                         <div>
                           <h3 className="font-semibold text-lg">{currentMember.name}</h3>
                           <p className="text-muted-foreground">{currentMember.email}</p>
-                          <p className="text-sm text-muted-foreground">Code: {currentMember.qrCode}</p>
                         </div>
                         <div className="text-right">
-                          <Badge className={getTierColor(currentMember.memberTier)}>
-                            {currentMember.memberTier.toUpperCase()}
+                          <Badge className={getTierColor(currentMember.planId)}>
+                            {currentMember.planId.toUpperCase()}
                           </Badge>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            {currentMember.paymentStatus}
-                          </p>
                         </div>
                       </div>
 
                       <div className="flex space-x-3">
                         <Button 
-                          onClick={handleCheckIn}
+                          onClick={handleStartSession}
                           className="flex-1"
-                          disabled={currentlyIn.some(record => record.memberId === currentMember.id)}
+                          disabled={activeSessions.some(s => s.memberId === currentMember.id && s.isActive)}
                         >
                           <LogIn className="w-4 h-4 mr-2" />
-                          Check In
+                          Start Session
                         </Button>
                         <Button 
-                          onClick={handleCheckOut}
+                          onClick={handleEndSession}
                           variant="outline"
                           className="flex-1"
-                          disabled={!currentlyIn.some(record => record.memberId === currentMember.id)}
+                          disabled={!activeSessions.some(s => s.memberId === currentMember.id && s.isActive)}
                         >
                           <LogOut className="w-4 h-4 mr-2" />
-                          Check Out
+                          End Session
                         </Button>
                       </div>
                     </CardContent>
@@ -397,60 +344,70 @@ const EnhancedCheckInOut: React.FC = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
                       <Users className="w-5 h-5 text-primary" />
-                      <span>Currently In ({currentlyIn.length})</span>
+                      <span>Currently In ({activeSessions.length})</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    {currentlyIn.length === 0 ? (
+                    {activeSessions.length === 0 ? (
                       <p className="text-center text-muted-foreground py-4">
                         No members currently checked in
                       </p>
                     ) : (
                       <div className="space-y-3">
-                        {currentlyIn.map(record => (
-                          <div key={record.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                            <div>
-                              <p className="font-medium">{record.memberName}</p>
-                              <p className="text-sm text-muted-foreground">
-                                Since {formatTime(record.checkInTime)}
-                              </p>
+                        {activeSessions.map(session => {
+                          const member = members.find(m => m.id === session.memberId);
+                          return (
+                            <div key={session.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                              <div>
+                                <p className="font-medium">{member?.name}</p>
+                                <p className="text-sm text-muted-foreground">
+                                  Code: {session.code}
+                                </p>
+                                <p className="text-xs text-muted-foreground">
+                                  Since {formatTime(session.startedAt)}
+                                </p>
+                              </div>
+                              <Badge variant="default">Active</Badge>
                             </div>
-                            <Badge className={getTierColor(record.memberTier)}>
-                              {record.memberTier}
-                            </Badge>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     )}
                   </CardContent>
                 </Card>
 
-                {/* Today's Stats */}
+                {/* Capacity Status */}
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
-                      <Clock className="w-5 h-5 text-primary" />
-                      <span>Today's Stats</span>
+                      <Settings className="w-5 h-5 text-primary" />
+                      <span>Space Status</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">
-                          {checkInRecords.filter(r => r.status === 'checked-out').length}
-                        </div>
-                        <div className="text-sm text-muted-foreground">Check-ins</div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">
+                        {activeSessions.length}/{capacity}
                       </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">
-                          {checkInRecords
-                            .filter(r => r.status === 'checked-out' && r.duration)
-                            .reduce((total, r) => total + (r.duration || 0), 0)
-                          }
-                        </div>
-                        <div className="text-sm text-muted-foreground">Total Minutes</div>
-                      </div>
+                      <div className="text-sm text-muted-foreground">Members</div>
                     </div>
+                    
+                    {isAtCapacity && (
+                      <Alert>
+                        <Lock className="h-4 w-4" />
+                        <AlertDescription>
+                          Space is at capacity. New members will be added to waitlist.
+                        </AlertDescription>
+                      </Alert>
+                    )}
+                    
+                    {waitlistCount > 0 && (
+                      <div className="text-center">
+                        <div className="text-lg font-semibold text-orange-600">
+                          {waitlistCount} on waitlist
+                        </div>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </div>
@@ -469,7 +426,7 @@ const EnhancedCheckInOut: React.FC = () => {
                       <span>Self-Service Check-In</span>
                     </CardTitle>
                     <CardDescription>
-                      Enter your member code to check in or out
+                      Enter your member email to check in or out
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -478,13 +435,13 @@ const EnhancedCheckInOut: React.FC = () => {
                         <QrCode className="w-16 h-16 text-muted-foreground" />
                       </div>
                       <p className="text-sm text-muted-foreground mb-4">
-                        Enter your member code (e.g., MEMBER_001)
+                        Enter your member email
                       </p>
                     </div>
 
                     <div className="space-y-4">
                       <Input
-                        placeholder="Enter your member code"
+                        placeholder="Enter your member email"
                         value={memberCode}
                         onChange={(e) => setMemberCode(e.target.value)}
                         onKeyPress={(e) => e.key === 'Enter' && handleCodeEntry(memberCode)}
@@ -495,7 +452,7 @@ const EnhancedCheckInOut: React.FC = () => {
                         className="w-full"
                         disabled={!memberCode}
                       >
-                        Check Member Code
+                        Check Member
                       </Button>
                     </div>
                   </CardContent>
@@ -514,30 +471,29 @@ const EnhancedCheckInOut: React.FC = () => {
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-muted-foreground">{currentMember.email}</p>
-                          <p className="text-sm text-muted-foreground">Code: {currentMember.qrCode}</p>
                         </div>
-                        <Badge className={getTierColor(currentMember.memberTier)}>
-                          {currentMember.memberTier.toUpperCase()}
+                        <Badge className={getTierColor(currentMember.planId)}>
+                          {currentMember.planId.toUpperCase()}
                         </Badge>
                       </div>
 
                       <div className="flex space-x-3">
                         <Button 
-                          onClick={handleCheckIn}
+                          onClick={handleStartSession}
                           className="flex-1"
-                          disabled={currentlyIn.some(record => record.memberId === currentMember.id)}
+                          disabled={activeSessions.some(s => s.memberId === currentMember.id && s.isActive)}
                         >
                           <LogIn className="w-4 h-4 mr-2" />
-                          Check In
+                          Start Session
                         </Button>
                         <Button 
-                          onClick={handleCheckOut}
+                          onClick={handleEndSession}
                           variant="outline"
                           className="flex-1"
-                          disabled={!currentlyIn.some(record => record.memberId === currentMember.id)}
+                          disabled={!activeSessions.some(s => s.memberId === currentMember.id && s.isActive)}
                         >
                           <LogOut className="w-4 h-4 mr-2" />
-                          Check Out
+                          End Session
                         </Button>
                       </div>
                     </CardContent>
@@ -560,29 +516,32 @@ const EnhancedCheckInOut: React.FC = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
                       <Users className="w-5 h-5 text-primary" />
-                      <span>Currently In ({currentlyIn.length})</span>
+                      <span>Currently In ({activeSessions.length})</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    {currentlyIn.length === 0 ? (
+                    {activeSessions.length === 0 ? (
                       <p className="text-center text-muted-foreground py-4">
                         No members currently checked in
                       </p>
                     ) : (
                       <div className="space-y-3">
-                        {currentlyIn.map(record => (
-                          <div key={record.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                            <div>
-                              <p className="font-medium">{record.memberName}</p>
-                              <p className="text-sm text-muted-foreground">
-                                Since {formatTime(record.checkInTime)}
-                              </p>
+                        {activeSessions.map(session => {
+                          const member = members.find(m => m.id === session.memberId);
+                          return (
+                            <div key={session.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                              <div>
+                                <p className="font-medium">{member?.name}</p>
+                                <p className="text-sm text-muted-foreground">
+                                  Since {formatTime(session.startedAt)}
+                                </p>
+                              </div>
+                              <Badge className={getTierColor(member?.planId || '')}>
+                                {member?.planId}
+                              </Badge>
                             </div>
-                            <Badge className={getTierColor(record.memberTier)}>
-                              {record.memberTier}
-                            </Badge>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     )}
                   </CardContent>
@@ -615,59 +574,9 @@ const EnhancedCheckInOut: React.FC = () => {
             </div>
           </TabsContent>
         </Tabs>
-
-        {/* Recent Activity */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <Clock className="w-5 h-5 text-primary" />
-              <span>Recent Activity</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {checkInRecords.length === 0 ? (
-              <p className="text-center text-muted-foreground py-4">
-                No activity today
-              </p>
-            ) : (
-              <div className="space-y-3">
-                {checkInRecords
-                  .sort((a, b) => new Date(b.checkInTime).getTime() - new Date(a.checkInTime).getTime())
-                  .slice(0, 10)
-                  .map(record => (
-                    <div key={record.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                      <div className="flex items-center space-x-3">
-                        <div className={`w-2 h-2 rounded-full ${
-                          record.status === 'checked-in' ? 'bg-green-500' : 'bg-gray-400'
-                        }`} />
-                        <div>
-                          <p className="font-medium">{record.memberName}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {record.status === 'checked-in' 
-                              ? `Checked in at ${formatTime(record.checkInTime)}`
-                              : `Checked out at ${formatTime(record.checkOutTime!)} (${formatDuration(record.duration || 0)})`
-                            }
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Badge className={getTierColor(record.memberTier)}>
-                          {record.memberTier}
-                        </Badge>
-                        <Badge variant="outline" className="text-xs">
-                          {record.checkedInBy}
-                        </Badge>
-                      </div>
-                    </div>
-                  ))
-                }
-              </div>
-            )}
-          </CardContent>
-        </Card>
       </div>
     </div>
   );
 };
 
-export default EnhancedCheckInOut;
+export default CheckIn;

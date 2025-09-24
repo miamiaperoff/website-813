@@ -13,7 +13,7 @@
 - **Admin Dashboard**: `https://813cafe.com/admin` (for you to manage everything)
 
 ### **Your Admin Login:**
-- **Email**: `ana@813cafe.com`
+- **Email**: `hey@813cafe.com`
 - **Password**: `admin123`
 - **Access**: Full admin dashboard with member management, analytics, and all features
 
@@ -221,7 +221,7 @@
 
 ## 📱 Mobile Access
 
-### **For You (Ana):**
+### **For You (Ana Calubiran):**
 - Access admin dashboard on your phone at `https://813cafe.com/admin`
 - Monitor occupancy remotely
 - Check member status anywhere

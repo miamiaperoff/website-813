@@ -585,7 +585,7 @@ const Coworking = () => {
               </div>
               <div className="text-center">
                 <div className="w-8 h-8 bg-warm-accent text-primary rounded-full flex items-center justify-center mx-auto mb-2 font-bold">3</div>
-                <p>Contact Ana for payment</p>
+                <p>Contact Ana Calubiran for payment</p>
               </div>
               <div className="text-center">
                 <div className="w-8 h-8 bg-warm-accent text-primary rounded-full flex items-center justify-center mx-auto mb-2 font-bold">4</div>

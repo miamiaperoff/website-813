@@ -41,31 +41,31 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('home')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
+              className={`${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200`}
             >
               Home
             </button>
             <button 
               onClick={() => scrollToSection('about')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
+              className={`${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200`}
             >
               About
             </button>
             <button 
               onClick={() => scrollToSection('menu')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
+              className={`${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200`}
             >
               Menu
             </button>
             <Link 
               to="/coworking"
-              className="text-white hover:text-warm-accent transition-colors duration-200"
+              className={`${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200`}
             >
               Coworking
             </Link>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
+              className={`${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200`}
             >
               Contact
             </button>
@@ -73,7 +73,7 @@ const Navigation = () => {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-white hover:text-warm-accent transition-colors duration-200"
+            className={`md:hidden ${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -90,7 +90,7 @@ const Navigation = () => {
                 scrollToSection('home');
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+              className={`block w-full text-left ${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200 py-2`}
             >
               Home
             </button>
@@ -99,7 +99,7 @@ const Navigation = () => {
                 scrollToSection('about');
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+              className={`block w-full text-left ${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200 py-2`}
             >
               About
             </button>
@@ -108,14 +108,14 @@ const Navigation = () => {
                 scrollToSection('menu');
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+              className={`block w-full text-left ${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200 py-2`}
             >
               Menu
             </button>
             <Link 
               to="/coworking"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+              className={`block w-full text-left ${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200 py-2`}
             >
               Coworking
             </Link>
@@ -124,7 +124,7 @@ const Navigation = () => {
                 scrollToSection('contact');
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+              className={`block w-full text-left ${isScrolled ? 'text-primary hover:text-warm-accent' : 'text-white hover:text-warm-accent'} transition-colors duration-200 py-2`}
             >
               Contact
             </button>
