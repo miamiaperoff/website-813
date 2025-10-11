@@ -225,9 +225,8 @@ const Menu = () => {
                 COFFEE+
               </div>
               <p className="text-sm text-muted-foreground mb-6 text-center">
-                Iced or Hot (0-4 pumps sugar) Comes with a featured dessert
-                16 oz, Iced or Hot<br/>
-                Choose 1: brownie, or bread
+                Iced or Hot (0-4 pumps sugar)<br/>
+                Comes with a featured dessert
               </p>
               
               <div className="space-y-4">
@@ -253,10 +252,6 @@ const Menu = () => {
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">CAPPUCCINO</h4>
-                  <div>
-                    <h4 className="font-medium text-foreground">CAPPUCCINO / LATTE</h4>
-                    <p className="text-sm text-muted-foreground">(+₱20.00 to add Mocha or Caramel)</p>
-                  </div>
                   <span className="font-semibold text-primary">160</span>
                 </div>
                 
@@ -268,51 +263,11 @@ const Menu = () => {
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">ICED COFFEE</h4>
                   <span className="font-semibold text-primary">110</span>
-                  <span className="font-semibold text-primary">120</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
                   <h4 className="font-medium text-foreground">BREWED COFFEE</h4>
                   <span className="font-semibold text-primary">90</span>
-                  <span className="font-semibold text-primary">80</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">ICED COFFEE (with Milk & Maple Syrup)</h4>
-                  <span className="font-semibold text-primary">100</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">SPANISH LATTE</h4>
-                  <span className="font-semibold text-primary">130</span>
-                </div>
-              </div>
-            </Card>
-
-            {/* Specialty Drinks */}
-            <Card className="p-6 bg-card border-none shadow-warm">
-              <h3 className="font-serif text-2xl font-semibold text-primary mb-4 text-center">
-                SPECIALTY DRINKS
-              </h3>
-              <p className="text-sm text-muted-foreground mb-6 text-center">12 oz, Iced or Hot</p>
-              
-              <div className="space-y-4">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="font-medium text-foreground">TSOKOLATE</h4>
-                    <p className="text-sm text-muted-foreground">100% Cacao Drink with Fresh Milk</p>
-                  </div>
-                  <span className="font-semibold text-primary">60</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="font-medium text-foreground">MATCHA LATTE</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Authentic Japanese Matcha with Fresh Milk and Maple Syrup
-                    </p>
-                  </div>
-                  <span className="font-semibold text-primary">130</span>
                 </div>
                 
                 <div className="flex justify-between items-start">
