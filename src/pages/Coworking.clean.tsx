@@ -44,6 +44,16 @@ const Coworking = () => {
             >
               Sign Up Today
             </Button>
+            <Button 
+              asChild
+              size="lg"
+              variant="outline"
+              className="bg-white/20 hover:bg-white/30 border-2 border-white text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg backdrop-blur-sm"
+            >
+              <Link to="/auth">
+                Log in
+              </Link>
+            </Button>
           </div>
         </div>
         

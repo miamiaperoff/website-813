@@ -585,19 +585,6 @@ class DatabaseService {
     return !data || data.length === 0;
   }
 
-  // Helper to convert drink redemption row to DrinkRedemption type
-  private mapDrinkRedemptionRow(row: any): DrinkRedemption {
-    return {
-      id: row.id,
-      memberId: row.member_id,
-      voucherId: row.voucher_id,
-      amount: row.amount,
-      redeemedAt: row.redeemed_at,
-      cashier: row.cashier,
-      voided: row.voided || false
-    };
-  }
-
   async createDrinkRedemption(redemption: Omit<DrinkRedemption, 'id' | 'voucherId'>): Promise<DrinkRedemption> {
     const voucherId = `VOUCHER-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     

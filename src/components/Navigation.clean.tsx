@@ -63,6 +63,12 @@ const Navigation = () => {
             >
               Coworking
             </Link>
+            <Link 
+              to="/auth"
+              className="text-white hover:text-warm-accent transition-colors duration-200"
+            >
+              Login
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -77,7 +83,7 @@ const Navigation = () => {
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-sm border-t border-white/20">
+        <div className="md:hidden bg-primary backdrop-blur-sm border-t border-white/20">
           <div className="px-4 py-4 space-y-3">
             <button 
               onClick={() => {
@@ -112,6 +118,13 @@ const Navigation = () => {
               className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
             >
               Coworking
+            </Link>
+            <Link 
+              to="/auth"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+            >
+              Login
             </Link>
           </div>
         </div>
