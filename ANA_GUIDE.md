@@ -14,7 +14,7 @@
 
 ### **Your Admin Login:**
 - **Email**: `hey@813cafe.com`
-- **Password**: `admin123`
+- **Password**: Set in Supabase Auth dashboard (contact developer if you need to reset)
 - **Access**: Full admin dashboard with member management, analytics, and all features
 
 ---

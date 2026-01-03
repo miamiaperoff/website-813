@@ -6,6 +6,7 @@ export interface Member {
   name: string;
   planId: string;
   status: 'active' | 'inactive' | 'suspended';
+  notes?: string;
 }
 
 export interface Plan {
@@ -69,6 +70,7 @@ export interface DrinkRedemption {
   cashier: string;
   redeemedAt: string;
   voucherId: string;
+  amount?: number;
   voided?: boolean;
   voidReason?: string;
 }

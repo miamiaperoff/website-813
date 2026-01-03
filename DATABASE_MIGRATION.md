@@ -40,9 +40,9 @@ Go to your Supabase dashboard:
 
 | Email | Password | Role |
 |-------|----------|------|
-| `hey@813cafe.com` | `admin123` | Admin |
-| `john@example.com` | `password123` | Member |
-| `sarah@example.com` | `password123` | Member |
+| `hey@813cafe.com` | (Set in Supabase Auth) | Admin |
+| `john@example.com` | (Set in Supabase Auth) | Member |
+| `sarah@example.com` | (Set in Supabase Auth) | Member |
 
 ### 4. Test the System
 
@@ -50,7 +50,7 @@ Go to your Supabase dashboard:
 npm run dev
 ```
 
-Go to `http://localhost:8081/auth` and test login with the demo credentials.
+Go to `http://localhost:8081/auth` and test login with credentials set in Supabase Auth.
 
 ## 📊 What's Been Migrated
 
@@ -101,7 +101,7 @@ Go to `http://localhost:8081/auth` and test login with the demo credentials.
 
 ### 1. **Login Test**
 - Go to `/auth`
-- Try logging in with demo credentials
+- Try logging in with credentials set in Supabase Auth
 - Should redirect to admin dashboard or member portal
 
 ### 2. **Session Management**

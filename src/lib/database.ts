@@ -17,6 +17,18 @@ import {
 } from './types';
 
 class DatabaseService {
+  // Helper to convert database row to Member type
+  private mapMemberRow(row: any): Member {
+    return {
+      id: row.id,
+      name: row.name,
+      email: row.email,
+      planId: row.plan_id,
+      status: row.status,
+      notes: row.notes
+    };
+  }
+
   // Member Management
   async getMembers(): Promise<Member[]> {
     const { data, error } = await supabase
@@ -25,7 +37,7 @@ class DatabaseService {
       .order('created_at', { ascending: false });
     
     if (error) throw error;
-    return data || [];
+    return (data || []).map(row => this.mapMemberRow(row));
   }
 
   async getMember(id: string): Promise<Member | null> {
@@ -36,7 +48,7 @@ class DatabaseService {
       .single();
     
     if (error) return null;
-    return data;
+    return this.mapMemberRow(data);
   }
 
   async getMemberByEmail(email: string): Promise<Member | null> {
@@ -47,18 +59,36 @@ class DatabaseService {
       .single();
     
     if (error) return null;
-    return data;
+    return this.mapMemberRow(data);
   }
 
   async createMember(member: Omit<Member, 'id'>): Promise<Member> {
+    // Convert camelCase to snake_case for database
+    const dbMember = {
+      name: member.name,
+      email: member.email,
+      plan_id: member.planId,
+      status: member.status,
+      notes: member.notes
+    };
+    
     const { data, error } = await supabase
       .from(TABLES.MEMBERS)
-      .insert(member)
+      .insert(dbMember)
       .select()
       .single();
     
     if (error) throw error;
-    return data;
+    
+    // Convert snake_case back to camelCase
+    return {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      planId: data.plan_id,
+      status: data.status,
+      notes: data.notes
+    };
   }
 
   async updateMember(id: string, updates: Partial<Member>): Promise<Member | null> {
@@ -71,6 +101,15 @@ class DatabaseService {
     
     if (error) return null;
     return data;
+  }
+
+  async deleteMember(id: string): Promise<boolean> {
+    const { error } = await supabase
+      .from(TABLES.MEMBERS)
+      .delete()
+      .eq('id', id);
+    
+    return !error;
   }
 
   // Plan Management
@@ -140,6 +179,20 @@ class DatabaseService {
     return data;
   }
 
+  // Helper to convert subscription period row to SubscriptionPeriod type
+  private mapSubscriptionPeriodRow(row: any): SubscriptionPeriod {
+    return {
+      id: row.id,
+      memberId: row.member_id,
+      periodStart: row.period_start,
+      periodEnd: row.period_end,
+      isPaid: row.is_paid,
+      markedBy: row.marked_by,
+      markedAt: row.marked_at,
+      note: row.note
+    };
+  }
+
   // Subscription Period Management
   async getSubscriptionPeriods(): Promise<SubscriptionPeriod[]> {
     const { data, error } = await supabase
@@ -148,7 +201,7 @@ class DatabaseService {
       .order('created_at', { ascending: false });
     
     if (error) throw error;
-    return data || [];
+    return (data || []).map(row => this.mapSubscriptionPeriodRow(row));
   }
 
   async getCurrentPeriod(memberId: string): Promise<SubscriptionPeriod | null> {
@@ -162,18 +215,31 @@ class DatabaseService {
       .single();
     
     if (error) return null;
-    return data;
+    return this.mapSubscriptionPeriodRow(data);
   }
 
   async createSubscriptionPeriod(period: Omit<SubscriptionPeriod, 'id'>): Promise<SubscriptionPeriod> {
+    // Convert camelCase to snake_case for database
+    const dbPeriod = {
+      member_id: period.memberId,
+      period_start: period.periodStart,
+      period_end: period.periodEnd,
+      is_paid: period.isPaid,
+      marked_by: period.markedBy,
+      marked_at: period.markedAt,
+      note: period.note
+    };
+    
     const { data, error } = await supabase
       .from(TABLES.SUBSCRIPTION_PERIODS)
-      .insert(period)
+      .insert(dbPeriod)
       .select()
       .single();
     
     if (error) throw error;
-    return data;
+    
+    // Convert snake_case back to camelCase
+    return this.mapSubscriptionPeriodRow(data);
   }
 
   async updatePeriodPayment(id: string, isPaid: boolean, markedBy: string, note?: string): Promise<SubscriptionPeriod | null> {
@@ -190,7 +256,48 @@ class DatabaseService {
       .single();
     
     if (error) return null;
-    return data;
+    return this.mapSubscriptionPeriodRow(data);
+  }
+
+  async updateSubscriptionPeriod(id: string, updates: {
+    periodStart?: string;
+    periodEnd?: string;
+    isPaid?: boolean;
+    markedBy?: string;
+    note?: string;
+  }): Promise<SubscriptionPeriod | null> {
+    const dbUpdates: any = {};
+    if (updates.periodStart !== undefined) dbUpdates.period_start = updates.periodStart;
+    if (updates.periodEnd !== undefined) dbUpdates.period_end = updates.periodEnd;
+    if (updates.isPaid !== undefined) dbUpdates.is_paid = updates.isPaid;
+    if (updates.markedBy !== undefined) dbUpdates.marked_by = updates.markedBy;
+    if (updates.note !== undefined) dbUpdates.note = updates.note;
+    if (updates.markedBy || updates.isPaid !== undefined) {
+      dbUpdates.marked_at = new Date().toISOString();
+    }
+
+    const { data, error } = await supabase
+      .from(TABLES.SUBSCRIPTION_PERIODS)
+      .update(dbUpdates)
+      .eq('id', id)
+      .select()
+      .single();
+    
+    if (error) return null;
+    
+    // Convert snake_case to camelCase
+    return this.mapSubscriptionPeriodRow(data);
+  }
+
+  async getSubscriptionPeriodsByMember(memberId: string): Promise<SubscriptionPeriod[]> {
+    const { data, error } = await supabase
+      .from(TABLES.SUBSCRIPTION_PERIODS)
+      .select('*')
+      .eq('member_id', memberId)
+      .order('period_start', { ascending: false });
+    
+    if (error) throw error;
+    return (data || []).map(row => this.mapSubscriptionPeriodRow(row));
   }
 
   // Session Management
@@ -420,6 +527,100 @@ class DatabaseService {
   // Get current time in Asia/Manila timezone
   getManilaTime(): Date {
     return new Date(new Date().toLocaleString("en-US", {timeZone: "Asia/Manila"}));
+  }
+
+  // Helper to convert drink redemption row to DrinkRedemption type
+  private mapDrinkRedemptionRow(row: any): DrinkRedemption {
+    return {
+      id: row.id,
+      memberId: row.member_id,
+      voucherId: row.voucher_id,
+      amount: row.amount,
+      redeemedAt: row.redeemed_at,
+      cashier: row.cashier,
+      voided: row.voided || false
+    };
+  }
+
+  // Drink Redemption Management
+  async getMemberDrinkRedemptions(memberId: string, dateFrom?: string, dateTo?: string): Promise<DrinkRedemption[]> {
+    let query = supabase
+      .from(TABLES.DRINK_REDEMPTIONS)
+      .select('*')
+      .eq('member_id', memberId)
+      .eq('voided', false)
+      .order('redeemed_at', { ascending: false });
+
+    if (dateFrom) {
+      query = query.gte('redeemed_at', dateFrom);
+    }
+    if (dateTo) {
+      query = query.lte('redeemed_at', dateTo);
+    }
+
+    const { data, error } = await query;
+    
+    if (error) throw error;
+    return (data || []).map(row => this.mapDrinkRedemptionRow(row));
+  }
+
+  async canRedeemVoucherToday(memberId: string): Promise<boolean> {
+    // Get Manila time for today's date
+    const manilaTime = this.getManilaTime();
+    const todayStart = new Date(manilaTime);
+    todayStart.setHours(0, 0, 0, 0);
+    const todayEnd = new Date(manilaTime);
+    todayEnd.setHours(23, 59, 59, 999);
+
+    const { data, error } = await supabase
+      .from(TABLES.DRINK_REDEMPTIONS)
+      .select('id')
+      .eq('member_id', memberId)
+      .eq('voided', false)
+      .gte('redeemed_at', todayStart.toISOString())
+      .lte('redeemed_at', todayEnd.toISOString())
+      .limit(1);
+
+    if (error) return false;
+    return !data || data.length === 0;
+  }
+
+  // Helper to convert drink redemption row to DrinkRedemption type
+  private mapDrinkRedemptionRow(row: any): DrinkRedemption {
+    return {
+      id: row.id,
+      memberId: row.member_id,
+      voucherId: row.voucher_id,
+      amount: row.amount,
+      redeemedAt: row.redeemed_at,
+      cashier: row.cashier,
+      voided: row.voided || false
+    };
+  }
+
+  async createDrinkRedemption(redemption: Omit<DrinkRedemption, 'id' | 'voucherId'>): Promise<DrinkRedemption> {
+    const voucherId = `VOUCHER-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    
+    // Convert camelCase to snake_case for database
+    const redemptionData = {
+      member_id: redemption.memberId,
+      voucher_id: voucherId,
+      amount: redemption.amount,
+      redeemed_at: redemption.redeemedAt,
+      cashier: redemption.cashier,
+      voided: redemption.voided || false
+    };
+
+    const { data, error } = await supabase
+      .from(TABLES.DRINK_REDEMPTIONS)
+      .insert(redemptionData)
+      .select()
+      .single();
+    
+    if (error) throw error;
+    
+    // Convert snake_case back to camelCase
+    return this.mapDrinkRedemptionRow(data);
   }
 }
 

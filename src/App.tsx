@@ -12,8 +12,8 @@ import NotFound from "./pages/NotFound";
 
 // New Coworking System Pages
 import Auth from "./pages/Auth";
-import Admin from "./pages/Admin";
-import MemberPortal from "./pages/MemberPortal";
+import CoworkingAdmin from "./pages/CoworkingAdmin";
+import CoworkingMembers from "./pages/CoworkingMembers";
 import PlanSelection from "./pages/PlanSelection";
 import DrinkRedemption from "./pages/DrinkRedemption";
 import CheckIn from "./pages/CheckIn";
@@ -43,9 +43,11 @@ const App = () => (
             {/* Authentication Routes */}
             <Route path="/auth" element={<Auth />} />
             
-            {/* Protected Routes */}
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/member" element={<MemberPortal />} />
+            {/* Protected Routes - Club 813 Members Portal */}
+            <Route path="/coworking/admin" element={<CoworkingAdmin />} />
+            <Route path="/coworking/members" element={<CoworkingMembers />} />
+            
+            {/* Legacy Protected Routes */}
             <Route path="/friday" element={<FridayReservations />} />
             <Route path="/guests" element={<GuestPasses />} />
             <Route path="/meeting" element={<MeetingRoom />} />

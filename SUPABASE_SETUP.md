@@ -63,7 +63,7 @@ You can create demo users in two ways:
 -- This will create auth users (you'll need to set passwords in the dashboard)
 INSERT INTO auth.users (id, email, encrypted_password, email_confirmed_at, created_at, updated_at)
 VALUES 
-  ('550e8400-e29b-41d4-a716-446655440001', 'hey@813cafe.com', crypt('admin123', gen_salt('bf')), NOW(), NOW(), NOW()),
+  ('550e8400-e29b-41d4-a716-446655440001', 'hey@813cafe.com', crypt('YOUR_ADMIN_PASSWORD', gen_salt('bf')), NOW(), NOW(), NOW()),
   ('550e8400-e29b-41d4-a716-446655440002', 'john@example.com', crypt('password123', gen_salt('bf')), NOW(), NOW(), NOW()),
   ('550e8400-e29b-41d4-a716-446655440003', 'sarah@example.com', crypt('password123', gen_salt('bf')), NOW(), NOW(), NOW());
 ```
@@ -72,9 +72,9 @@ VALUES
 
 1. Start your development server: `npm run dev`
 2. Go to `http://localhost:8081/auth`
-3. Try logging in with the demo credentials:
-   - Admin: `hey@813cafe.com` / `admin123`
-   - Member: `john@example.com` / `password123`
+3. Set passwords in Supabase Auth dashboard for users:
+   - Admin: `hey@813cafe.com` (set password via Supabase Auth)
+   - Members: Set passwords individually via Supabase Auth or admin panel
 
 ## 8. Production Considerations
 

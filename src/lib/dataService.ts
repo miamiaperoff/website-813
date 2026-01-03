@@ -38,6 +38,14 @@ class DataService {
     return await databaseService.updateMember(id, updates);
   }
 
+  async updateMemberNotes(memberId: string, notes: string): Promise<Member | null> {
+    return await databaseService.updateMember(memberId, { notes });
+  }
+
+  async deleteMember(id: string): Promise<boolean> {
+    return await databaseService.deleteMember(id);
+  }
+
   // Plan Management
   async getPlans(): Promise<Plan[]> {
     return await databaseService.getPlans();
@@ -69,8 +77,17 @@ class DataService {
     return await databaseService.getSubscriptionPeriods();
   }
 
+  async getSubscriptionPeriodsByMember(memberId: string): Promise<SubscriptionPeriod[]> {
+    return await databaseService.getSubscriptionPeriodsByMember(memberId);
+  }
+
   async getCurrentPeriod(memberId: string): Promise<SubscriptionPeriod | null> {
     return await databaseService.getCurrentPeriod(memberId);
+  }
+
+  async getNextPaymentDate(memberId: string): Promise<string | null> {
+    const currentPeriod = await this.getCurrentPeriod(memberId);
+    return currentPeriod?.periodEnd || null;
   }
 
   async createSubscriptionPeriod(period: Omit<SubscriptionPeriod, 'id'>): Promise<SubscriptionPeriod> {
@@ -79,6 +96,16 @@ class DataService {
 
   async updatePeriodPayment(id: string, isPaid: boolean, markedBy: string, note?: string): Promise<SubscriptionPeriod | null> {
     return await databaseService.updatePeriodPayment(id, isPaid, markedBy, note);
+  }
+
+  async updateSubscriptionPeriod(id: string, updates: {
+    periodStart?: string;
+    periodEnd?: string;
+    isPaid?: boolean;
+    markedBy?: string;
+    note?: string;
+  }): Promise<SubscriptionPeriod | null> {
+    return await databaseService.updateSubscriptionPeriod(id, updates);
   }
 
   // Session Management
@@ -160,13 +187,82 @@ class DataService {
   }
 
   async getDrinkRedemptions(): Promise<DrinkRedemption[]> {
-    // TODO: Implement drink redemptions
-    return [];
+    return await databaseService.getMemberDrinkRedemptions('');
   }
 
-  async createDrinkRedemption(redemption: Omit<DrinkRedemption, 'id'>): Promise<DrinkRedemption | null> {
-    // TODO: Implement drink redemption creation
-    return null;
+  async getMemberDrinkRedemptions(memberId: string, dateFrom?: string, dateTo?: string): Promise<DrinkRedemption[]> {
+    return await databaseService.getMemberDrinkRedemptions(memberId, dateFrom, dateTo);
+  }
+
+  async createDrinkRedemption(redemption: Omit<DrinkRedemption, 'id'>): Promise<DrinkRedemption> {
+    return await databaseService.createDrinkRedemption(redemption);
+  }
+
+  async canRedeemVoucherToday(memberId: string): Promise<boolean> {
+    return await databaseService.canRedeemVoucherToday(memberId);
+  }
+
+  async redeemDailyVoucher(memberId: string, amount: number = 150, cashier: string = 'member'): Promise<DrinkRedemption> {
+    const redemption: Omit<DrinkRedemption, 'id' | 'voucherId'> = {
+      memberId,
+      cashier,
+      redeemedAt: new Date().toISOString(),
+      amount,
+      voided: false
+    };
+    return await databaseService.createDrinkRedemption(redemption);
+  }
+
+  async getMemberSubscriptionInfo(memberId: string): Promise<{
+    member: Member | null;
+    plan: Plan | null;
+    subscription: Subscription | null;
+    currentPeriod: SubscriptionPeriod | null;
+    nextPaymentDate: string | null;
+  }> {
+    const [member, subscription, currentPeriod] = await Promise.all([
+      this.getMember(memberId),
+      this.getSubscriptionByMember(memberId),
+      this.getCurrentPeriod(memberId)
+    ]);
+
+    const plan = member ? await this.getPlan(member.planId) : null;
+    const nextPaymentDate = currentPeriod?.periodEnd || null;
+
+    return {
+      member,
+      plan,
+      subscription,
+      currentPeriod,
+      nextPaymentDate
+    };
+  }
+
+  async getMemberRedemptionStats(memberId: string): Promise<{
+    totalThisMonth: number;
+    totalLast30Days: number;
+    lastRedemptionDate: string | null;
+    recentRedemptions: DrinkRedemption[];
+  }> {
+    const now = new Date();
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    const thirtyDaysAgo = new Date(now);
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+    const [thisMonth, last30Days, allRecent] = await Promise.all([
+      this.getMemberDrinkRedemptions(memberId, startOfMonth.toISOString()),
+      this.getMemberDrinkRedemptions(memberId, thirtyDaysAgo.toISOString()),
+      this.getMemberDrinkRedemptions(memberId)
+    ]);
+
+    const lastRedemption = allRecent.length > 0 ? allRecent[0].redeemedAt : null;
+
+    return {
+      totalThisMonth: thisMonth.length,
+      totalLast30Days: last30Days.length,
+      lastRedemptionDate: lastRedemption,
+      recentRedemptions: allRecent.slice(0, 10) // Last 10 redemptions
+    };
   }
 
   async getTickets(): Promise<Ticket[]> {

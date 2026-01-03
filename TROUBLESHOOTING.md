@@ -60,7 +60,7 @@ After running the schema:
 1. **Start your app**: `npm run dev`
 2. **Check browser console** for any errors
 3. **Go to**: `http://localhost:8081/auth`
-4. **Try logging in** with demo credentials
+4. **Try logging in** with credentials set in Supabase Auth
 
 ## Step 6: Debug Authentication
 
