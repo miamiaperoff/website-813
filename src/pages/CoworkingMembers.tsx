@@ -171,14 +171,18 @@ const CoworkingMembers: React.FC = () => {
                     {subscriptionInfo.member.status}
                   </Badge>
                 </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Paid Until</span>
+                  <span className="font-medium">
+                    {subscriptionInfo.currentPeriod 
+                      ? formatDate(subscriptionInfo.currentPeriod.periodEnd)
+                      : subscriptionInfo.nextPaymentDate
+                      ? formatDate(subscriptionInfo.nextPaymentDate)
+                      : 'N/A'}
+                  </span>
+                </div>
                 {subscriptionInfo.currentPeriod && (
                   <>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Paid Until</span>
-                      <span className="font-medium">
-                        {formatDate(subscriptionInfo.currentPeriod.periodEnd)}
-                      </span>
-                    </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-muted-foreground">Next Payment</span>
                       <span className="font-medium">
