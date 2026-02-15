@@ -24,307 +24,229 @@ const Menu = () => {
             {/* Bestsellers */}
             <Card className="p-6 bg-card border-none shadow-warm">
               <div className="bg-red-600 text-white px-4 py-2 rounded mb-4 text-center font-semibold">
-                BESTSELLERS
+                eight thirteen BESTSELLERS
               </div>
               <div className="space-y-6">
                 <div className="border-b border-border pb-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h4 className="font-medium text-foreground">MATCHA</h4>
+                      <h4 className="font-medium text-foreground">Spanish Latte</h4>
                       <p className="text-sm text-muted-foreground mt-1">
-                        Customer favorite matcha w/ fresh milk and sugar syrup (0-4 pumps)
+                        Creamy espresso sweetened with condensed milk.
+                      </p>
+                    </div>
+                    <span className="font-semibold text-primary">160</span>
+                  </div>
+                </div>
+                <div className="border-b border-border pb-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h4 className="font-medium text-foreground">Beef Lasagna</h4>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Layered pasta with meat sauce, Béchamel, and two types of cheeses.
+                      </p>
+                    </div>
+                    <span className="font-semibold text-primary">180</span>
+                  </div>
+                </div>
+                <div className="border-b border-border pb-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h4 className="font-medium text-foreground">Muffin</h4>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Blueberry, Chocolate Chip, or Cheese. Our mantra: whatever the problem is, a muffin is the answer.
+                      </p>
+                    </div>
+                    <span className="font-semibold text-primary">55</span>
+                  </div>
+                </div>
+                <div className="border-b border-border pb-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h4 className="font-medium text-foreground">Matcha Latte</h4>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Smooth green tea drink with steamed milk.
                       </p>
                     </div>
                     <span className="font-semibold text-primary">150</span>
                   </div>
                 </div>
-                
-                <div className="border-b border-border pb-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="font-medium text-foreground">LASAGNA</h4>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Fresh House-Made Pasta with Meat Sauce, Béchamel + Fresh Mango Juice
-                      </p>
-                    </div>
-                    <span className="font-semibold text-primary">185</span>
-                  </div>
-                </div>
-                
                 <div>
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h4 className="font-medium text-foreground">TSOKOLATE</h4>
+                      <h4 className="font-medium text-foreground">Tsokolate</h4>
                       <p className="text-sm text-muted-foreground mt-1">
-                        Made with 100% cacao tablea w/ milk and sugar (0-4 pumps)
+                        Rich chocolate drink from cacao tablea.
                       </p>
                     </div>
-                    <span className="font-semibold text-primary">110</span>
+                    <span className="font-semibold text-primary">130</span>
                   </div>
                 </div>
               </div>
             </Card>
 
-            {/* Carmela's Classics */}
+            {/* Pasta Good for Sharing */}
             <Card className="p-6 bg-card border-none shadow-warm">
               <div className="bg-yellow-500 text-white px-4 py-2 rounded mb-4 text-center font-semibold">
-                CARMELA'S CLASSICS
+                PASTA GOOD FOR SHARING (SERVES 2)
               </div>
-              <div className="text-center mb-4">
-                <p className="text-sm text-muted-foreground">Carmela's Home Favorites</p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="border-b border-border pb-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="font-medium text-foreground">SIOPAO/MEATBREAD</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Chicken or Pork, as available. Soft, fluffy, filling. Served warm.
-                      </p>
-                    </div>
-                    <span className="font-semibold text-primary">50</span>
-                  </div>
-                </div>
-                
-                <div className="border-b border-border pb-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="font-medium text-foreground">EMPANADA</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Savory, flaky, and generously filled w/ beef, potatoes, carrots, and cheese.
-                      </p>
-                    </div>
-                    <span className="font-semibold text-primary">35</span>
-                  </div>
-                </div>
-                
-                <div className="border-b border-border pb-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="font-medium text-foreground">FRESH LUMPIA</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Delicate roll of veggies with peanut-garlic sauce.
-                      </p>
-                    </div>
-                    <span className="font-semibold text-primary">40</span>
-                  </div>
-                </div>
-                
-                <div>
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="font-medium text-foreground">CHOCOLATE CAKE</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Moist, dense, and deeply chocolatey. Well-loved since 1996!
-                      </p>
-                    </div>
-                    <span className="font-semibold text-primary">70</span>
-                  </div>
-                </div>
-                
-                <div className="border-b border-border pb-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="font-medium text-foreground">SIOPAO / MEATBREAD</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Asado or Bola-Bola. Soft, fluffy, filling. Served warm.
-                      </p>
-                    </div>
-                    <span className="font-semibold text-primary">50</span>
-                  </div>
-                </div>
-                
-                <div>
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="font-medium text-foreground">EMPANADA</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Savory, flaky, and generously filled with beef, potatoes, carrots, and cheese.
-                      </p>
-                    </div>
-                    <span className="font-semibold text-primary">35</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </div>
-
-          {/* Middle Column */}
-          <div className="space-y-8">
-            {/* Food Menu */}
-            <Card className="p-6 bg-card border-none shadow-warm">
-              <div className="bg-yellow-500 text-white px-4 py-2 rounded mb-4 text-center font-semibold">
-                FOOD MENU
-              </div>
-              
               <div className="space-y-6">
+                <div className="border-b border-border pb-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h4 className="font-medium text-foreground">Carbonara</h4>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Authentic carbonara—egg yolks tempered with pasta water into a silky, creamy sauce that perfectly complements the ham.
+                      </p>
+                    </div>
+                    <span className="font-semibold text-primary">250</span>
+                  </div>
+                </div>
+                <div className="border-b border-border pb-4">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h4 className="font-medium text-foreground">Spaghetti</h4>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Beefy, hearty spaghetti—slow-simmered meat sauce with savory ground beef, tossed into tender noodles and finished with a sprinkle of cheese.
+                      </p>
+                    </div>
+                    <span className="font-semibold text-primary">220</span>
+                  </div>
+                </div>
                 <div>
-                  <h4 className="font-medium text-foreground mb-3">PASTA</h4>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Served with toasted bread and fresh, house-made juice
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-foreground">Lasagna</span>
-                      <span className="font-semibold text-primary">185</span>
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h4 className="font-medium text-foreground">Palabok</h4>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Classic pancit palabok with thin rice noodles in rich shrimp sauce, topped with savory crunch and bright citrus.
+                      </p>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-foreground">Spaghetti</span>
-                      <span className="font-semibold text-primary">165</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-foreground">Pancit Palabok</span>
-                      <span className="font-semibold text-primary">150</span>
-                    </div>
+                    <span className="font-semibold text-primary">150</span>
                   </div>
-                </div>
-                
-                <div className="border-t border-border pt-4">
-                  <h4 className="font-medium text-foreground mb-3">ALL-DAY SILOG</h4>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Served with two eggs, garlic rice, and a side of Bacalao
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-foreground">Tapsilog</span>
-                      <span className="font-semibold text-primary">185</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-foreground">Pork Steak Silog</span>
-                      <span className="font-semibold text-primary">175</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-foreground">Chorizo Silog</span>
-                      <span className="font-semibold text-primary">175</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-foreground">Hungarian Sausage</span>
-                      <span className="font-semibold text-primary">175</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-foreground">Spanish Sardines</span>
-                      <span className="font-semibold text-primary">165</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-foreground">Bangus Silog</span>
-                      <span className="font-semibold text-primary">165</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-foreground">Cornsilog</span>
-                      <span className="font-semibold text-primary">155</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            {/* Coffee+ */}
-            <Card className="p-6 bg-card border-none shadow-warm">
-              <div className="bg-yellow-500 text-white px-4 py-2 rounded mb-4 text-center font-semibold">
-                COFFEE+
-              </div>
-              <p className="text-sm text-muted-foreground mb-6 text-center">
-                Iced or Hot (0-4 pumps sugar)<br/>
-                Comes with a featured dessert
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">LATTE</h4>
-                  <span className="font-semibold text-primary">150</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">MOCHA LATTE</h4>
-                  <span className="font-semibold text-primary">160</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">CARAMEL LATTE</h4>
-                  <span className="font-semibold text-primary">160</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">SPANISH LATTE</h4>
-                  <span className="font-semibold text-primary">160</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">CAPPUCCINO</h4>
-                  <span className="font-semibold text-primary">160</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">AMERICANO</h4>
-                  <span className="font-semibold text-primary">110</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">ICED COFFEE</h4>
-                  <span className="font-semibold text-primary">110</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">BREWED COFFEE</h4>
-                  <span className="font-semibold text-primary">90</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">GREEN TEA</h4>
-                  <span className="font-semibold text-primary">80</span>
-                </div>
-              </div>
-            </Card>
-
-            {/* Cold Drinks */}
-            <Card className="p-6 bg-card border-none shadow-warm">
-              <h3 className="font-serif text-2xl font-semibold text-primary mb-6 text-center">
-                COLD DRINKS
-              </h3>
-              
-              <div className="space-y-4">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h4 className="font-medium text-foreground">FRESH JUICES</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Seasonal and limited availability. No sugar added.<br/>
-                      Guava | Mango | Orange
-                    </p>
-                  </div>
-                  <span className="font-semibold text-primary">100</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">COCONUT WATER</h4>
-                  <span className="font-semibold text-primary">40</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">BOTTLED WATER</h4>
-                  <span className="font-semibold text-primary">30</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">SPARKLING WATER</h4>
-                  <span className="font-semibold text-primary">45</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">SOFT DRINKS</h4>
-                  <span className="font-semibold text-primary">30</span>
-                </div>
-                
-                <div className="flex justify-between items-start">
-                  <h4 className="font-medium text-foreground">CUCUMBER JUICE</h4>
-                  <span className="font-semibold text-primary">40</span>
                 </div>
               </div>
             </Card>
           </div>
 
-          {/* Right Column */}
+          {/* Middle Column - Signature Drinks */}
           <div className="space-y-8">
+            <Card className="p-6 bg-card border-none shadow-warm">
+              <div className="bg-green-800 text-white px-4 py-2 rounded mb-4 text-center font-semibold">
+                eight thirteen SIGNATURE DRINKS
+              </div>
+              <p className="text-sm text-muted-foreground mb-2 text-center">
+                All coffee orders come with a featured dessert
+              </p>
+              <p className="text-sm text-muted-foreground mb-6 text-center">
+                Iced or hot · Sweetness level: 0% · 25% · 50% · 75% · 100%
+              </p>
+
+              {/* Coffee+ */}
+              <h4 className="font-medium text-foreground mb-3">COFFEE+</h4>
+              <div className="space-y-2 mb-6">
+                {[
+                  ['Brewed Coffee', 80], ['Americano', 110], ['Cappuccino', 150], ['Café Latte', 150],
+                  ['Vanilla Latte', 150], ['Mocha Latte', 160], ['Caramel Latte', 160], ['Spanish Latte', 160],
+                  ['Strawberry Latte', 160], ['Cinnamon Latte', 160], ['Salted Caramel Latte', 160], ['Hazelnut Latte', 160],
+                  ['Biscoff Latte', 170], ['Caramel Macchiato', 170], ['Strawberry Mocha Latte', 170], ['Oreo Latte', 170],
+                  ['Dirty Matcha', 170], ['Golden Drizzle Latte', 170], ['White Chocolate Latte', 170],
+                ].map(([name, price]) => (
+                  <div key={name} className="flex justify-between items-center">
+                    <span className="text-sm text-foreground">{name}</span>
+                    <span className="font-semibold text-primary">{price}</span>
+                  </div>
+                ))}
+              </div>
+
+              <h4 className="font-medium text-foreground mb-3">FRAPPE</h4>
+              <div className="space-y-2 mb-6">
+                {[
+                  ['Strawberry Crème', 200], ['Matcha Frappe', 200], ['Oreo Crème Frappe', 200],
+                  ['Java Chip Frappe', 200], ['Caramel Frappe', 200], ['White Mocha Frappe', 200],
+                ].map(([name, price]) => (
+                  <div key={name} className="flex justify-between items-center">
+                    <span className="text-sm text-foreground">{name}</span>
+                    <span className="font-semibold text-primary">{price}</span>
+                  </div>
+                ))}
+              </div>
+
+              <h4 className="font-medium text-foreground mb-3">REFRESHERS</h4>
+              <div className="space-y-2 mb-6">
+                {[
+                  ['Lotus Ink', 130], ['Unleaded Burst', 130], ['Ruby Lemonade Spritz', 130],
+                ].map(([name, price]) => (
+                  <div key={name} className="flex justify-between items-center">
+                    <span className="text-sm text-foreground">{name}</span>
+                    <span className="font-semibold text-primary">{price}</span>
+                  </div>
+                ))}
+              </div>
+
+              <h4 className="font-medium text-foreground mb-3">NON-COFFEE</h4>
+              <div className="space-y-2">
+                {[
+                  ['Green Tea', 80], ['Fresh Juice', 90], ['Tsokolate', 130], ['Matcha Latte', 150],
+                  ['Strawberry Matcha', 170], ['Oreo Matcha Latte', 170],
+                ].map(([name, price]) => (
+                  <div key={name} className="flex justify-between items-center">
+                    <span className="text-sm text-foreground">{name}</span>
+                    <span className="font-semibold text-primary">{price}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            {/* Request a drink / Feedback */}
+            <Card className="p-6 bg-card border-none shadow-warm">
+              <div className="text-center">
+                <p className="text-sm font-medium text-foreground mb-2">REQUEST A DRINK OR GIVE FEEDBACK</p>
+                <a
+                  href="https://813cafe.org/feedback"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-primary text-primary-foreground px-6 py-2 rounded-md font-medium hover:bg-primary/90 transition-colors"
+                >
+                  Give Feedback
+                </a>
+              </div>
+            </Card>
+          </div>
+
+          {/* Right Column - Build Your Silog */}
+          <div className="space-y-8">
+            <Card className="p-6 bg-card border-none shadow-warm">
+              <div className="bg-yellow-500 text-white px-4 py-2 rounded mb-4 text-center font-semibold">
+                BUILD YOUR SILOG 180
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-medium text-foreground mb-2">Step 1: Choose one protein</h4>
+                  <p className="text-sm text-muted-foreground mb-2">Add any extra protein for 80</p>
+                  <div className="flex flex-wrap gap-2 text-sm text-foreground">
+                    Beef Tapa · Pork Steak · Hungarian Sausage · Corned Beef · Salmon in Oil · Spanish Sardines · Bangus in Oil
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-2">Extra: Spanish Chorizo · Spam · Siomai · Skinless Longganisa</p>
+                </div>
+
+                <div>
+                  <h4 className="font-medium text-foreground mb-2">Step 2: Two eggs your way</h4>
+                  <p className="text-sm text-foreground">Sunny Side Up · Scrambled</p>
+                </div>
+
+                <div>
+                  <h4 className="font-medium text-foreground mb-2">Step 3: Rice</h4>
+                  <p className="text-sm text-foreground">Plain Rice · Garlic Fried Rice</p>
+                </div>
+
+                <div>
+                  <h4 className="font-medium text-foreground mb-2">Step 4: Drink</h4>
+                  <p className="text-sm text-foreground">Juice · Coffee</p>
+                </div>
+              </div>
+            </Card>
+
             {/* Coworking Information */}
             <Card className="p-6 bg-card border-none shadow-warm">
               <div className="text-center mb-6">
@@ -340,23 +262,6 @@ const Menu = () => {
               </div>
             </Card>
 
-            {/* Feedback Section */}
-            <Card className="p-6 bg-card border-none shadow-warm">
-              <div className="text-center">
-                <p className="text-sm text-muted-foreground mb-4">
-                  Want to see something else on our menu? Let us know!
-                </p>
-                <a 
-                  href="https://813cafe.org/feedback" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-block bg-primary text-primary-foreground px-6 py-2 rounded-md font-medium hover:bg-primary/90 transition-colors"
-                >
-                  Give Feedback
-                </a>
-                <p className="text-sm font-medium text-primary mt-3">THANK YOU!</p>
-              </div>
-            </Card>
           </div>
         </div>
       </div>
