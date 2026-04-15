@@ -42,6 +42,7 @@ const Careers = () => {
   const [applyingTo, setApplyingTo] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
   const { toast } = useToast();
 
   useEffect(() => { fetchJobs(); }, []);
