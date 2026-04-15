@@ -37,17 +37,17 @@ const CareersAdmin = () => {
   const [notes, setNotes] = useState('');
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const { toast } = useToast();
-  const { authState } = useAuth();
+  const auth = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!authState.isLoading && !authState.isAuthenticated) {
+    if (!auth.isLoading && !auth.isAuthenticated) {
       navigate('/auth');
     }
-  }, [authState, navigate]);
+  }, [auth.isLoading, auth.isAuthenticated, navigate]);
 
   useEffect(() => {
-    if (authState.isAuthenticated) fetchApplications();
+    if (auth.isAuthenticated) fetchApplications();
   }, [authState.isAuthenticated]);
 
   const fetchApplications = async () => {
@@ -91,7 +91,7 @@ const CareersAdmin = () => {
     ? applications 
     : applications.filter(a => a.status === filterStatus);
 
-  if (authState.isLoading) return <div className="flex items-center justify-center min-h-screen"><p>Loading...</p></div>;
+  if (auth.isLoading) return <div className="flex items-center justify-center min-h-screen"><p>Loading...</p></div>;
 
   return (
     <div className="min-h-screen bg-background p-4 sm:p-8">
