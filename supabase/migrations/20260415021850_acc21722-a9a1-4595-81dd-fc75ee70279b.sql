@@ -1,0 +1,1 @@
+UPDATE public.job_listings SET created_at = now() WHERE title ILIKE '%assistant manager%';
