@@ -18,7 +18,7 @@ const Hero = () => {
           alt="813 Cafe barista"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-primary/50" />
+        
       </div>
 
       {/* Content */}
