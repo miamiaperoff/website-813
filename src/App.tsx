@@ -24,6 +24,7 @@ import SupportTickets from "./pages/SupportTickets";
 import Reporting from "./pages/Reporting";
 import Careers from "./pages/Careers";
 import CareersAdmin from "./pages/CareersAdmin";
+import Unsubscribe from "./pages/Unsubscribe";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ const App = () => (
             {/* Careers */}
             <Route path="/careers" element={<Careers />} />
             <Route path="/careers/admin" element={<CareersAdmin />} />
+            <Route path="/unsubscribe" element={<Unsubscribe />} />
             
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
