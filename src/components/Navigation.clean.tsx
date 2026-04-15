@@ -33,8 +33,8 @@ const Navigation = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-background/95 backdrop-blur-md shadow-warm py-2'
-          : 'bg-transparent py-4'
+          ? 'bg-background/95 backdrop-blur-md shadow-warm py-3'
+          : 'bg-transparent py-8'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -82,7 +82,7 @@ const Navigation = () => {
               src={logo}
               alt="Eight Thirteen"
               className={`transition-all duration-300 ${
-                isScrolled ? 'h-16 w-16' : 'h-24 w-24'
+                isScrolled ? 'h-20 w-20' : 'h-32 w-32'
               } rounded-full`}
             />
           </Link>
