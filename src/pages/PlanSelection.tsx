@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { dataService } from '@/lib/dataService';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,16 +10,19 @@ import { Plan } from '@/lib/types';
 const PlanSelection: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [plans, setPlans] = useState<Plan[]>([]);
   const navigate = useNavigate();
   
-  const plans = dataService.getPlans();
+  useEffect(() => {
+    dataService.getPlans().then(setPlans);
+  }, []);
 
   const handleSelectPlan = async (planId: string) => {
     setIsLoading(true);
     
     try {
       // Create subscription with pending status
-      const subscription = dataService.createSubscription({
+      const subscription = await dataService.createSubscription({
         memberId: 'temp_member', // In real app, this would be the logged-in user's ID
         status: 'pending'
       });
@@ -28,7 +31,7 @@ const PlanSelection: React.FC = () => {
       const now = new Date();
       const periodEnd = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // 30 days
       
-      dataService.createSubscriptionPeriod({
+      await dataService.createSubscriptionPeriod({
         memberId: 'temp_member',
         periodStart: now.toISOString(),
         periodEnd: periodEnd.toISOString(),

@@ -62,6 +62,7 @@ export interface GuestPass {
   issuedAt: string;
   usedAt?: string;
   code: string;
+  status?: string;
 }
 
 export interface DrinkRedemption {

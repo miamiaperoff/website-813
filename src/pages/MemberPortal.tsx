@@ -53,7 +53,7 @@ const MemberPortal: React.FC = () => {
 
   const loadData = async () => {
     try {
-      const sessions = dataService.getActiveSessions();
+      const sessions = await dataService.getActiveSessions();
       setActiveSessions(sessions);
       
       // Find current user's session
@@ -71,7 +71,7 @@ const MemberPortal: React.FC = () => {
     setMessage(null);
     
     try {
-      const result = dataService.startSession(user.id);
+      const result = await dataService.startSession(user.id);
       
       if (result.success && result.session) {
         setCurrentSession(result.session);
@@ -97,7 +97,7 @@ const MemberPortal: React.FC = () => {
     setMessage(null);
     
     try {
-      const result = dataService.endSession(currentSession.id);
+      const result = await dataService.endSession(currentSession.id);
       
       if (result.success) {
         setCurrentSession(null);
@@ -120,7 +120,7 @@ const MemberPortal: React.FC = () => {
     setMessage(null);
     
     try {
-      const result = dataService.validateSessionCode(sessionCode);
+      const result = await dataService.validateSessionCode(sessionCode);
       
       if (result.success) {
         setMessage({ type: 'success', text: 'Valid session code!' });
