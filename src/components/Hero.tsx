@@ -1,4 +1,5 @@
 import logo from '@/assets/eight-thirteen-logo.png';
+import heroImage from '@/assets/hero-image.jpg';
 
 const Hero = () => {
   const scrollToMenu = () => {
@@ -9,10 +10,19 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-primary">
+    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt="813 Cafe barista"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-primary/75" />
+      </div>
+
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-        
         <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-primary-foreground font-light italic leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
           Café · Coworking · Event Space
         </p>
