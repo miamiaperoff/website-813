@@ -99,6 +99,25 @@ const Careers = () => {
       toast({ title: 'Failed to submit application. Please try again.', variant: 'destructive' });
     } else {
       toast({ title: 'Application submitted successfully!' });
+
+      // Send notification email to hey@813cafe.com
+      const jobTitle = jobs.find(j => j.id === jobId)?.title || 'Unknown Position';
+      supabase.functions.invoke('send-transactional-email', {
+        body: {
+          templateName: 'new-application-notification',
+          recipientEmail: 'hey@813cafe.com',
+          idempotencyKey: `app-notify-${jobId}-${Date.now()}`,
+          templateData: {
+            jobTitle,
+            applicantName: formData.name.trim(),
+            applicantEmail: formData.email.trim(),
+            applicantPhone: formData.phone.trim() || '',
+            coverMessage: formData.message.trim(),
+            hasResume: !!resumeFile,
+          },
+        },
+      }).catch(err => console.error('Failed to send notification email:', err));
+
       setFormData({ name: '', email: '', phone: '', message: '' });
       setResumeFile(null);
       setApplyingTo(null);
