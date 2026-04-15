@@ -22,6 +22,8 @@ import GuestPasses from "./pages/GuestPasses";
 import MeetingRoom from "./pages/MeetingRoom";
 import SupportTickets from "./pages/SupportTickets";
 import Reporting from "./pages/Reporting";
+import Careers from "./pages/Careers";
+import CareersAdmin from "./pages/CareersAdmin";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +55,10 @@ const App = () => (
             <Route path="/meeting" element={<MeetingRoom />} />
             <Route path="/support" element={<SupportTickets />} />
             <Route path="/reports" element={<Reporting />} />
+            
+            {/* Careers */}
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/careers/admin" element={<CareersAdmin />} />
             
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
