@@ -65,13 +65,34 @@ const Careers = () => {
       toast({ title: 'Please fill in all required fields', variant: 'destructive' });
       return;
     }
+
     setSubmitting(true);
+
+    let resumeUrl: string | null = null;
+
+    // Upload resume if provided
+    if (resumeFile) {
+      const fileExt = resumeFile.name.split('.').pop();
+      const filePath = `${jobId}/${Date.now()}_${formData.name.trim().replace(/\s+/g, '_')}.${fileExt}`;
+      const { error: uploadError } = await supabase.storage
+        .from('resumes')
+        .upload(filePath, resumeFile, { contentType: 'application/pdf' });
+
+      if (uploadError) {
+        toast({ title: 'Failed to upload resume. Please try again.', variant: 'destructive' });
+        setSubmitting(false);
+        return;
+      }
+      resumeUrl = filePath;
+    }
+
     const { error } = await supabase.from('job_applications').insert({
       job_listing_id: jobId,
       applicant_name: formData.name.trim(),
       applicant_email: formData.email.trim(),
       applicant_phone: formData.phone.trim() || null,
       cover_message: formData.message.trim(),
+      resume_url: resumeUrl,
       status: 'new',
     });
     if (error) {
@@ -79,9 +100,24 @@ const Careers = () => {
     } else {
       toast({ title: 'Application submitted successfully!' });
       setFormData({ name: '', email: '', phone: '', message: '' });
+      setResumeFile(null);
       setApplyingTo(null);
     }
     setSubmitting(false);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.type !== 'application/pdf') {
+      toast({ title: 'Only PDF files are accepted', variant: 'destructive' });
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      toast({ title: 'File must be under 5MB', variant: 'destructive' });
+      return;
+    }
+    setResumeFile(file);
   };
 
   return (
