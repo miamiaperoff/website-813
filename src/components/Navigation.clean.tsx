@@ -77,7 +77,7 @@ const Navigation = () => {
           </div>
 
           {/* Center logo */}
-          <Link to="/" className="absolute left-1/2 -translate-x-1/2">
+          <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
             <img
               src={logo}
               alt="Eight Thirteen"
@@ -85,6 +85,9 @@ const Navigation = () => {
                 isScrolled ? 'h-20 w-20' : 'h-32 w-32'
               } rounded-full`}
             />
+            <span className={`text-[10px] tracking-[0.2em] uppercase font-medium mt-1 transition-all duration-300 ${isScrolled || !isHome ? 'text-muted-foreground' : 'text-primary-foreground/70'}`}>
+              Open 24/7
+            </span>
           </Link>
 
           {/* Right nav links */}
