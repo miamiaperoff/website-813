@@ -117,7 +117,7 @@ export default {
 				'float': 'float 3s ease-in-out infinite'
 			},
 			fontFamily: {
-				'serif': ['Playfair Display', 'serif'],
+				'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
 				'sans': ['Inter', 'system-ui', 'sans-serif']
 			},
 			backgroundImage: {
