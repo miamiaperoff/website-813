@@ -10,7 +10,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col items-end justify-end overflow-hidden">
+    <section id="home" className="relative min-h-screen flex flex-col items-center justify-end overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
@@ -22,7 +22,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-right px-8 pb-24 max-w-3xl">
+      <div className="relative z-10 text-center px-6 pb-24 max-w-3xl mx-auto">
         <p className="font-serif text-4xl md:text-5xl lg:text-7xl text-primary-foreground font-light italic leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
           Work better. Stay longer.<br />Feel good at 813 Café.
         </p>
