@@ -34,7 +34,7 @@ const Navigation = () => {
       className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled
           ? 'bg-background/95 backdrop-blur-md shadow-warm py-3'
-          : 'bg-transparent py-8'
+          : 'bg-transparent py-12'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
