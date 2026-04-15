@@ -22,7 +22,7 @@ const PlanSelection: React.FC = () => {
     
     try {
       // Create subscription with pending status
-      const subscription = dataService.createSubscription({
+      const subscription = await dataService.createSubscription({
         memberId: 'temp_member', // In real app, this would be the logged-in user's ID
         status: 'pending'
       });
@@ -31,7 +31,7 @@ const PlanSelection: React.FC = () => {
       const now = new Date();
       const periodEnd = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000); // 30 days
       
-      dataService.createSubscriptionPeriod({
+      await dataService.createSubscriptionPeriod({
         memberId: 'temp_member',
         periodStart: now.toISOString(),
         periodEnd: periodEnd.toISOString(),
