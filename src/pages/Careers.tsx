@@ -124,7 +124,7 @@ const Careers = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      <div className="pt-32 pb-24 px-6 lg:px-8 max-w-3xl mx-auto">
+      <div className="pt-52 pb-24 px-6 lg:px-8 max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-foreground italic mb-4">
             Careers
