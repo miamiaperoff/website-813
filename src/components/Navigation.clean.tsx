@@ -38,14 +38,6 @@ const Navigation = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        {/* Top bar: address + phone (visible on scroll) */}
-        <div
-          className={`text-center text-xs tracking-widest uppercase transition-all duration-300 overflow-hidden ${
-            isScrolled ? 'max-h-0 opacity-0' : 'max-h-8 opacity-70 mb-3'
-          } ${isScrolled || !isHome ? 'text-muted-foreground' : 'text-primary-foreground'}`}
-        >
-          Ozamiz City &nbsp;&nbsp;·&nbsp;&nbsp; hey@813cafe.com
-        </div>
 
         {/* Main nav row */}
         <div className="flex items-center justify-between relative">
