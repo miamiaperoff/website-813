@@ -48,7 +48,7 @@ const CareersAdmin = () => {
 
   useEffect(() => {
     if (auth.isAuthenticated) fetchApplications();
-  }, [authState.isAuthenticated]);
+  }, [auth.isAuthenticated]);
 
   const fetchApplications = async () => {
     const { data, error } = await supabase
