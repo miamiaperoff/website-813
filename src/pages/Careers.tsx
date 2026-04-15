@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { MapPin, Clock, Briefcase, ChevronDown, ChevronUp, Send } from 'lucide-react';
+import { MapPin, Clock, Briefcase, ChevronDown, ChevronUp, Send, Paperclip, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
