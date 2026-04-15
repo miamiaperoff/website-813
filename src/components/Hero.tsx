@@ -12,11 +12,7 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-primary">
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-        <img
-          src={logo}
-          alt="Eight Thirteen"
-          className="h-48 md:h-64 lg:h-72 w-auto mx-auto mb-10 animate-fade-in rounded-full"
-        />
+        
         <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-primary-foreground font-light italic leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
           Café · Coworking · Event Space
         </p>

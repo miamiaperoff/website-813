@@ -90,7 +90,7 @@ const Navigation = () => {
               src={logo}
               alt="Eight Thirteen"
               className={`transition-all duration-300 ${
-                isScrolled ? 'h-12 w-12' : 'h-16 w-16'
+                isScrolled ? 'h-14 w-14' : 'h-20 w-20'
               } rounded-full`}
             />
           </Link>
