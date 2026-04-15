@@ -56,7 +56,7 @@ const Coworking = () => {
             {[
               { icon: Clock, title: '24/7 Access', desc: 'Round-the-clock access to our premium coworking space.' },
               { icon: Users, title: 'Reserved Desk', desc: 'Reserved desk during Members-Only Hours (8PM–11AM, except Fridays).' },
-              { icon: Wifi, title: 'Fast WiFi & Power', desc: 'Starlink-powered high-speed internet and power outlets at every desk.' },
+              { icon: Wifi, title: 'Fast WiFi & Power', desc: 'Reliable high-speed internet powered by Starlink, PLDT, and Globe, so you stay connected for work, streaming, or your next big project.' },
               { icon: Coffee, title: 'Daily Free Drink', desc: '1 free drink per day (up to ₱150) to fuel your productivity.' },
               { icon: Zap, title: 'Member Events', desc: 'Invitations to bi-weekly member events and networking.' },
               { icon: Heart, title: 'Safe & Secure', desc: 'Secure location near City Hall with CCTV monitoring and printing services.' },
