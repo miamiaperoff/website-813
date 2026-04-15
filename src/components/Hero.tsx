@@ -1,5 +1,4 @@
-import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/cafe-hero.jpg';
+import logo from '@/assets/eight-thirteen-logo.png';
 
 const Hero = () => {
   const scrollToMenu = () => {
@@ -10,46 +9,43 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 z-0 bg-primary" />
-      
+    <section id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-primary">
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div className="mb-6 animate-fade-in">
-          <img 
-            src="/lovable-uploads/b5915cf5-79c3-44c9-8158-de5a8d709a90.png" 
-            alt="Eight Thirteen Cafe Logo" 
-            className="h-64 md:h-80 lg:h-96 w-auto mx-auto"
-          />
-        </div>
-        <p className="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in font-medium" style={{ animationDelay: '0.2s' }}>
-          Work Feels Good Here
+      <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
+        <img
+          src={logo}
+          alt="Eight Thirteen"
+          className="h-48 md:h-64 lg:h-72 w-auto mx-auto mb-10 animate-fade-in rounded-full"
+        />
+        <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-primary-foreground font-light italic leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          Café · Coworking · Event Space
+        </p>
+        <p className="text-sm md:text-base text-primary-foreground/70 mt-6 tracking-widest uppercase animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          Ozamiz City
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <Button 
+        <div className="flex gap-6 justify-center mt-10 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <button
             onClick={scrollToMenu}
-            size="lg"
-            className="bg-warm-accent hover:bg-warm-accent/90 text-primary font-medium px-8 py-3 rounded-full shadow-accent transition-all duration-300 hover:scale-105"
+            className="text-xs tracking-[0.2em] uppercase font-medium text-primary-foreground border border-primary-foreground/40 px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-all duration-300"
           >
-            Menu
-          </Button>
-          <Button 
-            variant="outline"
-            size="lg"
-            onClick={() => window.open('https://813cafe.org/order-online', '_blank')}
-            className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium px-8 py-3 rounded-full transition-all duration-300"
+            Menus
+          </button>
+          <a
+            href="https://813cafe.org/order-online"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs tracking-[0.2em] uppercase font-medium text-primary-foreground border border-primary-foreground/40 px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-all duration-300"
           >
-            Order Ahead
-          </Button>
+            Order Online
+          </a>
         </div>
       </div>
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-float">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-primary-foreground/50 animate-float">
+        <div className="w-5 h-8 border border-primary-foreground/30 rounded-full flex justify-center">
+          <div className="w-0.5 h-2.5 bg-primary-foreground/40 rounded-full mt-1.5"></div>
         </div>
       </div>
     </section>
