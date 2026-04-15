@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import logo from '@/assets/eight-thirteen-logo.png';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -20,60 +22,106 @@ const Navigation = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMobileMenuOpen(false);
   };
 
+  const navTextClass = isScrolled
+    ? 'text-foreground hover:text-muted-foreground'
+    : 'text-primary-foreground hover:text-primary-foreground/70';
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-background/95 backdrop-blur-sm shadow-warm' 
-        : 'bg-primary/90 backdrop-blur-sm'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <img 
-              src="/lovable-uploads/33fb7cc1-5128-4c8c-a81f-9658f1523f1a.png" 
-              alt="Eight Thirteen Cafe Logo" 
-              className="h-10 w-10"
-            />
+    <nav
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-background/95 backdrop-blur-md shadow-warm py-2'
+          : 'bg-transparent py-4'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Top bar: address + phone (visible on scroll) */}
+        <div
+          className={`text-center text-xs tracking-widest uppercase transition-all duration-300 overflow-hidden ${
+            isScrolled ? 'max-h-0 opacity-0' : 'max-h-8 opacity-70 mb-3'
+          } ${isScrolled ? '' : 'text-primary-foreground'}`}
+        >
+          Ozamiz City &nbsp;&nbsp;·&nbsp;&nbsp; hey@813cafe.com
+        </div>
+
+        {/* Main nav row */}
+        <div className="flex items-center justify-between">
+          {/* Left nav links */}
+          <div className="hidden md:flex items-center gap-8">
+            {isHome ? (
+              <>
+                <button
+                  onClick={() => scrollToSection('about')}
+                  className={`text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-200 ${navTextClass}`}
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => scrollToSection('menu')}
+                  className={`text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-200 ${navTextClass}`}
+                >
+                  Menus
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/"
+                  className={`text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-200 ${navTextClass}`}
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/#menu"
+                  className={`text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-200 ${navTextClass}`}
+                >
+                  Menus
+                </Link>
+              </>
+            )}
           </div>
-          
-          <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('menu')}
-              className="text-white hover:text-warm-accent transition-colors duration-200"
-            >
-              Menu
-            </button>
-            <Link 
+
+          {/* Center logo */}
+          <Link to="/" className="flex-shrink-0">
+            <img
+              src={logo}
+              alt="Eight Thirteen"
+              className={`transition-all duration-300 ${
+                isScrolled ? 'h-12 w-12' : 'h-16 w-16'
+              } rounded-full`}
+            />
+          </Link>
+
+          {/* Right nav links */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link
               to="/coworking"
-              className="text-white hover:text-warm-accent transition-colors duration-200"
+              className={`text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-200 ${navTextClass}`}
             >
               Coworking
             </Link>
-            <Link 
-              to="/auth"
-              className="text-white hover:text-warm-accent transition-colors duration-200"
+            <Link
+              to="/careers"
+              className={`text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-200 ${navTextClass}`}
             >
-              Login
+              Careers
             </Link>
+            <a
+              href="https://813cafe.org/order-online"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-200 ${navTextClass}`}
+            >
+              Order Online
+            </a>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-white hover:text-warm-accent transition-colors duration-200"
+            className={`md:hidden transition-colors duration-200 ${navTextClass}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -81,51 +129,66 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-primary backdrop-blur-sm border-t border-white/20">
-          <div className="px-4 py-4 space-y-3">
-            <button 
-              onClick={() => {
-                scrollToSection('home');
-                setIsMobileMenuOpen(false);
-              }}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => {
-                scrollToSection('about');
-                setIsMobileMenuOpen(false);
-              }}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
-            >
-              About
-            </button>
-            <button 
-              onClick={() => {
-                scrollToSection('menu');
-                setIsMobileMenuOpen(false);
-              }}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
-            >
-              Menu
-            </button>
-            <Link 
+        <div className="md:hidden bg-background border-t border-border mt-2">
+          <div className="px-6 py-6 space-y-4">
+            {isHome ? (
+              <>
+                <button
+                  onClick={() => scrollToSection('about')}
+                  className="block w-full text-left text-xs tracking-[0.2em] uppercase font-medium text-foreground hover:text-muted-foreground py-2"
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => scrollToSection('menu')}
+                  className="block w-full text-left text-xs tracking-[0.2em] uppercase font-medium text-foreground hover:text-muted-foreground py-2"
+                >
+                  Menus
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-xs tracking-[0.2em] uppercase font-medium text-foreground hover:text-muted-foreground py-2"
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/#menu"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-xs tracking-[0.2em] uppercase font-medium text-foreground hover:text-muted-foreground py-2"
+                >
+                  Menus
+                </Link>
+              </>
+            )}
+            <Link
               to="/coworking"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+              className="block text-xs tracking-[0.2em] uppercase font-medium text-foreground hover:text-muted-foreground py-2"
             >
               Coworking
             </Link>
-            <Link 
-              to="/auth"
+            <Link
+              to="/careers"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full text-left text-white hover:text-warm-accent transition-colors duration-200 py-2"
+              className="block text-xs tracking-[0.2em] uppercase font-medium text-foreground hover:text-muted-foreground py-2"
             >
-              Login
+              Careers
             </Link>
+            <a
+              href="https://813cafe.org/order-online"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-xs tracking-[0.2em] uppercase font-medium text-foreground hover:text-muted-foreground py-2"
+            >
+              Order Online
+            </a>
           </div>
         </div>
       )}
