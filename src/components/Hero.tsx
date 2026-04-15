@@ -35,16 +35,8 @@ const Hero = () => {
             onClick={scrollToMenu}
             className="text-xs tracking-[0.2em] uppercase font-medium text-primary-foreground border border-primary-foreground/40 px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-all duration-300"
           >
-            Menus
+            What's on the menu
           </button>
-          <a
-            href="https://813cafe.org/order-online"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs tracking-[0.2em] uppercase font-medium text-primary-foreground border border-primary-foreground/40 px-8 py-3 hover:bg-primary-foreground hover:text-primary transition-all duration-300"
-          >
-            Order Online
-          </a>
         </div>
       </div>
 

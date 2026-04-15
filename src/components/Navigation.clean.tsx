@@ -109,14 +109,6 @@ const Navigation = () => {
             >
               Careers
             </Link>
-            <a
-              href="https://813cafe.org/order-online"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`text-xs tracking-[0.2em] uppercase font-medium transition-colors duration-200 ${navTextClass}`}
-            >
-              Order Online
-            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -180,15 +172,6 @@ const Navigation = () => {
             >
               Careers
             </Link>
-            <a
-              href="https://813cafe.org/order-online"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block text-xs tracking-[0.2em] uppercase font-medium text-foreground hover:text-muted-foreground py-2"
-            >
-              Order Online
-            </a>
           </div>
         </div>
       )}
