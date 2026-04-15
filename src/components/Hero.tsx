@@ -33,7 +33,7 @@ const Hero = () => {
         <div className="flex gap-6 justify-center mt-14 animate-fade-in" style={{ animationDelay: '0.4s' }}>
           <button
             onClick={scrollToMenu}
-            className="text-sm tracking-[0.2em] uppercase font-medium text-primary-foreground border border-primary-foreground/40 px-12 py-4 hover:bg-primary-foreground hover:text-primary transition-all duration-300"
+            className="text-sm tracking-[0.2em] uppercase font-medium text-primary-foreground bg-primary lg:bg-transparent border border-primary-foreground/40 px-12 py-4 hover:bg-primary-foreground hover:text-primary transition-all duration-300"
           >
             What's on the menu
           </button>
