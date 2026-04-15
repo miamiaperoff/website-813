@@ -70,7 +70,7 @@ const Admin: React.FC = () => {
   };
 
   const togglePeriodPayment = async (periodId: string, isPaid: boolean) => {
-    const updatedPeriod = dataService.updatePeriodPayment(
+    const updatedPeriod = await dataService.updatePeriodPayment(
       periodId, 
       isPaid, 
       user?.email || 'admin',

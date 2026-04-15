@@ -12,7 +12,8 @@ import {
   Clock,
   User,
   CreditCard,
-  AlertTriangle
+  AlertTriangle,
+  Activity
 } from 'lucide-react';
 
 interface Voucher {

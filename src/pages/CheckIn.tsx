@@ -86,7 +86,7 @@ const CheckIn: React.FC = () => {
 
   const loadData = async () => {
     try {
-      const sessions = dataService.getActiveSessions();
+      const sessions = await dataService.getActiveSessions();
       setActiveSessions(sessions);
     } catch (error) {
       console.error('Error loading data:', error);
@@ -113,7 +113,7 @@ const CheckIn: React.FC = () => {
     if (!currentMember) return;
 
     try {
-      const result = dataService.startSession(currentMember.id);
+      const result = await dataService.startSession(currentMember.id);
       
       if (result.success && result.session) {
         setMessage({ 
@@ -139,7 +139,7 @@ const CheckIn: React.FC = () => {
     }
 
     try {
-      const result = dataService.endSession(activeSession.id);
+      const result = await dataService.endSession(activeSession.id);
       
       if (result.success) {
         setMessage({ type: 'success', text: 'Session ended successfully' });
