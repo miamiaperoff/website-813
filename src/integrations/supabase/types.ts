@@ -163,6 +163,89 @@ export type Database = {
           },
         ]
       }
+      job_applications: {
+        Row: {
+          applicant_email: string
+          applicant_name: string
+          applicant_phone: string | null
+          cover_message: string | null
+          created_at: string
+          id: string
+          job_listing_id: string
+          notes: string | null
+          resume_url: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          applicant_email: string
+          applicant_name: string
+          applicant_phone?: string | null
+          cover_message?: string | null
+          created_at?: string
+          id?: string
+          job_listing_id: string
+          notes?: string | null
+          resume_url?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          applicant_email?: string
+          applicant_name?: string
+          applicant_phone?: string | null
+          cover_message?: string | null
+          created_at?: string
+          id?: string
+          job_listing_id?: string
+          notes?: string | null
+          resume_url?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "job_applications_job_listing_id_fkey"
+            columns: ["job_listing_id"]
+            isOneToOne: false
+            referencedRelation: "job_listings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      job_listings: {
+        Row: {
+          created_at: string
+          description: string
+          employment_type: string | null
+          id: string
+          is_active: boolean
+          location: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          employment_type?: string | null
+          id?: string
+          is_active?: boolean
+          location?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          employment_type?: string | null
+          id?: string
+          is_active?: boolean
+          location?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       members: {
         Row: {
           created_at: string | null
