@@ -22,8 +22,8 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 pb-32 max-w-5xl mx-auto">
-        <p className="font-serif text-6xl md:text-7xl lg:text-9xl text-primary-foreground font-light italic leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+      <div className="relative z-10 text-center px-6 pb-20 md:pb-32 max-w-5xl mx-auto">
+        <p className="font-serif text-3xl md:text-7xl lg:text-9xl text-primary-foreground font-light italic leading-tight md:leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
           Work better. Stay longer.<br />Feel good at 813 Café.
         </p>
         <p className="text-base md:text-lg text-primary-foreground/70 mt-8 tracking-widest uppercase animate-fade-in" style={{ animationDelay: '0.3s' }}>
