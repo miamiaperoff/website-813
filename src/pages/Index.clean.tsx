@@ -2,6 +2,7 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Menu from '@/components/Menu';
 import Contact from '@/components/Contact';
+import InstagramFeed from '@/components/InstagramFeed';
 import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation.clean';
 
@@ -13,6 +14,7 @@ const Index = () => {
       <About />
       <Menu />
       <Contact />
+      <InstagramFeed />
       <Footer />
     </div>
   );
