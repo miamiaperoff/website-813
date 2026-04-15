@@ -85,12 +85,12 @@ const Navigation = () => {
           </div>
 
           {/* Center logo */}
-          <Link to="/" className="flex-shrink-0">
+          <Link to="/" className="absolute left-1/2 -translate-x-1/2">
             <img
               src={logo}
               alt="Eight Thirteen"
               className={`transition-all duration-300 ${
-                isScrolled ? 'h-14 w-14' : 'h-20 w-20'
+                isScrolled ? 'h-16 w-16' : 'h-24 w-24'
               } rounded-full`}
             />
           </Link>
