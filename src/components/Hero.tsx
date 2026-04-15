@@ -23,8 +23,8 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-        <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-primary-foreground font-light italic leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          Café · Coworking · Event Space
+        <p className="font-serif text-4xl md:text-5xl lg:text-7xl text-primary-foreground font-light italic leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          Work better. Stay longer. Feel good at 813 Café.
         </p>
         <p className="text-sm md:text-base text-primary-foreground/70 mt-6 tracking-widest uppercase animate-fade-in" style={{ animationDelay: '0.3s' }}>
           Ozamiz City
