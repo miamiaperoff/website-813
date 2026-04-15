@@ -25,7 +25,7 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const navTextClass = isScrolled
+  const navTextClass = isScrolled || !isHome
     ? 'text-foreground hover:text-muted-foreground'
     : 'text-primary-foreground hover:text-primary-foreground/70';
 
@@ -42,13 +42,13 @@ const Navigation = () => {
         <div
           className={`text-center text-xs tracking-widest uppercase transition-all duration-300 overflow-hidden ${
             isScrolled ? 'max-h-0 opacity-0' : 'max-h-8 opacity-70 mb-3'
-          } ${isScrolled ? '' : 'text-primary-foreground'}`}
+          } ${isScrolled || !isHome ? 'text-muted-foreground' : 'text-primary-foreground'}`}
         >
           Ozamiz City &nbsp;&nbsp;·&nbsp;&nbsp; hey@813cafe.com
         </div>
 
         {/* Main nav row */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between relative">
           {/* Left nav links */}
           <div className="hidden md:flex items-center gap-8">
             {isHome ? (
@@ -85,12 +85,12 @@ const Navigation = () => {
           </div>
 
           {/* Center logo */}
-          <Link to="/" className="flex-shrink-0">
+          <Link to="/" className="absolute left-1/2 -translate-x-1/2">
             <img
               src={logo}
               alt="Eight Thirteen"
               className={`transition-all duration-300 ${
-                isScrolled ? 'h-14 w-14' : 'h-20 w-20'
+                isScrolled ? 'h-16 w-16' : 'h-24 w-24'
               } rounded-full`}
             />
           </Link>
