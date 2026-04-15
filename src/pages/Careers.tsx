@@ -207,6 +207,26 @@ const Careers = () => {
                             <label className="text-xs font-medium text-foreground uppercase tracking-wider">Why are you the right person? *</label>
                             <Textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} placeholder="Tell us about yourself..." rows={5} className="mt-1" />
                           </div>
+                          <div>
+                            <label className="text-xs font-medium text-foreground uppercase tracking-wider">Resume (PDF)</label>
+                            <div className="mt-1">
+                              {resumeFile ? (
+                                <div className="flex items-center gap-2 p-3 border border-border bg-background text-sm">
+                                  <Paperclip className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                                  <span className="truncate text-foreground">{resumeFile.name}</span>
+                                  <button type="button" onClick={() => setResumeFile(null)} className="ml-auto text-muted-foreground hover:text-foreground">
+                                    <X className="w-4 h-4" />
+                                  </button>
+                                </div>
+                              ) : (
+                                <label className="flex items-center gap-2 p-3 border border-dashed border-border cursor-pointer hover:bg-muted/30 transition-colors text-sm text-muted-foreground">
+                                  <Paperclip className="w-4 h-4" />
+                                  <span>Attach PDF (max 5MB)</span>
+                                  <input type="file" accept=".pdf,application/pdf" onChange={handleFileChange} className="hidden" />
+                                </label>
+                              )}
+                            </div>
+                          </div>
                           <div className="flex gap-3">
                             <Button onClick={() => handleApply(job.id)} disabled={submitting} className="bg-primary text-primary-foreground hover:bg-primary/90">
                               <Send className="w-4 h-4 mr-2" />
