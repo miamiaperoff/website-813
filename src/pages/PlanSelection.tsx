@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { dataService } from '@/lib/dataService';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,9 +10,12 @@ import { Plan } from '@/lib/types';
 const PlanSelection: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [plans, setPlans] = useState<Plan[]>([]);
   const navigate = useNavigate();
   
-  const plans = dataService.getPlans();
+  useEffect(() => {
+    dataService.getPlans().then(setPlans);
+  }, []);
 
   const handleSelectPlan = async (planId: string) => {
     setIsLoading(true);
