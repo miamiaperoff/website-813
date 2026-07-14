@@ -33,7 +33,7 @@ const Contact = () => {
             </h3>
             <p className="text-sm text-muted-foreground mb-4">hey@813cafe.com</p>
             <a
-              href="https://813cafe.org/order-online"
+              href="https://popup.ph/eight-thirteen-cafe/app"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block text-xs tracking-[0.2em] uppercase font-medium text-foreground border border-foreground px-6 py-2.5 hover:bg-foreground hover:text-background transition-all duration-300"

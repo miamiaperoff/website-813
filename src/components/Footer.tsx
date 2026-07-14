@@ -14,7 +14,7 @@ const Footer = () => {
           <Link to="/" className="hover:text-primary-foreground transition-colors">Home</Link>
           <Link to="/coworking" className="hover:text-primary-foreground transition-colors">Coworking</Link>
           <Link to="/careers" className="hover:text-primary-foreground transition-colors">Careers</Link>
-          <a href="https://813cafe.org/order-online" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors">Order</a>
+          <a href="https://popup.ph/eight-thirteen-cafe/app" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors">Order</a>
         </div>
         <div className="w-16 h-px bg-primary-foreground/20 mx-auto mb-6" />
         <p className="text-xs text-primary-foreground/40">
