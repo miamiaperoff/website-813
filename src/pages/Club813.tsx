@@ -67,6 +67,12 @@ const Club813 = () => {
             >
               Sign up — {peso(2500)}/month <ArrowRight className="w-4 h-4" />
             </a>
+            <Link
+              to="/auth"
+              className="inline-flex items-center gap-2 text-sm tracking-[0.2em] uppercase font-medium text-primary border border-primary px-10 py-4 hover:bg-primary hover:text-primary-foreground transition-colors"
+            >
+              Member login
+            </Link>
           </div>
           <p className="mt-6 text-xs text-muted-foreground">
             Unused credit expires at the end of your billing month. Use it or lose it.
