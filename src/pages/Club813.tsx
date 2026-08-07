@@ -170,7 +170,10 @@ const Club813 = () => {
                 <p className="font-serif text-3xl font-light text-foreground">{peso(2500)}</p>
                 <p className="mt-2 text-sm text-muted-foreground">{peso(2500)} of credit</p>
               </div>
-              <div className="border border-primary p-8 text-center bg-secondary/50">
+              <div className="border border-primary p-8 text-center bg-secondary/50 relative">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-block text-[10px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-4 py-1">
+                  Intro offer · expires Sept 1, 2026
+                </span>
                 <p className="font-serif text-3xl font-light text-foreground">{peso(4700)}</p>
                 <p className="mt-2 text-sm text-muted-foreground">{peso(5000)} of credit · {peso(300)} bonus</p>
               </div>
