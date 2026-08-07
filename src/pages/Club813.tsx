@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Wallet, QrCode, Store, CalendarX, Check, ArrowRight } from 'lucide-react';
+import { Wallet, QrCode, Store, CalendarX, Check, ArrowRight, Wifi, Armchair, Users } from 'lucide-react';
 import Navigation from '@/components/Navigation.clean';
 import Footer from '@/components/Footer';
 
