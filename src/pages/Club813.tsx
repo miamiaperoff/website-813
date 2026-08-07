@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Wallet, QrCode, Store, CalendarX, Check, ArrowRight, Wifi, Armchair, Users } from 'lucide-react';
 import Navigation from '@/components/Navigation.clean';
 import Footer from '@/components/Footer';
 
 const SIGNUP_URL = 'https://popup.ph/eight-thirteen-cafe/club813/signup';
+const LOGIN_URL = 'https://popup.ph/eight-thirteen-cafe/app/login';
 
 const peso = (n: number) => `₱${n.toLocaleString('en-PH')}`;
 
@@ -67,12 +67,14 @@ const Club813 = () => {
             >
               Sign up — {peso(2500)}/month <ArrowRight className="w-4 h-4" />
             </a>
-            <Link
-              to="/auth"
+            <a
+              href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm tracking-[0.2em] uppercase font-medium text-primary border border-primary px-10 py-4 hover:bg-primary hover:text-primary-foreground transition-colors"
             >
               Member login
-            </Link>
+            </a>
           </div>
           <p className="mt-6 text-xs text-muted-foreground">
             Unused credit expires at the end of your billing month. Use it or lose it.
@@ -215,12 +217,14 @@ const Club813 = () => {
           >
             Sign up for Club 813 <ArrowRight className="w-4 h-4" />
           </a>
-          <Link
-            to="/auth"
+          <a
+            href={LOGIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-2 text-sm tracking-[0.2em] uppercase font-medium text-primary border border-primary px-12 py-4 hover:bg-primary hover:text-primary-foreground transition-colors"
           >
             Member login
-          </Link>
+          </a>
         </section>
       </main>
 
