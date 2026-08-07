@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/lib/authContext";
+import { useEffect } from "react";
 
 // Essential Pages Only
 import Index from "./pages/Index.clean";
@@ -27,6 +28,13 @@ import Club813 from "./pages/Club813";
 import CareersAdmin from "./pages/CareersAdmin";
 import Unsubscribe from "./pages/Unsubscribe";
 
+const MemberRedirect = () => {
+  useEffect(() => {
+    window.location.href = "https://popup.ph/eight-thirteen-cafe/app";
+  }, []);
+  return null;
+};
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -40,6 +48,7 @@ const App = () => (
             {/* Public Routes */}
             <Route path="/" element={<Index />} />
             <Route path="/coworking" element={<Coworking />} />
+            <Route path="/member" element={<MemberRedirect />} />
             <Route path="/club813" element={<Club813 />} />
             <Route path="/plans" element={<PlanSelection />} />
             <Route path="/redemption" element={<DrinkRedemption />} />
