@@ -23,6 +23,7 @@ import MeetingRoom from "./pages/MeetingRoom";
 import SupportTickets from "./pages/SupportTickets";
 import Reporting from "./pages/Reporting";
 import Careers from "./pages/Careers";
+import Club813 from "./pages/Club813";
 import CareersAdmin from "./pages/CareersAdmin";
 import Unsubscribe from "./pages/Unsubscribe";
 
@@ -39,6 +40,7 @@ const App = () => (
             {/* Public Routes */}
             <Route path="/" element={<Index />} />
             <Route path="/coworking" element={<Coworking />} />
+            <Route path="/club813" element={<Club813 />} />
             <Route path="/plans" element={<PlanSelection />} />
             <Route path="/redemption" element={<DrinkRedemption />} />
             <Route path="/checkin" element={<CheckIn />} />
