@@ -139,6 +139,24 @@ const Club813 = () => {
           </div>
         </section>
 
+        {/* Member benefits */}
+        <section className="max-w-5xl mx-auto px-6 lg:px-8 mt-28">
+          <h2 className="text-xs tracking-[0.25em] uppercase text-muted-foreground text-center mb-12">Member benefits</h2>
+          <div className="grid md:grid-cols-3 gap-10">
+            {[
+              { icon: Wifi, title: 'Fast, 24/7 WiFi access', body: 'Reliable high-speed internet around the clock, so you can work, stream, or meet anytime.' },
+              { icon: Armchair, title: 'Dedicated space reserved for you', body: 'A seat in the club workspace that is set aside for members, not just first-come-first-served.' },
+              { icon: Users, title: 'Exclusive at 13 members', body: 'Once the club hits 13 members, the workspace becomes members-only — a quieter, more private environment.' },
+            ].map((s) => (
+              <div key={s.title}>
+                <s.icon className="w-5 h-5 text-foreground/70" />
+                <h3 className="mt-4 text-sm font-medium text-foreground">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Top-up blocks */}
         <section className="max-w-4xl mx-auto px-6 lg:px-8 mt-28">
           <div className="border-t border-border pt-12">
