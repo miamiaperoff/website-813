@@ -48,6 +48,7 @@ const App = () => (
             {/* Public Routes */}
             <Route path="/" element={<Index />} />
             <Route path="/coworking" element={<Coworking />} />
+            <Route path="/member" element={<MemberRedirect />} />
             <Route path="/club813" element={<Club813 />} />
             <Route path="/plans" element={<PlanSelection />} />
             <Route path="/redemption" element={<DrinkRedemption />} />
