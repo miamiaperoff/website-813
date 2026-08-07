@@ -30,7 +30,7 @@ import Unsubscribe from "./pages/Unsubscribe";
 
 const MemberRedirect = () => {
   useEffect(() => {
-    window.location.href = "https://popup.ph/eight-thirteen-cafe/app";
+    window.location.href = "https://popup.ph/eight-thirteen-cafe/app/login";
   }, []);
   return null;
 };
