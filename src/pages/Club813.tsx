@@ -217,12 +217,14 @@ const Club813 = () => {
           >
             Sign up for Club 813 <ArrowRight className="w-4 h-4" />
           </a>
-          <Link
-            to="/auth"
+          <a
+            href={LOGIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-2 text-sm tracking-[0.2em] uppercase font-medium text-primary border border-primary px-12 py-4 hover:bg-primary hover:text-primary-foreground transition-colors"
           >
             Member login
-          </Link>
+          </a>
         </section>
       </main>
 
