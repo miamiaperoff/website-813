@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Wallet, QrCode, Store, CalendarX, Check, ArrowRight, Wifi, Armchair, Users } from 'lucide-react';
 import Navigation from '@/components/Navigation.clean';
 import Footer from '@/components/Footer';
