@@ -28,6 +28,13 @@ import Club813 from "./pages/Club813";
 import CareersAdmin from "./pages/CareersAdmin";
 import Unsubscribe from "./pages/Unsubscribe";
 
+const MemberRedirect = () => {
+  useEffect(() => {
+    window.location.href = "https://popup.ph/eight-thirteen-cafe/app";
+  }, []);
+  return null;
+};
+
 const queryClient = new QueryClient();
 
 const App = () => (
