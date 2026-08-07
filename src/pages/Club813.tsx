@@ -149,12 +149,12 @@ const Club813 = () => {
             </p>
             <div className="grid sm:grid-cols-2 gap-6 mt-10">
               <div className="border border-border p-8 text-center">
-                <p className="font-serif text-3xl font-light text-foreground">{peso(1000)}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{peso(1000)} of credit</p>
+                <p className="font-serif text-3xl font-light text-foreground">{peso(2500)}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{peso(2500)} of credit</p>
               </div>
               <div className="border border-primary p-8 text-center bg-secondary/50">
-                <p className="font-serif text-3xl font-light text-foreground">{peso(2700)}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{peso(3000)} of credit · {peso(300)} bonus</p>
+                <p className="font-serif text-3xl font-light text-foreground">{peso(4700)}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{peso(5000)} of credit · {peso(300)} bonus</p>
               </div>
             </div>
             <p className="mt-6 text-xs text-muted-foreground text-center">
